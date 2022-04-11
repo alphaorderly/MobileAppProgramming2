@@ -16,18 +16,22 @@ import SwiftUI
  
   사용법 : SearchBar(textInput: ${state변수명}) -> 여기에 입력시 위 변수값이 바뀌게 됨.
  
+    padding() 과 함께 사용해야 좀 이쁨.
+ 
  */
+
 struct SearchBar: View {
     @Binding var textInput: String
     @State var editText: Bool = false
+    @Binding var sideMenuAppear: Bool
+
     
     var body: some View {
         HStack {
+            MenuButton(sideMenuAppear: $sideMenuAppear)
+                 .foregroundColor(.black)
+                 .padding(15)
             TextField("국가명을 입력해주세요", text: self.$textInput)
-                .padding(15)
-                .padding(.horizontal, 15)
-                .background(Color(.systemGray6))
-                .cornerRadius(15)
                 .overlay(
                     HStack {
                         Spacer()
@@ -53,7 +57,24 @@ struct SearchBar: View {
                     self.editText = true
                 }
         }
-        .padding()
+        .background(Color(.systemGray6))
+        .cornerRadius(15)
+    }
+}
+
+/*
+ 
+ 사이드 메뉴 열기위한 버튼
+ 
+ */
+struct MenuButton: View {
+    @Binding var sideMenuAppear: Bool
+    var body: some View {
+        Button {
+            sideMenuAppear = true
+        } label: {
+            Image(systemName: "line.horizontal.3")
+        }
     }
 }
 
