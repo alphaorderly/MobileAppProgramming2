@@ -11,7 +11,7 @@ import SwiftUI
 struct GoRightNowApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView(searchText: "")
+            ContentView()
         }
     }
 }
