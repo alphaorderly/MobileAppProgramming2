@@ -10,6 +10,7 @@
 		2F8A1A9BC9D8D01897CC02AC /* Pods_GoRightNow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D32D4FAC7716C28747B87C3 /* Pods_GoRightNow.framework */; };
 		34FADF01CEA83D70E2E8F392 /* Pods_GoRightNow_GoRightNowUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF41A44ADD1677A2B07A687C /* Pods_GoRightNow_GoRightNowUITests.framework */; };
 		89CF7AF313C71D3335103363 /* Pods_GoRightNowTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0D70C5E0FAC3F57C7BFB39 /* Pods_GoRightNowTests.framework */; };
+		EF54196028044BDF00C4CAFA /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF54195F28044BDF00C4CAFA /* SearchBar.swift */; };
 		EFE7714A28043628005CCE52 /* GoRightNowApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE7714928043628005CCE52 /* GoRightNowApp.swift */; };
 		EFE7714C28043628005CCE52 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE7714B28043628005CCE52 /* ContentView.swift */; };
 		EFE7714E28043629005CCE52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFE7714D28043629005CCE52 /* Assets.xcassets */; };
@@ -46,6 +47,7 @@
 		BF41A44ADD1677A2B07A687C /* Pods_GoRightNow_GoRightNowUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoRightNow_GoRightNowUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD0D70C5E0FAC3F57C7BFB39 /* Pods_GoRightNowTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoRightNowTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF53D18484663BC508CCD9A8 /* Pods-GoRightNow-GoRightNowUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoRightNow-GoRightNowUITests.debug.xcconfig"; path = "Target Support Files/Pods-GoRightNow-GoRightNowUITests/Pods-GoRightNow-GoRightNowUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		EF54195F28044BDF00C4CAFA /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		EFE7714628043628005CCE52 /* GoRightNow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoRightNow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFE7714928043628005CCE52 /* GoRightNowApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoRightNowApp.swift; sourceTree = "<group>"; };
 		EFE7714B28043628005CCE52 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -96,7 +98,6 @@
 				5E14BCE3B9DE8FBBB56A1E65 /* Pods-GoRightNowTests.debug.xcconfig */,
 				B8E4A3A56B90679667451FA9 /* Pods-GoRightNowTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -137,6 +138,7 @@
 			children = (
 				EFE7714928043628005CCE52 /* GoRightNowApp.swift */,
 				EFE7714B28043628005CCE52 /* ContentView.swift */,
+				EF54195F28044BDF00C4CAFA /* SearchBar.swift */,
 				EFE7714D28043629005CCE52 /* Assets.xcassets */,
 				EFE7714F28043629005CCE52 /* Preview Content */,
 			);
@@ -408,6 +410,7 @@
 			files = (
 				EFE7714C28043628005CCE52 /* ContentView.swift in Sources */,
 				EFE7714A28043628005CCE52 /* GoRightNowApp.swift in Sources */,
+				EF54196028044BDF00C4CAFA /* SearchBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
