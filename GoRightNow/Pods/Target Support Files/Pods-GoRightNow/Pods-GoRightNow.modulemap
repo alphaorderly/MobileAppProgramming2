@@ -1,0 +1,6 @@
+framework module Pods_GoRightNow {
+  umbrella header "Pods-GoRightNow-umbrella.h"
+
+  export *
+  module * { export * }
+}
