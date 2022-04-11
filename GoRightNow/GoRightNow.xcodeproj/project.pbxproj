@@ -11,8 +11,6 @@
 		EFE7714C28043628005CCE52 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE7714B28043628005CCE52 /* ContentView.swift */; };
 		EFE7714E28043629005CCE52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFE7714D28043629005CCE52 /* Assets.xcassets */; };
 		EFE7715128043629005CCE52 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFE7715028043629005CCE52 /* Preview Assets.xcassets */; };
-		EFE7715328043629005CCE52 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE7715228043629005CCE52 /* Persistence.swift */; };
-		EFE7715628043629005CCE52 /* GoRightNow.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EFE7715428043629005CCE52 /* GoRightNow.xcdatamodeld */; };
 		EFE7716028043629005CCE52 /* GoRightNowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE7715F28043629005CCE52 /* GoRightNowTests.swift */; };
 		EFE7716A28043629005CCE52 /* GoRightNowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE7716928043629005CCE52 /* GoRightNowUITests.swift */; };
 		EFE7716C28043629005CCE52 /* GoRightNowUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE7716B28043629005CCE52 /* GoRightNowUITestsLaunchTests.swift */; };
@@ -41,8 +39,6 @@
 		EFE7714B28043628005CCE52 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		EFE7714D28043629005CCE52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EFE7715028043629005CCE52 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		EFE7715228043629005CCE52 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		EFE7715528043629005CCE52 /* GoRightNow.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GoRightNow.xcdatamodel; sourceTree = "<group>"; };
 		EFE7715B28043629005CCE52 /* GoRightNowTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoRightNowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFE7715F28043629005CCE52 /* GoRightNowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoRightNowTests.swift; sourceTree = "<group>"; };
 		EFE7716528043629005CCE52 /* GoRightNowUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoRightNowUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,8 +97,6 @@
 				EFE7714928043628005CCE52 /* GoRightNowApp.swift */,
 				EFE7714B28043628005CCE52 /* ContentView.swift */,
 				EFE7714D28043629005CCE52 /* Assets.xcassets */,
-				EFE7715228043629005CCE52 /* Persistence.swift */,
-				EFE7715428043629005CCE52 /* GoRightNow.xcdatamodeld */,
 				EFE7714F28043629005CCE52 /* Preview Content */,
 			);
 			path = GoRightNow;
@@ -263,10 +257,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EFE7715328043629005CCE52 /* Persistence.swift in Sources */,
 				EFE7714C28043628005CCE52 /* ContentView.swift in Sources */,
 				EFE7714A28043628005CCE52 /* GoRightNowApp.swift in Sources */,
-				EFE7715628043629005CCE52 /* GoRightNow.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,19 +577,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		EFE7715428043629005CCE52 /* GoRightNow.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				EFE7715528043629005CCE52 /* GoRightNow.xcdatamodel */,
-			);
-			currentVersion = EFE7715528043629005CCE52 /* GoRightNow.xcdatamodel */;
-			path = GoRightNow.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = EFE7713E28043628005CCE52 /* Project object */;
 }
