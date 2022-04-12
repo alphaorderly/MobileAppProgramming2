@@ -10,6 +10,9 @@ import Alamofire
 
 struct GoRightNow: View {
     @ObservedObject var modelView: GoRightNowModelView;
+    /*
+     ObservedObject는 $를 붙혀 State와 같이 사용가능 -> @Binding을 통해 call by reference와 같은 효과 누릴수 있음.
+     */
     
     var body: some View {
         ZStack {
