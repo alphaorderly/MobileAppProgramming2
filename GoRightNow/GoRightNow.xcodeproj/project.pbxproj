@@ -12,8 +12,10 @@
 		89CF7AF313C71D3335103363 /* Pods_GoRightNowTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0D70C5E0FAC3F57C7BFB39 /* Pods_GoRightNowTests.framework */; };
 		EF54196028044BDF00C4CAFA /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF54195F28044BDF00C4CAFA /* SearchBar.swift */; };
 		EF5419622804582000C4CAFA /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5419612804582000C4CAFA /* SideMenu.swift */; };
+		EFDAC75B280548330091C11F /* GoRightNowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDAC75A280548330091C11F /* GoRightNowModel.swift */; };
+		EFDAC75D280548410091C11F /* GoRightNowModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDAC75C280548410091C11F /* GoRightNowModelView.swift */; };
 		EFE7714A28043628005CCE52 /* GoRightNowApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE7714928043628005CCE52 /* GoRightNowApp.swift */; };
-		EFE7714C28043628005CCE52 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE7714B28043628005CCE52 /* ContentView.swift */; };
+		EFE7714C28043628005CCE52 /* GoRightNow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE7714B28043628005CCE52 /* GoRightNow.swift */; };
 		EFE7714E28043629005CCE52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFE7714D28043629005CCE52 /* Assets.xcassets */; };
 		EFE7715128043629005CCE52 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFE7715028043629005CCE52 /* Preview Assets.xcassets */; };
 		EFE7716028043629005CCE52 /* GoRightNowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE7715F28043629005CCE52 /* GoRightNowTests.swift */; };
@@ -50,9 +52,11 @@
 		EF53D18484663BC508CCD9A8 /* Pods-GoRightNow-GoRightNowUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoRightNow-GoRightNowUITests.debug.xcconfig"; path = "Target Support Files/Pods-GoRightNow-GoRightNowUITests/Pods-GoRightNow-GoRightNowUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		EF54195F28044BDF00C4CAFA /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		EF5419612804582000C4CAFA /* SideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
+		EFDAC75A280548330091C11F /* GoRightNowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoRightNowModel.swift; sourceTree = "<group>"; };
+		EFDAC75C280548410091C11F /* GoRightNowModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoRightNowModelView.swift; sourceTree = "<group>"; };
 		EFE7714628043628005CCE52 /* GoRightNow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoRightNow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFE7714928043628005CCE52 /* GoRightNowApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoRightNowApp.swift; sourceTree = "<group>"; };
-		EFE7714B28043628005CCE52 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		EFE7714B28043628005CCE52 /* GoRightNow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoRightNow.swift; sourceTree = "<group>"; };
 		EFE7714D28043629005CCE52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EFE7715028043629005CCE52 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EFE7715B28043629005CCE52 /* GoRightNowTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoRightNowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,7 +143,9 @@
 			isa = PBXGroup;
 			children = (
 				EFE7714928043628005CCE52 /* GoRightNowApp.swift */,
-				EFE7714B28043628005CCE52 /* ContentView.swift */,
+				EFE7714B28043628005CCE52 /* GoRightNow.swift */,
+				EFDAC75A280548330091C11F /* GoRightNowModel.swift */,
+				EFDAC75C280548410091C11F /* GoRightNowModelView.swift */,
 				EF54195F28044BDF00C4CAFA /* SearchBar.swift */,
 				EF5419612804582000C4CAFA /* SideMenu.swift */,
 				EFE7714D28043629005CCE52 /* Assets.xcassets */,
@@ -411,7 +417,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EFE7714C28043628005CCE52 /* ContentView.swift in Sources */,
+				EFDAC75B280548330091C11F /* GoRightNowModel.swift in Sources */,
+				EFE7714C28043628005CCE52 /* GoRightNow.swift in Sources */,
+				EFDAC75D280548410091C11F /* GoRightNowModelView.swift in Sources */,
 				EFE7714A28043628005CCE52 /* GoRightNowApp.swift in Sources */,
 				EF54196028044BDF00C4CAFA /* SearchBar.swift in Sources */,
 				EF5419622804582000C4CAFA /* SideMenu.swift in Sources */,
