@@ -21,24 +21,25 @@ import SwiftUI
  */
 
 struct SearchBar: View {
-    @Binding var textInput: String
-    @State var editText: Bool = false
-    @Binding var sideMenuAppear: Bool
+    @Binding var text: String
+    @Binding var menu: Bool
+
+    @State var editText = false
 
     
     var body: some View {
         HStack {
-            MenuButton(sideMenuAppear: $sideMenuAppear)
+            MenuButton(state: $menu)
                  .foregroundColor(.black)
                  .padding(15)
-            TextField("국가명을 입력해주세요", text: self.$textInput)
+            TextField("국가명을 입력해주세요", text: self.$text)
                 .overlay(
                     HStack {
                         Spacer()
                         if self.editText {
                             Button(action: {
                                 self.editText = false
-                                self.textInput = ""
+                                self.text = ""
                                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                             })
                             {
@@ -68,10 +69,11 @@ struct SearchBar: View {
  
  */
 struct MenuButton: View {
-    @Binding var sideMenuAppear: Bool
+    @Binding var state: Bool
+    
     var body: some View {
         Button {
-            sideMenuAppear = true
+            state = true
         } label: {
             Image(systemName: "line.horizontal.3")
         }

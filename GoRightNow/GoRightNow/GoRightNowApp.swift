@@ -11,7 +11,8 @@ import SwiftUI
 struct GoRightNowApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            let modelView = GoRightNowModelView()
+            GoRightNow(modelView: modelView)
         }
     }
 }
