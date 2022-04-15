@@ -17,21 +17,14 @@ struct GoRightNow: View {
     var body: some View {
         ZStack {
             VStack {
-                SearchBar(text: $modelView.model.textInput, menu: $modelView.model.sideMenu)                        // 국가 검색창
+                SearchBar(text: $modelView.model.textInput)                        // 국가 검색창
                     .padding()
                 Spacer()
                 Text(modelView.model.textInput)                                                                     // 검색창에 입력된 값 확인용 임시 View
                 Spacer()
             }
-            if modelView.model.sideMenu {
-                SideMenu()
-                    
-            }
         }
         .contentShape(Rectangle())
-        .onTapGesture {
-            modelView.model.sideMenu = false
-        }
     }
 }
 
