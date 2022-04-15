@@ -22,16 +22,12 @@ import SwiftUI
 
 struct SearchBar: View {
     @Binding var text: String
-    @Binding var menu: Bool
 
     @State var editText = false
 
     
     var body: some View {
         HStack {
-            MenuButton(state: $menu)
-                 .foregroundColor(.black)
-                 .padding(15)
             TextField("국가명을 입력해주세요", text: self.$text)
                 .overlay(
                     HStack {
@@ -62,21 +58,3 @@ struct SearchBar: View {
         .cornerRadius(15)
     }
 }
-
-/*
- 
- 사이드 메뉴 열기위한 버튼
- 
- */
-struct MenuButton: View {
-    @Binding var state: Bool
-    
-    var body: some View {
-        Button {
-            state = true
-        } label: {
-            Image(systemName: "line.horizontal.3")
-        }
-    }
-}
-
