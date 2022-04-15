@@ -10,5 +10,4 @@ import SwiftUI
 
 struct GoRightNowModel {
     var textInput: String = "";
-    var sideMenu: Bool = false
 }
