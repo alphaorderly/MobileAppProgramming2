@@ -21,21 +21,7 @@ import SwiftUI
  */
 
 struct SearchBar: View {
-    @Binding var text: String
-
-    @State var editText = false
-
     
-    var body: some View {
-        HStack {
-            TextField("국가명을 입력해주세요", text: self.$text)
-                .overlay(
-                    HStack {
-                        Spacer()
-                        if self.editText {
-                            Button(action: {
-                                self.editText = false
-                                self.text = ""
                                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                             })
                             {
@@ -53,6 +39,7 @@ struct SearchBar: View {
                 .onTapGesture {
                     self.editText = true
                 }
+                .padding()
         }
         .background(Color(.systemGray6))
         .cornerRadius(15)
