@@ -11,7 +11,10 @@
 		34FADF01CEA83D70E2E8F392 /* Pods_GoRightNow_GoRightNowUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF41A44ADD1677A2B07A687C /* Pods_GoRightNow_GoRightNowUITests.framework */; };
 		89CF7AF313C71D3335103363 /* Pods_GoRightNowTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0D70C5E0FAC3F57C7BFB39 /* Pods_GoRightNowTests.framework */; };
 		EF54196028044BDF00C4CAFA /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF54195F28044BDF00C4CAFA /* SearchBar.swift */; };
+<<<<<<< HEAD
+=======
 		EF5419622804582000C4CAFA /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5419612804582000C4CAFA /* SideMenu.swift */; };
+>>>>>>> 2a71c3ce2e47c654bfb96efbe1688a4f27279cbf
 		EFDAC75B280548330091C11F /* GoRightNowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDAC75A280548330091C11F /* GoRightNowModel.swift */; };
 		EFDAC75D280548410091C11F /* GoRightNowModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDAC75C280548410091C11F /* GoRightNowModelView.swift */; };
 		EFE7714A28043628005CCE52 /* GoRightNowApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE7714928043628005CCE52 /* GoRightNowApp.swift */; };
@@ -51,7 +54,10 @@
 		CD0D70C5E0FAC3F57C7BFB39 /* Pods_GoRightNowTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoRightNowTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF53D18484663BC508CCD9A8 /* Pods-GoRightNow-GoRightNowUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoRightNow-GoRightNowUITests.debug.xcconfig"; path = "Target Support Files/Pods-GoRightNow-GoRightNowUITests/Pods-GoRightNow-GoRightNowUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		EF54195F28044BDF00C4CAFA /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
+=======
 		EF5419612804582000C4CAFA /* SideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
+>>>>>>> 2a71c3ce2e47c654bfb96efbe1688a4f27279cbf
 		EFDAC75A280548330091C11F /* GoRightNowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoRightNowModel.swift; sourceTree = "<group>"; };
 		EFDAC75C280548410091C11F /* GoRightNowModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoRightNowModelView.swift; sourceTree = "<group>"; };
 		EFE7714628043628005CCE52 /* GoRightNow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoRightNow.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -147,7 +153,10 @@
 				EFDAC75A280548330091C11F /* GoRightNowModel.swift */,
 				EFDAC75C280548410091C11F /* GoRightNowModelView.swift */,
 				EF54195F28044BDF00C4CAFA /* SearchBar.swift */,
+<<<<<<< HEAD
+=======
 				EF5419612804582000C4CAFA /* SideMenu.swift */,
+>>>>>>> 2a71c3ce2e47c654bfb96efbe1688a4f27279cbf
 				EFE7714D28043629005CCE52 /* Assets.xcassets */,
 				EFE7714F28043629005CCE52 /* Preview Content */,
 			);
@@ -422,7 +431,10 @@
 				EFDAC75D280548410091C11F /* GoRightNowModelView.swift in Sources */,
 				EFE7714A28043628005CCE52 /* GoRightNowApp.swift in Sources */,
 				EF54196028044BDF00C4CAFA /* SearchBar.swift in Sources */,
+<<<<<<< HEAD
+=======
 				EF5419622804582000C4CAFA /* SideMenu.swift in Sources */,
+>>>>>>> 2a71c3ce2e47c654bfb96efbe1688a4f27279cbf
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
