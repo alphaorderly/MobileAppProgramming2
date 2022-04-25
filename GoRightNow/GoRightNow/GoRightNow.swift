@@ -18,6 +18,7 @@ struct GoRightNow: View {
         ZStack {
             VStack {
                 SearchBar(text: $modelView.model.textInput)                        // 국가 검색창
+                    .padding()
                 Spacer()
                 Text(modelView.model.textInput)                                                                     // 검색창에 입력된 값 확인용 임시 View
                 Spacer()
