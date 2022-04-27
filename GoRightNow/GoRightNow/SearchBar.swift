@@ -21,11 +21,10 @@ import SwiftUI
  */
 
 struct SearchBar: View {
-    @Binding var text: String
+        @Binding var text: String
 
         @State var editText = false
 
-        
         var body: some View {
             HStack {
                 TextField("국가명을 입력해주세요", text: self.$text)
