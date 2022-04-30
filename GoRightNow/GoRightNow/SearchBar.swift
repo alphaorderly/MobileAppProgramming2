@@ -21,13 +21,24 @@ import SwiftUI
  */
 
 struct SearchBar: View {
-        @Binding var text: String
+    @Binding var text: String
+    @Binding var menu: Bool
 
         @State var editText = false
 
-        var body: some View {
+    var body: some View {
             HStack {
+                Button {
+                    withAnimation {
+                        menu = !menu
+                    }
+                } label: {
+                    Image(systemName: "line.3.horizontal")
+                        .foregroundColor(.black)
+                }
+                .padding()
                 TextField("국가명을 입력해주세요", text: self.$text)
+                    .padding(EdgeInsets(top: 15, leading: 0, bottom: 15, trailing: 0))
                     .overlay(
                         HStack {
                             Spacer()
@@ -38,7 +49,7 @@ struct SearchBar: View {
     
                                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     
-})
+                        })
                             {
                                 Image(systemName: "multiply.circle.fill")
                                     .foregroundColor(Color(.black))
@@ -54,7 +65,6 @@ struct SearchBar: View {
                 .onTapGesture {
                     self.editText = true
                 }
-                .padding()
         }
         .background(Color(.systemGray6))
         .cornerRadius(15)

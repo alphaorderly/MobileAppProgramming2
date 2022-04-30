@@ -15,16 +15,34 @@ struct GoRightNow: View {
      */
     
     var body: some View {
-        ZStack {
-            VStack {
-                SearchBar(text: $modelView.model.textInput)                        // 국가 검색창
-                    .padding()
-                Spacer()
-                Text(modelView.model.textInput)                                    // 검색창에 입력된 값 확인용 임시 View
-                Spacer()
+        NavigationView {
+            ZStack {
+                VStack {
+                    SearchBar(text: $modelView.model.textInput, menu: $modelView.model.sideMenu)                        // 국가 검색창
+                        .padding()
+                    Spacer()
+                    Text(modelView.model.textInput)                                    //
+                    Spacer()
+                }
+                .contentShape(Rectangle()) // 사이드바 집어넣게 하기 위해 위 VStack을 터치 가능한 객체로 만듦
+                .onTapGesture {
+                    // 사이드바 다시 집어 넣기 위한 코드
+                    withAnimation {
+                        if modelView.model.sideMenu  {
+                            modelView.model.sideMenu = !modelView.model.sideMenu
+                        }
+                    }
+                }
+                
+                // Model의 sideMenu 값에 따라 sidebar 표시 여부 결정
+                if modelView.model.sideMenu {
+                    SideMenu(menu: $modelView.model.sideMenu, version: modelView.model.version)
+                }
             }
+            .navigationBarTitle("", displayMode: .automatic)
+            .navigationBarHidden(true).navigationBarTitle("", displayMode: .automatic)
+            .navigationBarHidden(true)
         }
-        .contentShape(Rectangle())
     }
 }
 

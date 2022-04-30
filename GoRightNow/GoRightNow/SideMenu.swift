@@ -13,26 +13,30 @@ import SwiftUI
  
  */
 
-struct SideMenu: View, Animatable {
+struct SideMenu: View {
+    @Binding var menu: Bool
+    var version: String
+    
     var body: some View {
-        HStack {
-            VStack(alignment: .leading) {
-                Text("Setting")
-                    .font(.title)
-                
+            HStack {
+                    VStack {
+                            NavigationLink(
+                                destination: SettingView(version: version),
+                                label: {
+                                    Text("Setting")
+                                        .font(.largeTitle)
+                                        .foregroundColor(.black)
+                                }
+                            )
+                        Spacer()
+                    }
+                .padding(16)
+                .padding(.top, 100)
+                .background(Color(.systemGray6))
+                .edgesIgnoringSafeArea([.bottom, .top])
                 Spacer()
             }
-            .padding(16)
-            .padding(.top, 50)
-            .background(Color(.systemGray6))
-            .edgesIgnoringSafeArea([.bottom, .top])
-            Spacer()
-        }
-    }
-}
-
-struct SideMenu_Previews: PreviewProvider {
-    static var previews: some View {
-        SideMenu()
+            .transition(.asymmetric(insertion: .move(edge: .leading), removal: .move(edge: .leading)))
+            .shadow(radius: 5)
     }
 }
