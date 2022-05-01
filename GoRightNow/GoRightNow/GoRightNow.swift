@@ -15,6 +15,7 @@ struct GoRightNow: View {
      */
     
     var body: some View {
+        // 이 화면에서 다른 화면으로 넘어갈수 있게 설정해두는것.
         NavigationView {
             ZStack {
                 VStack {
