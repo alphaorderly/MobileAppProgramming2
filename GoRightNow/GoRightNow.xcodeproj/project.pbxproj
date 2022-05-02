@@ -13,6 +13,7 @@
 		EF54196028044BDF00C4CAFA /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF54195F28044BDF00C4CAFA /* SearchBar.swift */; };
 		EF5419622804582000C4CAFA /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5419612804582000C4CAFA /* SideMenu.swift */; };
 		EF682A53281D7AC800F08CF4 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF682A52281D7AC800F08CF4 /* SettingView.swift */; };
+		EF8116E2281F6C9D0005B178 /* CountryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8116E1281F6C9D0005B178 /* CountryList.swift */; };
 		EFDAC75B280548330091C11F /* GoRightNowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDAC75A280548330091C11F /* GoRightNowModel.swift */; };
 		EFDAC75D280548410091C11F /* GoRightNowModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDAC75C280548410091C11F /* GoRightNowModelView.swift */; };
 		EFE7714A28043628005CCE52 /* GoRightNowApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE7714928043628005CCE52 /* GoRightNowApp.swift */; };
@@ -54,6 +55,7 @@
 		EF54195F28044BDF00C4CAFA /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		EF5419612804582000C4CAFA /* SideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
 		EF682A52281D7AC800F08CF4 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		EF8116E1281F6C9D0005B178 /* CountryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryList.swift; sourceTree = "<group>"; };
 		EFDAC75A280548330091C11F /* GoRightNowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoRightNowModel.swift; sourceTree = "<group>"; };
 		EFDAC75C280548410091C11F /* GoRightNowModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoRightNowModelView.swift; sourceTree = "<group>"; };
 		EFE7714628043628005CCE52 /* GoRightNow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoRightNow.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +152,7 @@
 				EFDAC75A280548330091C11F /* GoRightNowModel.swift */,
 				EFDAC75C280548410091C11F /* GoRightNowModelView.swift */,
 				EF54195F28044BDF00C4CAFA /* SearchBar.swift */,
+				EF8116E1281F6C9D0005B178 /* CountryList.swift */,
 				EF5419612804582000C4CAFA /* SideMenu.swift */,
 				EFE7714D28043629005CCE52 /* Assets.xcassets */,
 				EFE7714F28043629005CCE52 /* Preview Content */,
@@ -424,6 +427,7 @@
 				EFE7714C28043628005CCE52 /* GoRightNow.swift in Sources */,
 				EFDAC75D280548410091C11F /* GoRightNowModelView.swift in Sources */,
 				EFE7714A28043628005CCE52 /* GoRightNowApp.swift in Sources */,
+				EF8116E2281F6C9D0005B178 /* CountryList.swift in Sources */,
 				EF54196028044BDF00C4CAFA /* SearchBar.swift in Sources */,
 				EF5419622804582000C4CAFA /* SideMenu.swift in Sources */,
 				EF682A53281D7AC800F08CF4 /* SettingView.swift in Sources */,

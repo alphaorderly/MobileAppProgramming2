@@ -21,8 +21,7 @@ struct GoRightNow: View {
                 VStack {
                     SearchBar(text: $modelView.model.textInput, menu: $modelView.model.sideMenu)                        // 국가 검색창
                         .padding()
-                    Spacer()
-                    Text(modelView.model.textInput)                                    //
+                    CountryList()
                     Spacer()
                 }
                 .contentShape(Rectangle()) // 사이드바 집어넣게 하기 위해 위 VStack을 터치 가능한 객체로 만듦
@@ -37,12 +36,18 @@ struct GoRightNow: View {
                 
                 // Model의 sideMenu 값에 따라 sidebar 표시 여부 결정
                 if modelView.model.sideMenu {
-                    SideMenu(menu: $modelView.model.sideMenu, version: modelView.model.version)
+                    GeometryReader { geometry in
+                        SideMenu(menu: $modelView.model.sideMenu, version: modelView.model.version, geometry: geometry)
+                    }
+                    .transition(.asymmetric(insertion: .move(edge: .leading), removal: .move(edge: .leading)))
+                    .zIndex(100)
+                    // Animation 구현 및 Sidebar가 절대로 뒤에 가지 않도록 설정
                 }
             }
             .navigationBarTitle("", displayMode: .automatic)
             .navigationBarHidden(true).navigationBarTitle("", displayMode: .automatic)
             .navigationBarHidden(true)
+            // Navigation 구현하고도 위에 제목이 따로 나오지 않게 설정
         }
     }
 }

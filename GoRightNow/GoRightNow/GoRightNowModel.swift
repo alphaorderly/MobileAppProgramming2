@@ -12,5 +12,5 @@ struct GoRightNowModel {
     var textInput: String = "";
     var sideMenu: Bool = false                   // 사이드 메뉴상태
     
-    var version: String = "1.0.0"                // 설정 버전 표시용
+    let version: String = "1.0.0"                // 설정 버전 표시용
 }

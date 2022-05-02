@@ -35,6 +35,7 @@ struct SearchBar: View {
                 } label: {
                     Image(systemName: "line.3.horizontal")
                         .foregroundColor(.black)
+                        .font(.system(size: 20, weight: .bold))
                 }
                 .padding()
                 TextField("국가명을 입력해주세요", text: self.$text)
