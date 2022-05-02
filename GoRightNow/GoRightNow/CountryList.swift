@@ -18,8 +18,8 @@ struct CountryList: View {
                         Divider()
                         ListTile(name: data)
                     }
+                Divider()
             }
-            Divider()
         }
     }
 }
