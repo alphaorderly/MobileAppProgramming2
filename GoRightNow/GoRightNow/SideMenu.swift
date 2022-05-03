@@ -43,7 +43,9 @@ struct SideMenu: View {
                 .edgesIgnoringSafeArea([.bottom, .top])
                 .shadow(radius:0)
                 Button {
-                    menu = false
+                    withAnimation {
+                        menu = false
+                    }
                 } label: {
                     Image(systemName: "arrowtriangle.backward")
                         .font(.system(size: 40, weight: .heavy))

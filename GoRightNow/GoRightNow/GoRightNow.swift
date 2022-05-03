@@ -18,6 +18,8 @@ struct GoRightNow: View {
         // 이 화면에서 다른 화면으로 넘어갈수 있게 설정해두는것.
         NavigationView {
             ZStack {
+                LinearGradient(gradient: Gradient(colors: [Color.init(red: 255/255, green: 98/255, blue: 0.0, opacity: 1.0), Color.init(red: 253/255, green: 147/255, blue: 70/255, opacity: 0.8)]), startPoint: .top, endPoint: .bottom)
+                            .edgesIgnoringSafeArea(.all)
                 VStack {
                     SearchBar(text: $modelView.model.textInput, menu: $modelView.model.sideMenu)                        // 국가 검색창
                         .padding()
