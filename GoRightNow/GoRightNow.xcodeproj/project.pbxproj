@@ -23,6 +23,7 @@
 		EFE7716028043629005CCE52 /* GoRightNowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE7715F28043629005CCE52 /* GoRightNowTests.swift */; };
 		EFE7716A28043629005CCE52 /* GoRightNowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE7716928043629005CCE52 /* GoRightNowUITests.swift */; };
 		EFE7716C28043629005CCE52 /* GoRightNowUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE7716B28043629005CCE52 /* GoRightNowUITestsLaunchTests.swift */; };
+		EFEEF90028223EB9008FD759 /* CountryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFEEF8FF28223EB9008FD759 /* CountryDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		EFE7716528043629005CCE52 /* GoRightNowUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoRightNowUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFE7716928043629005CCE52 /* GoRightNowUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoRightNowUITests.swift; sourceTree = "<group>"; };
 		EFE7716B28043629005CCE52 /* GoRightNowUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoRightNowUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		EFEEF8FF28223EB9008FD759 /* CountryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				EF682A52281D7AC800F08CF4 /* SettingView.swift */,
+				EFEEF8FF28223EB9008FD759 /* CountryDetailView.swift */,
 				EFE7714928043628005CCE52 /* GoRightNowApp.swift */,
 				EFE7714B28043628005CCE52 /* GoRightNow.swift */,
 				EFDAC75A280548330091C11F /* GoRightNowModel.swift */,
@@ -426,6 +429,7 @@
 				EFDAC75B280548330091C11F /* GoRightNowModel.swift in Sources */,
 				EFE7714C28043628005CCE52 /* GoRightNow.swift in Sources */,
 				EFDAC75D280548410091C11F /* GoRightNowModelView.swift in Sources */,
+				EFEEF90028223EB9008FD759 /* CountryDetailView.swift in Sources */,
 				EFE7714A28043628005CCE52 /* GoRightNowApp.swift in Sources */,
 				EF8116E2281F6C9D0005B178 /* CountryList.swift in Sources */,
 				EF54196028044BDF00C4CAFA /* SearchBar.swift in Sources */,
