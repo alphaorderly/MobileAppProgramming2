@@ -26,8 +26,11 @@ struct SideMenu: View {
                                 destination: SettingView(version: version),
                                 label: {
                                     HStack(alignment: .center) {
+                                        Spacer()
                                         Image(systemName: "gear")
+                                        Spacer()
                                         Text("Setting")
+                                        Spacer()
                                     }
                                     .foregroundColor(.black)
                                     .font(.system(size: 20))

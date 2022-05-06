@@ -17,6 +17,7 @@ struct SettingView: View {
             
             VStack {
                 Text("Current version : \(version)")
+                Spacer()
             }
         }
     }
