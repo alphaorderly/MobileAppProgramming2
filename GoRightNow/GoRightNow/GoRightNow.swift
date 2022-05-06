@@ -42,12 +42,12 @@ struct GoRightNow: View {
                                     withAnimation {
                                         if modelView.model.sideMenu  {
                                             modelView.model.sideMenu = !modelView.model.sideMenu
-                                        }
                                     }
                                 }
+                            }
                         }
                     }
-                    .transition(.asymmetric(insertion: .move(edge: .leading), removal: .move(edge: .leading)))
+                    .transition(.asymmetric(insertion: .move(edge: .leading), removal: .move(edge: .leading)).animation(.linear(duration: 0.2)))
                     .zIndex(100)
                     // Animation 구현 및 Sidebar가 절대로 뒤에 가지 않도록 설정
                 }
