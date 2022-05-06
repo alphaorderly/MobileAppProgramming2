@@ -19,6 +19,8 @@ struct CountryDetailView: View {
                     Text("")
                         .navigationBarTitle(countryName)
                     Spacer()
+                    Text("해외입국자 대상 별도의 자가격리 의무 등을 부과하고 있지 않으나, 입국 시 열화상 카메라를 통해 37도 이상인 경우 코로나19 검사 실시(자부담)")
+                    Spacer()
                 }
                 Spacer()
             }
