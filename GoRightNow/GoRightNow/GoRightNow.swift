@@ -52,6 +52,7 @@ struct GoRightNow: View {
                     // Animation 구현 및 Sidebar가 절대로 뒤에 가지 않도록 설정
                 }
             }
+            .onAppear() { modelView.model.sideMenu = false }
             .navigationBarTitle("", displayMode: .automatic)
             .navigationBarHidden(true).navigationBarTitle("", displayMode: .automatic)
             .navigationBarHidden(true)
