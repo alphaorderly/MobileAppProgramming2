@@ -39,7 +39,9 @@ struct SideMenu: View {
                         Divider()
                         Spacer()
                     }
-                    .navigationBarTitle("메인화면 돌아가기")
+                    .navigationTitle(
+                        Text("메인화면으로 돌아가기")
+                    )
                 .padding(16)
                 .padding(.top, 100)
                 .background(Color(.systemGray6))
