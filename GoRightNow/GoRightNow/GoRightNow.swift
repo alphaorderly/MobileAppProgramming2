@@ -21,6 +21,8 @@ struct GoRightNow: View {
                     .padding()
                 Spacer()
                 Text(modelView.model.textInput)                                                                     // 검색창에 입력된 값 확인용 임시 View
+                Text(test_getCountryInfo(of: "아이슬란드"))
+                Text(test_getCountryInfo(of: "일본"))
                 Spacer()
             }
         }
