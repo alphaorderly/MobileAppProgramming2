@@ -25,6 +25,9 @@ struct GoRightNow: View {
             }
         }
         .contentShape(Rectangle())
+        .onAppear() {
+            modelView.getCountryData()
+        }
     }
 }
 
