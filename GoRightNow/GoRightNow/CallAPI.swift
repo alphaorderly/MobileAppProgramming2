@@ -8,50 +8,119 @@
 import Foundation
 import Alamofire
 
-func getCountryInfo() -> Country {
-    var searchResult : Country
-    
-    let url = "http://apis.data.go.kr/1262000/CountryKoreaDepartureService"
-    
-    let test = "https://apis.data.go.kr/1262000/CountryKoreaDepartureService/getCountryKoreaDepartureList?serviceKey=%2BnLU6YmF24aLEOo7V0yqqvuPb6a4jaNXPVyGqFmMbJhKzpzTaGIQZXTI35srP9jSb%2BD15D%2Fhf9CD85%2BT%2FdAwOw%3D%3D&returnType=JSON&numOfRows=5&pageNo=1"
-    let parameters: Parameters = ["serviceKey": "%2BnLU6YmF24aLEOo7V0yqqvuPb6a4jaNXPVyGqFmMbJhKzpzTaGIQZXTI35srP9jSb%2BD15D%2Fhf9CD85%2BT%2FdAwOw%3D%3D",
-                                    "returnType": "JSON",
-                                    "numOfRows": "10",
-                                    "pageNo": "1"]
-    
-    AF.request(test, method: .get).responseJSON { response in
-            print("response: \(response)")
+struct APIResponse: Codable {
+    let data: [searchedCountry]
+}
 
-        }.resume()
+struct searchedCountry: Codable {
+    let country_nm : String
+    let txt_origin_cn : String
+}
+
+func getCountryInfo(of country: String) -> Country {
+    var searchName = ""
+    var searchInfo = ""
+    var searchInfoKor = "none"
+
+    var encodedString = country.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     
-    searchResult = demoGetCountryInfo()
+    let countryOverseasArrivalsServiceURL = "https://apis.data.go.kr/1262000/CountryOverseasArrivalsService/getCountryOverseasArrivalsList?serviceKey=%2BnLU6YmF24aLEOo7V0yqqvuPb6a4jaNXPVyGqFmMbJhKzpzTaGIQZXTI35srP9jSb%2BD15D%2Fhf9CD85%2BT%2FdAwOw%3D%3D&returnType=JSON&numOfRows=5&pageNo=1&cond[country_nm::EQ]=\(encodedString)"
+    
+    let countryKoreaDepartureServiceURL = "https://apis.data.go.kr/1262000/CountryKoreaDepartureService/getCountryKoreaDepartureList?serviceKey=%2BnLU6YmF24aLEOo7V0yqqvuPb6a4jaNXPVyGqFmMbJhKzpzTaGIQZXTI35srP9jSb%2BD15D%2Fhf9CD85%2BT%2FdAwOw%3D%3D&returnType=JSON&numOfRows=5&pageNo=1&cond[country_nm::EQ]=\(encodedString)"
+    
+    AF.request(countryOverseasArrivalsServiceURL, method: .get, encoding: JSONEncoding.default).responseJSON { response in
+        switch response.result {
+        case .success(let res):
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: res, options: .prettyPrinted)
+                let json = try JSONDecoder().decode(APIResponse.self, from: jsonData)
+                print("\(json.data[0].country_nm)")
+                print("\(json.data[0].txt_origin_cn)")
+                searchName = json.data[0].country_nm
+                searchInfo = json.data[0].txt_origin_cn
+            } catch (let err) {
+                print(err.localizedDescription)
+            }
+        case .failure(let err):
+            print(err.localizedDescription)
+        }
+    }
+    
+    AF.request(countryKoreaDepartureServiceURL, method: .get, encoding: JSONEncoding.default).responseJSON { response in
+        switch response.result {
+        case .success(let res):
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: res, options: .prettyPrinted)
+                let json = try JSONDecoder().decode(APIResponse.self, from: jsonData)
+                print("\(json.data[0].country_nm)")
+                print("\(json.data[0].txt_origin_cn)")
+                searchInfoKor = json.data[0].txt_origin_cn
+            } catch (let err) {
+                print(err.localizedDescription)
+            }
+        case .failure(let err):
+            print(err.localizedDescription)
+        }
+    }
+    
+    let searchResult = Country(name: searchName, immigInfo: searchInfo, immigInfoForKor: searchInfoKor)
+    // searchResult = demoGetCountryInfo()
     
     return searchResult
 }
 
+func test_getCountryInfo(of country: String) -> String {
+    var searchName = ""
+    var searchInfo = ""
+    var searchInfoKor = "none"
 
-
-func testRoutineList() -> String {
-    var responseMsg = "success"
+    var encodedString = country.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     
-    let test = "https://www.daegufood.go.kr/kor/api/tasty.html?mode=json&addr=%EC%A4%91%EA%B5%AC"
+    let countryOverseasArrivalsServiceURL = "https://apis.data.go.kr/1262000/CountryOverseasArrivalsService/getCountryOverseasArrivalsList?serviceKey=%2BnLU6YmF24aLEOo7V0yqqvuPb6a4jaNXPVyGqFmMbJhKzpzTaGIQZXTI35srP9jSb%2BD15D%2Fhf9CD85%2BT%2FdAwOw%3D%3D&returnType=JSON&numOfRows=5&pageNo=1&cond[country_nm::EQ]=\(encodedString)"
     
-    let test2 = "https://apis.data.go.kr/1262000/CountryKoreaDepartureService/getCountryKoreaDepartureList?serviceKey=%2BnLU6YmF24aLEOo7V0yqqvuPb6a4jaNXPVyGqFmMbJhKzpzTaGIQZXTI35srP9jSb%2BD15D%2Fhf9CD85%2BT%2FdAwOw%3D%3D&returnType=JSON&numOfRows=5&pageNo=1"
+    let countryKoreaDepartureServiceURL = "https://apis.data.go.kr/1262000/CountryKoreaDepartureService/getCountryKoreaDepartureList?serviceKey=%2BnLU6YmF24aLEOo7V0yqqvuPb6a4jaNXPVyGqFmMbJhKzpzTaGIQZXTI35srP9jSb%2BD15D%2Fhf9CD85%2BT%2FdAwOw%3D%3D&returnType=JSON&numOfRows=5&pageNo=1&cond[country_nm::EQ]=\(encodedString)"
     
-    let url = "http://apis.data.go.kr/1262000/CountryKoreaDepartureService"
-    let parameters: [String: Any] = ["serviceKey": "%2BnLU6YmF24aLEOo7V0yqqvuPb6a4jaNXPVyGqFmMbJhKzpzTaGIQZXTI35srP9jSb%2BD15D%2Fhf9CD85%2BT%2FdAwOw%3D%3D",
-                                    "returnType": "JSON",
-                                    "numOfRows": "10",
-                                    "pageNo": "1"]
+    AF.request(countryOverseasArrivalsServiceURL, method: .get, encoding: JSONEncoding.default).responseJSON { response in
+        switch response.result {
+        case .success(let res):
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: res, options: .prettyPrinted)
+                let json = try JSONDecoder().decode(APIResponse.self, from: jsonData)
+                print("\(json.data[0].country_nm)")
+                print("\(json.data[0].txt_origin_cn)")
+                searchName = json.data[0].country_nm
+                searchInfo = json.data[0].txt_origin_cn
+            } catch (let err) {
+                print(err.localizedDescription)
+            }
+        case .failure(let err):
+            print(err.localizedDescription)
+        }
+    }
     
-    AF.request(test2, method: .get).responseJSON { response in
-            print("response: \(response)")
-
-        }.resume()
+    AF.request(countryKoreaDepartureServiceURL, method: .get, encoding: JSONEncoding.default).responseJSON { response in
+        switch response.result {
+        case .success(let res):
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: res, options: .prettyPrinted)
+                let json = try JSONDecoder().decode(APIResponse.self, from: jsonData)
+                if !(json.data.isEmpty) {
+                    print("\(json.data[0].country_nm)")
+                    print("\(json.data[0].txt_origin_cn)")
+                    searchInfoKor = json.data[0].txt_origin_cn
+                } else {
+                    print("no txt_origin_cn")
+                }
+            } catch (let err) {
+                print(err.localizedDescription)
+            }
+        case .failure(let err):
+            print(err.localizedDescription)
+        }
+    }
     
-//    AF.request(url, method: .get, parameters: parameters).responseJSON { response in
-//        print("response: \(response)")
-//
-//    }.resume()
-      return responseMsg
+    let searchResult = Country(name: searchName, immigInfo: searchInfo, immigInfoForKor: searchInfoKor)
+    // searchResult = demoGetCountryInfo()
+    
+    return country
 }
