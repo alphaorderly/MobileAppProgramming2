@@ -25,7 +25,7 @@ struct GoRightNow: View {
                 VStack {
                     SearchBar(text: $modelView.model.textInput, menu: $modelView.model.sideMenu)                        // 국가 검색창
                         .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
-                    CountryList()
+                    CountryList(countries: modelView.model.countryList)
                     Spacer()
                 }
                 .contentShape(Rectangle()) // 사이드바 집어넣게 하기 위해 위 VStack을 터치 가능한 객체로 만듦
@@ -53,6 +53,12 @@ struct GoRightNow: View {
                 }
             }
             .onAppear() { modelView.model.sideMenu = false }
+            // 뷰 이동시마다 값을 받아오지 않도록 설정
+            .task { if modelView.model.gotData == 0 {
+                    await modelView.getCountryData()
+                    modelView.model.gotData = 1
+                }
+            }
             .navigationBarTitle("", displayMode: .automatic)
             .navigationBarHidden(true).navigationBarTitle("", displayMode: .automatic)
             .navigationBarHidden(true)

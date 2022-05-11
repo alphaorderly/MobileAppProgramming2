@@ -15,6 +15,7 @@ struct APIResponse: Codable {
 struct searchedCountry: Codable {
     let country_nm : String
     let txt_origin_cn : String
+    let country_iso_alp2: String
 }
 
 func getCountryInfo(countries: inout [GoRightNowModel.Country]) {
@@ -37,7 +38,7 @@ func getCountryInfo(countries: inout [GoRightNowModel.Country]) {
         case .success:
             if let jsonData = json.value {
                 for getData in jsonData.data {
-                    getCountries.append(GoRightNowModel.Country(name: getData.country_nm, immigInfo: getData.txt_origin_cn, immigInfoForKor: ""))
+                    getCountries.append(GoRightNowModel.Country(name: getData.country_nm, iso_alp2: getData.country_iso_alp2, immigInfo: getData.txt_origin_cn, immigInfoForKor: ""))
                 }
             } else {
                 print("countryOverseasArrival Error");
@@ -55,11 +56,9 @@ func getCountryInfo(countries: inout [GoRightNowModel.Country]) {
             do {
                 if let jsonData = json.value {
                     for getData in jsonData.data {
-                        print(getData.country_nm)
                         for countriesIndice in getCountries.indices {
                             if getCountries[countriesIndice].name == getData.country_nm {
                                 getCountries[countriesIndice].immigInfoForKor = getData.txt_origin_cn
-                                print(getCountries[countriesIndice])
                             }
                         }
                     }
@@ -80,8 +79,7 @@ func getCountryInfo(countries: inout [GoRightNowModel.Country]) {
     // 받아온 국가들의 정보를 모델에 적용.
     countries = getCountries
     
-    // 데이터 무결성 확인 과정.
-    print(countries)
+    print("Got data")
 }
 
 

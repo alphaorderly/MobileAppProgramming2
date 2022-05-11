@@ -30,9 +30,6 @@
 		FE0955922827B60000834325 /* CallAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE09558E2827B60000834325 /* CallAPI.swift */; };
 		FE0955932827B60000834325 /* CallAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE09558E2827B60000834325 /* CallAPI.swift */; };
 		FE0955942827B60000834325 /* CallAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE09558E2827B60000834325 /* CallAPI.swift */; };
-		FE09559C2827E2EE00834325 /* DummyDataCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE09559B2827E2EE00834325 /* DummyDataCreator.swift */; };
-		FE09559D2827E2EE00834325 /* DummyDataCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE09559B2827E2EE00834325 /* DummyDataCreator.swift */; };
-		FE09559E2827E2EE00834325 /* DummyDataCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE09559B2827E2EE00834325 /* DummyDataCreator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,7 +79,6 @@
 		EFEEF8FF28223EB9008FD759 /* CountryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailView.swift; sourceTree = "<group>"; };
 		FE09558D2827B60000834325 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE09558E2827B60000834325 /* CallAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallAPI.swift; sourceTree = "<group>"; };
-		FE09559B2827E2EE00834325 /* DummyDataCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyDataCreator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,7 +160,6 @@
 				EFD03D822827FCEF007C88EE /* Preview Content */,
 				EF682A52281D7AC800F08CF4 /* SettingView.swift */,
 				EFEEF8FF28223EB9008FD759 /* CountryDetailView.swift */,
-				FE09559B2827E2EE00834325 /* DummyDataCreator.swift */,
 				EFE7714928043628005CCE52 /* GoRightNowApp.swift */,
 				EFE7714B28043628005CCE52 /* GoRightNow.swift */,
 				FE09558E2827B60000834325 /* CallAPI.swift */,
@@ -447,7 +442,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFDAC75B280548330091C11F /* GoRightNowModel.swift in Sources */,
-				FE09559C2827E2EE00834325 /* DummyDataCreator.swift in Sources */,
 				EFE7714C28043628005CCE52 /* GoRightNow.swift in Sources */,
 				FE0955922827B60000834325 /* CallAPI.swift in Sources */,
 				EFDAC75D280548410091C11F /* GoRightNowModelView.swift in Sources */,
@@ -466,7 +460,6 @@
 			files = (
 				FE0955932827B60000834325 /* CallAPI.swift in Sources */,
 				EFE7716028043629005CCE52 /* GoRightNowTests.swift in Sources */,
-				FE09559D2827E2EE00834325 /* DummyDataCreator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,7 +467,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE09559E2827E2EE00834325 /* DummyDataCreator.swift in Sources */,
 				EFE7716C28043629005CCE52 /* GoRightNowUITestsLaunchTests.swift in Sources */,
 				EFE7716A28043629005CCE52 /* GoRightNowUITests.swift in Sources */,
 				FE0955942827B60000834325 /* CallAPI.swift in Sources */,

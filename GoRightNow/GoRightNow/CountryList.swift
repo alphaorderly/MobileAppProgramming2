@@ -8,14 +8,13 @@
 import SwiftUI
 
 struct CountryList: View {
-    var testData = ["Korea", "Japan", "China"]
-
+    var countries: [GoRightNowModel.Country]
     
     var body: some View {
         ScrollView {
             VStack {
-                ForEach(testData, id:\.self) { data in
-                        ListTile(name: data)
+                ForEach(countries, id:\.self) { data in
+                    ListTile(name: data.name, immg: data.immigInfo, immgkor: data.immigInfoForKor)
                         .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
                     }
             }
@@ -25,10 +24,12 @@ struct CountryList: View {
 
 struct ListTile:View{
     var name: String
+    var immg: String
+    var immgkor: String
     
     var body: some View {
         NavigationLink (
-            destination: CountryDetailView(countryName: name),
+            destination: CountryDetailView(countryName: name, immigInfo: immg, immigInfoForKor: immgkor),
             label:  {
                 HStack(alignment: .firstTextBaseline) {
                     Text("Flag here")
@@ -49,8 +50,3 @@ struct ListTile:View{
     }
 }
 
-struct CountryList_Previews: PreviewProvider {
-    static var previews: some View {
-        CountryList()
-    }
-}
