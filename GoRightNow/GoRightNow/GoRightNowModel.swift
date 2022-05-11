@@ -8,9 +8,21 @@
 import Foundation
 import SwiftUI
 
+
+
 struct GoRightNowModel {
     var textInput: String = "";
+
     var sideMenu: Bool = false                   // 사이드 메뉴상태
-    
+
     let version: String = "1.0.0"                // 설정 버전 표시용
+
+    var countryList: [Country] = []         // 국가들을 받아올 배열.
+
+    struct Country {
+        var name : String                   // 국가명
+        // var iso_alp2 : String            // ISO 국가 코드명
+        var immigInfo: String               // 입국정보, immigration Info
+        var immigInfoForKor: String         // 한국발 입국자정보, immigration Info For Korean
+    }
 }
