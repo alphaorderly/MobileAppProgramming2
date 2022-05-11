@@ -14,7 +14,7 @@ struct CountryList: View {
         ScrollView {
             VStack {
                 ForEach(countries, id:\.self) { data in
-                    ListTile(name: data.name, immg: data.immigInfo, immgkor: data.immigInfoForKor)
+                    ListTile(name: data.name, immg: data.immigInfo, immgkor: data.immigInfoForKor, isocode: data.iso_alp2)
                         .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
                     }
             }
@@ -26,13 +26,16 @@ struct ListTile:View{
     var name: String
     var immg: String
     var immgkor: String
+    var isocode: String
     
     var body: some View {
         NavigationLink (
             destination: CountryDetailView(countryName: name, immigInfo: immg, immigInfoForKor: immgkor),
             label:  {
                 HStack(alignment: .firstTextBaseline) {
-                    Text("Flag here")
+                    Text("\(isocode)")
+                        .scaledToFit()
+                        .frame(width: 40.0, height: 40.0)
                         .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
                     Spacer()
                     Text(name)
