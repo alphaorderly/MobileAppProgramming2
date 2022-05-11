@@ -27,9 +27,9 @@ func getCountryInfo(countries: inout [GoRightNowModel.Country]) {
     let queue     = DispatchQueue.global(qos: .utility)
     
     // 값을 받아올 URL.
-    let countryOverseasArrivalsServiceURL = "https://apis.data.go.kr/1262000/CountryOverseasArrivalsService/getCountryOverseasArrivalsList?serviceKey=%2BnLU6YmF24aLEOo7V0yqqvuPb6a4jaNXPVyGqFmMbJhKzpzTaGIQZXTI35srP9jSb%2BD15D%2Fhf9CD85%2BT%2FdAwOw%3D%3D&returnType=JSON&numOfRows=5&pageNo=1"
+    let countryOverseasArrivalsServiceURL = "https://apis.data.go.kr/1262000/CountryOverseasArrivalsService/getCountryOverseasArrivalsList?serviceKey=%2BnLU6YmF24aLEOo7V0yqqvuPb6a4jaNXPVyGqFmMbJhKzpzTaGIQZXTI35srP9jSb%2BD15D%2Fhf9CD85%2BT%2FdAwOw%3D%3D&returnType=JSON&perPage=200"
     
-    let countryKoreaDepartureServiceURL = "https://apis.data.go.kr/1262000/CountryKoreaDepartureService/getCountryKoreaDepartureList?serviceKey=%2BnLU6YmF24aLEOo7V0yqqvuPb6a4jaNXPVyGqFmMbJhKzpzTaGIQZXTI35srP9jSb%2BD15D%2Fhf9CD85%2BT%2FdAwOw%3D%3D&returnType=JSON&numOfRows=5&pageNo=1"
+    let countryKoreaDepartureServiceURL = "https://apis.data.go.kr/1262000/CountryKoreaDepartureService/getCountryKoreaDepartureList?serviceKey=%2BnLU6YmF24aLEOo7V0yqqvuPb6a4jaNXPVyGqFmMbJhKzpzTaGIQZXTI35srP9jSb%2BD15D%2Fhf9CD85%2BT%2FdAwOw%3D%3D&returnType=JSON&perPage=200"
     
     // 데이터 받아오기 ( 여러개의 데이터를 받아오기 때문에 for문 사용함 
     AF.request(countryOverseasArrivalsServiceURL, method: .get, encoding: JSONEncoding.default).responseDecodable(of:APIResponse.self, queue: queue) { json in
@@ -81,7 +81,7 @@ func getCountryInfo(countries: inout [GoRightNowModel.Country]) {
     countries = getCountries
     
     // 데이터 무결성 확인 과정.
-    //print(countries)
+    print(countries)
 }
 
 
