@@ -22,34 +22,38 @@ struct GoRightNow: View {
                 LinearGradient(gradient: Gradient(colors: [Color.init(red: 255/255, green: 98/255, blue: 0.0, opacity: 1.0), Color.init(red: 253/255, green: 147/255, blue: 70/255, opacity: 0.8)]), startPoint: .top, endPoint: .bottom)
                             .edgesIgnoringSafeArea(.all)
 
-                VStack {
-                    SearchBar(text: $modelView.model.textInput, menu: $modelView.model.sideMenu)                        // 국가 검색창
-                        .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
-                    CountryList(countries: modelView.model.countryList)
-                    Spacer()
-                }
-                .contentShape(Rectangle()) // 사이드바 집어넣게 하기 위해 위 VStack을 터치 가능한 객체로 만듦
+                if(modelView.model.gotData == 0) {
+                    ProgressView()
+                } else {
+                    VStack {
+                        SearchBar(text: $modelView.model.textInput, menu: $modelView.model.sideMenu)                        // 국가 검색창
+                            .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
+                        CountryList(countries: modelView.model.countryList)
+                        Spacer()
+                    }
+                    .contentShape(Rectangle()) // 사이드바 집어넣게 하기 위해 위 VStack을 터치 가능한 객체로 만듦
 
-                // Model의 sideMenu 값에 따라 sidebar 표시 여부 결정
-                if modelView.model.sideMenu {
-                    GeometryReader { geometry in
-                        HStack (spacing: 0){
-                            SideMenu(menu: $modelView.model.sideMenu, version: modelView.model.version, geometry: geometry)
-                            Color.init(red: 0, green: 0, blue: 0, opacity: 0)
-                                .contentShape(Rectangle())
-                                .onTapGesture {
-                                    // 사이드바 다시 집어 넣기 위한 코드
-                                    withAnimation {
-                                        if modelView.model.sideMenu  {
-                                            modelView.model.sideMenu = !modelView.model.sideMenu
+                    // Model의 sideMenu 값에 따라 sidebar 표시 여부 결정
+                    if modelView.model.sideMenu {
+                        GeometryReader { geometry in
+                            HStack (spacing: 0){
+                                SideMenu(menu: $modelView.model.sideMenu, version: modelView.model.version, geometry: geometry)
+                                Color.init(red: 0, green: 0, blue: 0, opacity: 0)
+                                    .contentShape(Rectangle())
+                                    .onTapGesture {
+                                        // 사이드바 다시 집어 넣기 위한 코드
+                                        withAnimation {
+                                            if modelView.model.sideMenu  {
+                                                modelView.model.sideMenu = !modelView.model.sideMenu
+                                        }
                                     }
                                 }
                             }
                         }
+                        .transition(.asymmetric(insertion: .move(edge: .leading), removal: .move(edge: .leading)).animation(.linear(duration: 0.2)))
+                        .zIndex(100)
+                        // Animation 구현 및 Sidebar가 절대로 뒤에 가지 않도록 설정
                     }
-                    .transition(.asymmetric(insertion: .move(edge: .leading), removal: .move(edge: .leading)).animation(.linear(duration: 0.2)))
-                    .zIndex(100)
-                    // Animation 구현 및 Sidebar가 절대로 뒤에 가지 않도록 설정
                 }
             }
             .onAppear() { modelView.model.sideMenu = false }

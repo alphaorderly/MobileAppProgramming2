@@ -17,7 +17,17 @@ struct GoRightNowModel {
 
     let version: String = "1.0.0"                // 설정 버전 표시용
 
-    var countryList: [Country] = []         // 국가들을 받아올 배열.
+    var countries: [Country] = []               // 국가들을 받아올 배열.]
+    
+    var countryList: [Country] {
+        get {
+            countries.filter {
+                $0.name.starts(with: textInput)
+            }
+        } set {
+            countries = newValue
+        }
+    }
     
     var gotData = 0                             // 데이터 받아왔는지 검사하기
 
