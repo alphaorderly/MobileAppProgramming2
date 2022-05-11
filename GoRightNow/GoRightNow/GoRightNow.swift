@@ -25,8 +25,9 @@ struct GoRightNow: View {
             }
         }
         .contentShape(Rectangle())
-        .onAppear() {
-            modelView.getCountryData()
+        .task() {
+            // 뷰가 Appear됨과 동시에 비동기적으로 실행되는 Task
+            await modelView.getCountryData()
         }
     }
 }

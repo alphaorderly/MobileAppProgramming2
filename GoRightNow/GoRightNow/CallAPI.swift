@@ -22,55 +22,66 @@ func getCountryInfo(countries: inout [GoRightNowModel.Country]) {
     // 새로운 값을 받아오기 위한 곳.
     var getCountries: [GoRightNowModel.Country] = []
     
+    // 동기화 처리를 위한 세마포어 // 값을 순차적으로 받아옴
+    let semaphore = DispatchSemaphore(value: 0)
+    let queue     = DispatchQueue.global(qos: .utility)
+    
     // 값을 받아올 URL.
     let countryOverseasArrivalsServiceURL = "https://apis.data.go.kr/1262000/CountryOverseasArrivalsService/getCountryOverseasArrivalsList?serviceKey=%2BnLU6YmF24aLEOo7V0yqqvuPb6a4jaNXPVyGqFmMbJhKzpzTaGIQZXTI35srP9jSb%2BD15D%2Fhf9CD85%2BT%2FdAwOw%3D%3D&returnType=JSON&numOfRows=5&pageNo=1"
     
     let countryKoreaDepartureServiceURL = "https://apis.data.go.kr/1262000/CountryKoreaDepartureService/getCountryKoreaDepartureList?serviceKey=%2BnLU6YmF24aLEOo7V0yqqvuPb6a4jaNXPVyGqFmMbJhKzpzTaGIQZXTI35srP9jSb%2BD15D%2Fhf9CD85%2BT%2FdAwOw%3D%3D&returnType=JSON&numOfRows=5&pageNo=1"
     
-    // 데이터 받아오기 ( 여러개의 데이터를 받아오기 때문에 for문 사용함
-    AF.request(countryOverseasArrivalsServiceURL, method: .get, encoding: JSONEncoding.default).responseJSON { response in
-        switch response.result {
-        case .success(let res):
-            do {
-                let jsonData = try JSONSerialization.data(withJSONObject: res, options: .prettyPrinted)
-                let json = try JSONDecoder().decode(APIResponse.self, from: jsonData)
-                for getData in json.data {
-                    print("\(getData.country_nm)")
-                    print("\(getData.txt_origin_cn)")
+    // 데이터 받아오기 ( 여러개의 데이터를 받아오기 때문에 for문 사용함 
+    AF.request(countryOverseasArrivalsServiceURL, method: .get, encoding: JSONEncoding.default).responseDecodable(of:APIResponse.self, queue: queue) { json in
+        switch json.result {
+        case .success:
+            if let jsonData = json.value {
+                for getData in jsonData.data {
                     getCountries.append(GoRightNowModel.Country(name: getData.country_nm, immigInfo: getData.txt_origin_cn, immigInfoForKor: ""))
                 }
-            } catch (let err) {
-                print(err.localizedDescription)
+            } else {
+                print("countryOverseasArrival Error");
             }
         case .failure(let err):
             print(err.localizedDescription)
         }
+        semaphore.signal()
     }
     
-    AF.request(countryKoreaDepartureServiceURL, method: .get, encoding: JSONEncoding.default).responseJSON { response in
-        switch response.result {
-        case .success(let res):
+    semaphore.wait()
+    AF.request(countryKoreaDepartureServiceURL, method: .get, encoding: JSONEncoding.default).responseDecodable(of:APIResponse.self, queue: queue) { json in
+        switch json.result {
+        case .success:
             do {
-                let jsonData = try JSONSerialization.data(withJSONObject: res, options: .prettyPrinted)
-                let json = try JSONDecoder().decode(APIResponse.self, from: jsonData)
-                for getData in json.data {
-                    for countriesIndice in getCountries.indices {
-                        if getCountries[countriesIndice].name == getData.country_nm {
-                            print(getData.txt_origin_cn)
-                            getCountries[countriesIndice].immigInfoForKor = getData.txt_origin_cn
+                if let jsonData = json.value {
+                    for getData in jsonData.data {
+                        print(getData.country_nm)
+                        for countriesIndice in getCountries.indices {
+                            if getCountries[countriesIndice].name == getData.country_nm {
+                                getCountries[countriesIndice].immigInfoForKor = getData.txt_origin_cn
+                                print(getCountries[countriesIndice])
+                            }
                         }
                     }
+                } else {
+                    print("countryKoreaDepart Error");
                 }
-            } catch (let err) {
-                print(err.localizedDescription)
             }
         case .failure(let err):
             print(err.localizedDescription)
         }
+        semaphore.signal()
     }
+     
+
     
-    // 받아온 국가들의 정보를 모델에 적용시키는 과정
+    // 데이터를 다 받아올때까지 대기함.
+    semaphore.wait()
+    // 받아온 국가들의 정보를 모델에 적용.
     countries = getCountries
+    
+    // 데이터 무결성 확인 과정.
+    //print(countries)
 }
 
 
