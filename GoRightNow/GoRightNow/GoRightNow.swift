@@ -22,7 +22,10 @@ struct GoRightNow: View {
                 ThemeData.background
 
                 if(modelView.model.gotData == 0) {
-                    ProgressView()
+                    VStack {
+                        Text("입국정보 가져오는 중")
+                        ProgressView()
+                    }
                 } else {
                     VStack {
                         SearchBar(text: $modelView.model.textInput, menu: $modelView.model.sideMenu)                        // 국가 검색창

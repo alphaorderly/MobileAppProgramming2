@@ -24,7 +24,7 @@ struct CountryDetailView: View {
                         .cornerRadius(5)
                         .padding()
                     if immigInfo != "" { CardView("입국 정보", immigInfo) }
-                    if immigInfoForKor != "" { CardView("귀국 정보", immigInfoForKor) }
+                    if immigInfoForKor != "" { CardView("한국인 입국 정보", immigInfoForKor) }
                 }
             }
         }
