@@ -32,17 +32,19 @@ struct ListTile:View{
         NavigationLink (
             destination: CountryDetailView(countryName: name, immigInfo: immg, immigInfoForKor: immgkor),
             label:  {
-                HStack(alignment: .firstTextBaseline) {
-                    Text("\(isocode)")
-                        .scaledToFit()
-                        .frame(width: 40.0, height: 40.0)
-                        .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
-                    Spacer()
-                    Text(name)
-                    Spacer()
+                HStack {
+                    FlagImage(iso2: isocode)
+                        .frame(width: 90, height: 60)
+                        .cornerRadius(5)
+                        .padding(EdgeInsets(top: 0, leading: 1.5, bottom: 0, trailing: 0))
+                    HStack(alignment: .firstTextBaseline) {
+                        Spacer()
+                        Text(name)
+                        Spacer()
+                    }
+                    .foregroundColor(.black)
+                    .padding(EdgeInsets(top: 20, leading: 0, bottom: 20, trailing: 0))
                 }
-                .foregroundColor(.black)
-                .padding(EdgeInsets(top: 20, leading: 0, bottom: 20, trailing: 0))
                 .background(Color(.systemGray6))
                 .cornerRadius(5)
                 .shadow(radius: 2)
@@ -53,3 +55,16 @@ struct ListTile:View{
     }
 }
 
+struct FlagImage: View {
+    let iso2: String
+    
+    var body: some View {
+        if UIImage(named: iso2) != nil {
+            Image(iso2)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+        } else {
+            Text("국기 없음 \(iso2)")
+        }
+    }
+}
