@@ -9,9 +9,9 @@ import Foundation
 import SwiftUI
 
 
-
 struct GoRightNowModel {
-    var textInput: String = "";
+    var textInput: String = ""
+
 
     var sideMenu: Bool = false                   // 사이드 메뉴상태
 
@@ -22,7 +22,11 @@ struct GoRightNowModel {
     var countryList: [Country] {
         get {
             countries.filter {
-                $0.name.starts(with: textInput)
+                if textInput == "" {
+                    return true
+                } else {
+                    return Jamo.getJamo($0.name).contains(Jamo.getJamo(textInput))
+                }
             }
         } set {
             countries = newValue

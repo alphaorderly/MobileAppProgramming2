@@ -10,6 +10,7 @@
 		0CCB69EA471B4475ED5C917F /* Pods_GoRightNow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0A8AE6DEBE0C3E3FC408209 /* Pods_GoRightNow.framework */; };
 		6CB917F6C4A952D57A606F15 /* Pods_GoRightNowTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C985404305B2B7A556D18070 /* Pods_GoRightNowTests.framework */; };
 		B2A1710949B910136133626B /* Pods_GoRightNow_GoRightNowUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 011AC6619F9509ACF0AE79AB /* Pods_GoRightNow_GoRightNowUITests.framework */; };
+		EF11F217282DF2D600E3761A /* Jamo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF11F216282DF2D600E3761A /* Jamo.swift */; };
 		EF252A9A282DECB900B2A14C /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF252A99282DECB900B2A14C /* Theme.swift */; };
 		EF54196028044BDF00C4CAFA /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF54195F28044BDF00C4CAFA /* SearchBar.swift */; };
 		EF5419622804582000C4CAFA /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5419612804582000C4CAFA /* SideMenu.swift */; };
@@ -60,6 +61,7 @@
 		B3BDDC80D9247F7DD9BF02BF /* Pods-GoRightNow-GoRightNowUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoRightNow-GoRightNowUITests.debug.xcconfig"; path = "Target Support Files/Pods-GoRightNow-GoRightNowUITests/Pods-GoRightNow-GoRightNowUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C985404305B2B7A556D18070 /* Pods_GoRightNowTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoRightNowTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA416C8F7FBAFAE9BFF42922 /* Pods-GoRightNowTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoRightNowTests.debug.xcconfig"; path = "Target Support Files/Pods-GoRightNowTests/Pods-GoRightNowTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EF11F216282DF2D600E3761A /* Jamo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jamo.swift; sourceTree = "<group>"; };
 		EF252A99282DECB900B2A14C /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		EF54195F28044BDF00C4CAFA /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		EF5419612804582000C4CAFA /* SideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 		EFE7714828043628005CCE52 /* GoRightNow */ = {
 			isa = PBXGroup;
 			children = (
+				EF11F216282DF2D600E3761A /* Jamo.swift */,
 				EFD03D822827FCEF007C88EE /* Preview Content */,
 				EF682A52281D7AC800F08CF4 /* SettingView.swift */,
 				EFEEF8FF28223EB9008FD759 /* CountryDetailView.swift */,
@@ -444,6 +447,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF11F217282DF2D600E3761A /* Jamo.swift in Sources */,
 				EFDAC75B280548330091C11F /* GoRightNowModel.swift in Sources */,
 				EFE7714C28043628005CCE52 /* GoRightNow.swift in Sources */,
 				FE0955922827B60000834325 /* CallAPI.swift in Sources */,
