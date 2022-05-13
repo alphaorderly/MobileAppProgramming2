@@ -56,10 +56,16 @@ func getCountryInfo(countries: inout [GoRightNowModel.Country]) {
             do {
                 if let jsonData = json.value {
                     for getData in jsonData.data {
+                        var flag = false // 나라가 있었는지 확인하기
                         for countriesIndice in getCountries.indices {
                             if getCountries[countriesIndice].name == getData.country_nm {
                                 getCountries[countriesIndice].immigInfoForKor = getData.txt_origin_cn
+                                flag = true
+                                break
                             }
+                        }
+                        if flag == false {
+                            getCountries.append(GoRightNowModel.Country(name: getData.country_nm, iso_alp2: getData.country_iso_alp2, immigInfo: "", immigInfoForKor: getData.txt_origin_cn))
                         }
                     }
                 } else {

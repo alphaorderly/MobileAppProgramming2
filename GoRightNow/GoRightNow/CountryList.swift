@@ -30,7 +30,7 @@ struct ListTile:View{
     
     var body: some View {
         NavigationLink (
-            destination: CountryDetailView(countryName: name, immigInfo: immg, immigInfoForKor: immgkor),
+            destination: CountryDetailView(countryName: name, immigInfo: immg, immigInfoForKor: immgkor, isoCode: isocode),
             label:  {
                 HStack {
                     FlagImage(iso2: isocode)
