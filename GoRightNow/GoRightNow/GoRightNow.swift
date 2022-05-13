@@ -19,8 +19,7 @@ struct GoRightNow: View {
         NavigationView {
             ZStack {
                 // 배경색
-                LinearGradient(gradient: Gradient(colors: [Color.init(red: 255/255, green: 98/255, blue: 0.0, opacity: 1.0), Color.init(red: 253/255, green: 147/255, blue: 70/255, opacity: 0.8)]), startPoint: .top, endPoint: .bottom)
-                            .edgesIgnoringSafeArea(.all)
+                ThemeData.background
 
                 if(modelView.model.gotData == 0) {
                     ProgressView()
