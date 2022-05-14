@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0CCB69EA471B4475ED5C917F /* Pods_GoRightNow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0A8AE6DEBE0C3E3FC408209 /* Pods_GoRightNow.framework */; };
+		25914FD9282EA6AD00FD103B /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 25914FD8282EA6AD00FD103B /* PartialSheet */; };
 		6CB917F6C4A952D57A606F15 /* Pods_GoRightNowTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C985404305B2B7A556D18070 /* Pods_GoRightNowTests.framework */; };
 		7862904DEF2D9F6FF3382BF5 /* MainApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78629D9BD52AC1C85ABFCE93 /* MainApp.swift */; };
 		B2A1710949B910136133626B /* Pods_GoRightNow_GoRightNowUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 011AC6619F9509ACF0AE79AB /* Pods_GoRightNow_GoRightNowUITests.framework */; };
@@ -100,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25914FD9282EA6AD00FD103B /* PartialSheet in Frameworks */,
 				0CCB69EA471B4475ED5C917F /* Pods_GoRightNow.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -247,6 +249,9 @@
 			dependencies = (
 			);
 			name = GoRightNow;
+			packageProductDependencies = (
+				25914FD8282EA6AD00FD103B /* PartialSheet */,
+			);
 			productName = GoRightNow;
 			productReference = EFE7714628043628005CCE52 /* GoRightNow.app */;
 			productType = "com.apple.product-type.application";
@@ -322,6 +327,9 @@
 				Base,
 			);
 			mainGroup = EFE7713D28043628005CCE52;
+			packageReferences = (
+				25914FD7282EA6AD00FD103B /* XCRemoteSwiftPackageReference "PartialSheet" */,
+			);
 			productRefGroup = EFE7714728043628005CCE52 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -817,6 +825,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		25914FD7282EA6AD00FD103B /* XCRemoteSwiftPackageReference "PartialSheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AndreaMiotto/PartialSheet.git";
+			requirement = {
+				kind = exactVersion;
+				version = 3.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		25914FD8282EA6AD00FD103B /* PartialSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 25914FD7282EA6AD00FD103B /* XCRemoteSwiftPackageReference "PartialSheet" */;
+			productName = PartialSheet;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EFE7713E28043628005CCE52 /* Project object */;
 }

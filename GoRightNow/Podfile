@@ -8,6 +8,7 @@ target 'GoRightNow' do
   # Pods for GoRightNow
   pod 'Alamofire', '~> 5.5'
 
+
   target 'GoRightNowTests' do
     inherit! :search_paths
     # Pods for testing
