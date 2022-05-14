@@ -38,7 +38,8 @@ struct GoRightNowModel {
     struct Country: Hashable {
         var name : String                   // 국가명
         var iso_alp2 : String               // ISO 국가 코드명
-        var immigInfo: String               // 입국정보, immigration Info
-        var immigInfoForKor: String         // 한국발 입국자정보, immigration Info For Korean
+        var immigInfo : String              // 입국정보, immigration Info
+        var flagImageURL : String           // 국기 이미지 URL
+        var alarmLevel : Int                // 여행경보 정보, 바티칸 등 일부 국가는 nil이면 0
     }
 }

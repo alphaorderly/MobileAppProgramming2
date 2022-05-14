@@ -14,7 +14,8 @@ struct CountryList: View {
         ScrollView {
             VStack {
                 ForEach(countries, id:\.self) { data in
-                    ListTile(name: data.name, immg: data.immigInfo, immgkor: data.immigInfoForKor, isocode: data.iso_alp2)
+                    // 한국발 입국정보를 없애서 일단 임시로 저렇게 해두었습니다 ;ㅁ;
+                    ListTile(name: data.name, immg: data.immigInfo, immgkor: "데이터 없음", isocode: data.iso_alp2)
                         .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
                     }
             }
