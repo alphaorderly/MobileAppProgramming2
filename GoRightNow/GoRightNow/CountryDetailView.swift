@@ -12,6 +12,7 @@ struct CountryDetailView: View {
     var immigInfo: String
     var immigInfoForKor: String
     var isoCode: String
+    var imgurl: String
     
     var body: some View {
         ZStack {
@@ -20,7 +21,7 @@ struct CountryDetailView: View {
                 Text("")
                     .navigationTitle(countryName)
                 ScrollView {
-                    FlagImage(iso2: isoCode)
+                    FlagImage(iso2: isoCode, url: imgurl)
                         .cornerRadius(5)
                         .padding()
                     if immigInfo != "" { CardView("입국 정보", immigInfo) }
