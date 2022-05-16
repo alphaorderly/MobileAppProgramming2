@@ -12,7 +12,8 @@ struct GoRightNowApp: App {
     var body: some Scene {
         WindowGroup {
             let modelView = GoRightNowModelView()
-            GoRightNow(modelView: modelView)
+            let selectView = ViewSelect()
+            GoRightNow(modelView: modelView, selectView: selectView)
         }
     }
 }

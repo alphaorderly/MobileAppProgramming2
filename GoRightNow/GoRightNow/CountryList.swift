@@ -77,7 +77,6 @@ struct ListTile:View{
                 .opacity(0.8)
             }
         )
-        .navigationBarTitle("메인화면 돌아가기")
     }
 }
 

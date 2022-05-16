@@ -8,12 +8,29 @@
 import SwiftUI
 import Alamofire
 
+// 모든 모델뷰는 여기서 관리함.
 struct GoRightNow: View {
     @ObservedObject var modelView: GoRightNowModelView;
+    @ObservedObject var selectView: ViewSelect;
+    
     /*
      ObservedObject는 $를 붙혀 State와 같이 사용가능 -> @Binding을 통해 call by reference와 같은 효과 누릴수 있음.
      */
+    
+    var body: some View {
+        switch selectView.selectedView {
+        case .mainList:
+            MainApp(modelView: modelView, selectView: selectView)
+        case .planner:
+            PlannerView(mainModelView: modelView, selectView: selectView)
+        }
+    }
+}
 
+struct MainApp: View {
+    @ObservedObject var modelView: GoRightNowModelView;
+    @ObservedObject var selectView: ViewSelect
+    
     var body: some View {
         // 이 화면에서 다른 화면으로 넘어갈수 있게 설정해두는것.
         NavigationView {
@@ -39,7 +56,7 @@ struct GoRightNow: View {
                     if modelView.model.sideMenu {
                         GeometryReader { geometry in
                             HStack (spacing: 0){
-                                SideMenu(menu: $modelView.model.sideMenu, version: modelView.model.version, geometry: geometry)
+                                SideMenu(menu: $modelView.model.sideMenu, select: $selectView.selectedView, version: modelView.model.version, geometry: geometry)
                                 Color.init(red: 0, green: 0, blue: 0, opacity: 0)
                                     .contentShape(Rectangle())
                                     .onTapGesture {
@@ -73,10 +90,3 @@ struct GoRightNow: View {
     }
 }
 
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        let modelView = GoRightNowModelView()
-        GoRightNow(modelView: modelView)
-    }
-}

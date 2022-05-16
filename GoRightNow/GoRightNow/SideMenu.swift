@@ -15,33 +15,59 @@ import SwiftUI
 
 struct SideMenu: View {
     @Binding var menu: Bool
+    @Binding var select: ViewList
     var version: String
     var geometry: GeometryProxy
     
     var body: some View {
             HStack {
                     VStack {
-                            Divider()
-                            NavigationLink(
-                                destination: SettingView(version: version),
-                                label: {
-                                    HStack(alignment: .center) {
-                                        Spacer()
-                                        Image(systemName: "gear")
-                                        Spacer()
-                                        Text("Setting")
-                                        Spacer()
-                                    }
-                                    .foregroundColor(.black)
-                                    .font(.system(size: 20))
+                        Divider()
+                        Button {
+                            select = .planner
+                        } label: {
+                                HStack(alignment: .center) {
+                                    Spacer()
+                                    Image(systemName: "book.closed.fill")
+                                    Spacer()
+                                    Text("Planner")
+                                    Spacer()
                                 }
-                            )
+                                .foregroundColor(.black)
+                                .font(.system(size: 20))
+                        }
+                        Divider()
+                        Button {
+                            select = .mainList
+                        } label: {
+                                HStack(alignment: .center) {
+                                    Spacer()
+                                    Image(systemName: "list.bullet")
+                                    Spacer()
+                                    Text("Main")
+                                    Spacer()
+                                }
+                                .foregroundColor(.black)
+                                .font(.system(size: 20))
+                        }
+                        Divider()
+                        NavigationLink(
+                            destination: SettingView(version: version),
+                            label: {
+                                HStack(alignment: .center) {
+                                    Spacer()
+                                    Image(systemName: "gear")
+                                    Spacer()
+                                    Text("Setting")
+                                    Spacer()
+                                }
+                                .foregroundColor(.black)
+                                .font(.system(size: 20))
+                            }
+                        )
                         Divider()
                         Spacer()
                     }
-                    .navigationTitle(
-                        Text("메인화면으로 돌아가기")
-                    )
                 .padding(16)
                 .padding(.top, 100)
                 .background(Color(.systemGray6))

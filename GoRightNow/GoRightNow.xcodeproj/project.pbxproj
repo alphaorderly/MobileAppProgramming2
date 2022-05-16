@@ -11,6 +11,8 @@
 		6CB917F6C4A952D57A606F15 /* Pods_GoRightNowTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C985404305B2B7A556D18070 /* Pods_GoRightNowTests.framework */; };
 		B2A1710949B910136133626B /* Pods_GoRightNow_GoRightNowUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 011AC6619F9509ACF0AE79AB /* Pods_GoRightNow_GoRightNowUITests.framework */; };
 		EF11F217282DF2D600E3761A /* Jamo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF11F216282DF2D600E3761A /* Jamo.swift */; };
+		EF11F21A2831FBEE00E3761A /* PlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF11F2192831FBEE00E3761A /* PlannerView.swift */; };
+		EF11F21C283208D900E3761A /* ViewSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF11F21B283208D900E3761A /* ViewSelect.swift */; };
 		EF252A9A282DECB900B2A14C /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF252A99282DECB900B2A14C /* Theme.swift */; };
 		EF54196028044BDF00C4CAFA /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF54195F28044BDF00C4CAFA /* SearchBar.swift */; };
 		EF5419622804582000C4CAFA /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5419612804582000C4CAFA /* SideMenu.swift */; };
@@ -62,6 +64,8 @@
 		C985404305B2B7A556D18070 /* Pods_GoRightNowTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoRightNowTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA416C8F7FBAFAE9BFF42922 /* Pods-GoRightNowTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoRightNowTests.debug.xcconfig"; path = "Target Support Files/Pods-GoRightNowTests/Pods-GoRightNowTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EF11F216282DF2D600E3761A /* Jamo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jamo.swift; sourceTree = "<group>"; };
+		EF11F2192831FBEE00E3761A /* PlannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerView.swift; sourceTree = "<group>"; };
+		EF11F21B283208D900E3761A /* ViewSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSelect.swift; sourceTree = "<group>"; };
 		EF252A99282DECB900B2A14C /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		EF54195F28044BDF00C4CAFA /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		EF5419612804582000C4CAFA /* SideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
@@ -136,6 +140,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		EF11F2182831FAF300E3761A /* Planner */ = {
+			isa = PBXGroup;
+			children = (
+				EF11F2192831FBEE00E3761A /* PlannerView.swift */,
+			);
+			path = Planner;
+			sourceTree = "<group>";
+		};
 		EFE7713D28043628005CCE52 = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +173,7 @@
 		EFE7714828043628005CCE52 /* GoRightNow */ = {
 			isa = PBXGroup;
 			children = (
+				EF11F2182831FAF300E3761A /* Planner */,
 				EF11F216282DF2D600E3761A /* Jamo.swift */,
 				EFD03D822827FCEF007C88EE /* Preview Content */,
 				EF682A52281D7AC800F08CF4 /* SettingView.swift */,
@@ -177,6 +190,7 @@
 				EF5419612804582000C4CAFA /* SideMenu.swift */,
 				EFE7714D28043629005CCE52 /* Assets.xcassets */,
 				EFE7714F28043629005CCE52 /* Preview Content */,
+				EF11F21B283208D900E3761A /* ViewSelect.swift */,
 			);
 			path = GoRightNow;
 			sourceTree = "<group>";
@@ -447,8 +461,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF11F21C283208D900E3761A /* ViewSelect.swift in Sources */,
 				EF11F217282DF2D600E3761A /* Jamo.swift in Sources */,
 				EFDAC75B280548330091C11F /* GoRightNowModel.swift in Sources */,
+				EF11F21A2831FBEE00E3761A /* PlannerView.swift in Sources */,
 				EFE7714C28043628005CCE52 /* GoRightNow.swift in Sources */,
 				FE0955922827B60000834325 /* CallAPI.swift in Sources */,
 				EFDAC75D280548410091C11F /* GoRightNowModelView.swift in Sources */,
