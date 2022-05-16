@@ -35,22 +35,29 @@ struct CountryDetailView: View {
     }
 }
 
-struct flag: View {
+private struct FlagImage: View {
     let iso2: String
+    let url: String
     
     var body: some View {
         if UIImage(named: iso2) != nil {
-            Image(iso2)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
+                    Image(iso2)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
         } else {
-            Text("국기 없음 \(iso2)")
+                AsyncImage(url: URL(string: url)) { image in
+                    image.resizable()
+            } placeholder: {
+                    ProgressView()
+            }
+            .aspectRatio(contentMode: .fit)
         }
     }
 }
 
+
 // 각 항목에 대한 카드뷰
-struct TextCardView: View {
+private struct TextCardView: View {
     var title: String
     var content: String
     
@@ -77,7 +84,7 @@ struct TextCardView: View {
     }
 }
 
-struct AlarmCardView : View {
+private struct AlarmCardView : View {
     var alarm: Int
     
     var body: some View {
@@ -112,7 +119,7 @@ struct AlarmCardView : View {
 }
 
 // 앱 카드뷰 ( 왼쪽 앱 아이콘 | 오른쪽 클릭버튼 ) -> 누를시 URL 이동!
-struct AppCardView : View {
+private struct AppCardView : View {
     var image: String
     var url: String
     var description: String

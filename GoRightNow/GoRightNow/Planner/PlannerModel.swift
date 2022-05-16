@@ -8,14 +8,21 @@
 import Foundation
 
 struct PlannerModel {
-    // 각각의 여행계획에 대한 배열
-    var plans: [Plan] = []
+    static var idValue = 0
     
-    struct Plan {
+    // 각각의 여행계획에 대한 배열
+    var plans: [Plan] = [Plan(countryName: "South Korea", planName: "종강 여행", departDate: Date(), returnDate: Date(), places: [])]
+    
+    struct Plan : Identifiable {
         var countryName: String             // 나라 이름
         var planName: String                // 계획 이름
-        var departData: Date                // 출발 일자
-        var returnData: Date                // 도착 일자
+        var departDate: Date                // 출발 일자
+        var returnDate: Date                // 도착 일자
+        
+        var id: Int {
+            idValue += 1
+            return idValue
+        }
         
         var places: [Landmarks]             // 가볼곳들
     }

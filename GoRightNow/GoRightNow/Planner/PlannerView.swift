@@ -30,8 +30,21 @@ struct PlannerView: View {
                                 .padding()
                         }
                         Spacer()
+                        Button {
+                            // Action
+                        } label: {
+                            Image(systemName: "plus")
+                                .foregroundColor(.black)
+                                .font(.system(size: 20, weight: .bold))
+                                .padding()
+                        }
                     }
-                    Text("I'm in the plnner view")
+                    ScrollView {
+                        ForEach(plannerModelView.model.plans) { data in
+                            PlanCard(plan: data)
+                                .padding(EdgeInsets(top: 5, leading: 10, bottom: 10, trailing: 5))
+                        }
+                    }
                     Spacer()
                 }
                 .onAppear {
@@ -62,5 +75,30 @@ struct PlannerView: View {
             .navigationBarHidden(true).navigationBarTitle("", displayMode: .automatic)
             .navigationBarHidden(true)
         }
+    }
+}
+
+private struct PlanCard: View {
+    var plan: PlannerModel.Plan
+    
+    var body: some View {
+        HStack {
+            VStack {
+                Text("목적지")
+                Text("\(plan.countryName)")
+            }
+            Divider()
+            VStack {
+                Text("여행 이름")
+                Text("\(plan.planName)")
+            }
+            Divider()
+            Text("\(plan.departDate) ~ \(plan.returnDate)")
+        }
+        .background(Color(.systemGray6))
+        .cornerRadius(5)
+        .shadow(radius: 5)
+        .opacity(0.8)
+        .frame(height: 100)
     }
 }

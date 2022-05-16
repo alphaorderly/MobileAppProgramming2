@@ -22,7 +22,7 @@ struct CountryList: View {
     }
 }
 
-struct ListTile:View{
+private struct ListTile: View {
     var name: String
     var immg: String
     var imgurl: String
@@ -80,7 +80,7 @@ struct ListTile:View{
     }
 }
 
-struct FlagImage: View {
+private struct FlagImage: View {
     let iso2: String
     let url: String
     
