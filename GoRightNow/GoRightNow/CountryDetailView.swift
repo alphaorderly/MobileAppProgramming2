@@ -15,7 +15,7 @@ struct CountryDetailView: View {
     var alarmLevel: Int
     
     var body: some View {
-        ZStack {
+        ZStack{
             ThemeData.background
             VStack {
                 Text("")
@@ -26,9 +26,11 @@ struct CountryDetailView: View {
                         .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
                     AlarmCardView(alarm: alarmLevel)
                     if immigInfo != "" { TextCardView("입국 정보", immigInfo) }
-                    AppCardView(image: "airplane.departure", url: "https://www.skyscanner.co.kr/transport/flights/kr/\(isoCode)", description: "항공기, 호텔, 렌터카 예약하기")
                 }
+                AppCardView(image: "airplane.departure", url: "https://www.skyscanner.co.kr/transport/flights/kr/\(isoCode)", description: "항공기, 호텔, 렌터카 예약하기")
+                    .frame(height: 75)
             }
+            .background(.clear)
         }
     }
 }
@@ -118,7 +120,6 @@ struct AppCardView : View {
             Image(systemName: image)
             Spacer()
             Divider()
-                .padding(EdgeInsets(top: 20, leading: 0, bottom: 20, trailing: 0))
             Spacer()
             Text("\(description)")
             Spacer()

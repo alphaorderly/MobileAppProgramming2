@@ -35,7 +35,7 @@ struct ListTile:View{
             label:  {
                 HStack {
                     FlagImage(iso2: isocode, url: imgurl)
-                        .frame(width: 90, height: 60)
+                        .frame(width: 80, height: 53)
                         .cornerRadius(5)
                         .padding(EdgeInsets(top: 0, leading: 1.5, bottom: 0, trailing: 0))
                     HStack(alignment: .firstTextBaseline) {
@@ -73,7 +73,7 @@ struct ListTile:View{
                 }
                 .background(Color(.systemGray6))
                 .cornerRadius(5)
-                .shadow(radius: 2)
+                .shadow(radius: 5)
                 .opacity(0.8)
             }
         )
