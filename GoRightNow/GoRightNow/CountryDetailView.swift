@@ -66,7 +66,8 @@ struct TextCardView: View {
                 Text(title)
                     .font(.system(size: 20).bold())
                 Divider()
-                Text(content)
+                let contentForView = content.replacingOccurrences(of: "\n", with: "\n\n") //immginfo 줄바꿈시 한칸 더 띄움
+                Text(contentForView)
             }
             .padding()
         }
@@ -90,10 +91,12 @@ struct AlarmCardView : View {
                     Text("여행 유의 국가")
                 case 2:
                     Text("여행 자제 국가")
+                        .foregroundColor(.init(uiColor: UIColor(red: 184/255, green: 54/255, blue: 36/255, alpha: 1.0)))
                 case 3:
                     Text("출국 권고 국가")
                 case 4:
                     Text("여행 금지 국가")
+                        .foregroundColor(.init(uiColor: UIColor(red: 184/255, green: 54/255, blue: 36/255, alpha: 1.0)))
                 default:
                     Text("특별 여행 주의보 국가")
                 }
