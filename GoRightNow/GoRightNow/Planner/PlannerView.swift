@@ -10,6 +10,7 @@ import SwiftUI
 struct PlannerView: View {
     @ObservedObject var mainModelView: GoRightNowModelView;
     @ObservedObject var selectView: ViewSelect
+    @ObservedObject var plannerModelView: PlannerModelView
 
     var body: some View {
         NavigationView {

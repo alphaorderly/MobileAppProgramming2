@@ -13,6 +13,8 @@
 		EF11F217282DF2D600E3761A /* Jamo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF11F216282DF2D600E3761A /* Jamo.swift */; };
 		EF11F21A2831FBEE00E3761A /* PlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF11F2192831FBEE00E3761A /* PlannerView.swift */; };
 		EF11F21C283208D900E3761A /* ViewSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF11F21B283208D900E3761A /* ViewSelect.swift */; };
+		EF11F21E2832270000E3761A /* PlannerModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF11F21D2832270000E3761A /* PlannerModelView.swift */; };
+		EF11F2202832270A00E3761A /* PlannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF11F21F2832270A00E3761A /* PlannerModel.swift */; };
 		EF252A9A282DECB900B2A14C /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF252A99282DECB900B2A14C /* Theme.swift */; };
 		EF54196028044BDF00C4CAFA /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF54195F28044BDF00C4CAFA /* SearchBar.swift */; };
 		EF5419622804582000C4CAFA /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5419612804582000C4CAFA /* SideMenu.swift */; };
@@ -66,6 +68,8 @@
 		EF11F216282DF2D600E3761A /* Jamo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jamo.swift; sourceTree = "<group>"; };
 		EF11F2192831FBEE00E3761A /* PlannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerView.swift; sourceTree = "<group>"; };
 		EF11F21B283208D900E3761A /* ViewSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSelect.swift; sourceTree = "<group>"; };
+		EF11F21D2832270000E3761A /* PlannerModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerModelView.swift; sourceTree = "<group>"; };
+		EF11F21F2832270A00E3761A /* PlannerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerModel.swift; sourceTree = "<group>"; };
 		EF252A99282DECB900B2A14C /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		EF54195F28044BDF00C4CAFA /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		EF5419612804582000C4CAFA /* SideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
@@ -144,6 +148,8 @@
 			isa = PBXGroup;
 			children = (
 				EF11F2192831FBEE00E3761A /* PlannerView.swift */,
+				EF11F21D2832270000E3761A /* PlannerModelView.swift */,
+				EF11F21F2832270A00E3761A /* PlannerModel.swift */,
 			);
 			path = Planner;
 			sourceTree = "<group>";
@@ -469,11 +475,13 @@
 				FE0955922827B60000834325 /* CallAPI.swift in Sources */,
 				EFDAC75D280548410091C11F /* GoRightNowModelView.swift in Sources */,
 				EF252A9A282DECB900B2A14C /* Theme.swift in Sources */,
+				EF11F21E2832270000E3761A /* PlannerModelView.swift in Sources */,
 				EFEEF90028223EB9008FD759 /* CountryDetailView.swift in Sources */,
 				EFE7714A28043628005CCE52 /* GoRightNowApp.swift in Sources */,
 				EF8116E2281F6C9D0005B178 /* CountryList.swift in Sources */,
 				EF54196028044BDF00C4CAFA /* SearchBar.swift in Sources */,
 				EF5419622804582000C4CAFA /* SideMenu.swift in Sources */,
+				EF11F2202832270A00E3761A /* PlannerModel.swift in Sources */,
 				EF682A53281D7AC800F08CF4 /* SettingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

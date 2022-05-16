@@ -13,7 +13,8 @@ struct GoRightNowApp: App {
         WindowGroup {
             let modelView = GoRightNowModelView()
             let selectView = ViewSelect()
-            GoRightNow(modelView: modelView, selectView: selectView)
+            let plannerView = PlannerModelView()
+            GoRightNow(modelView: modelView, selectView: selectView, plannerModelView: plannerView)
         }
     }
 }
