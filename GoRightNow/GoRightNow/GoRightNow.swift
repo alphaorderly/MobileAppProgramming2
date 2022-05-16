@@ -33,7 +33,7 @@ struct GoRightNow: View {
             MapView(locations: locations)
         }
                 .bottomSheet(bottomSheetPosition: $bottomSheetModelView.model.bottomSheetPosition, options: [.appleScrollBehavior], headerContent: {
-                    BottomSheetHeader(bottomSheetView: bottomSheetModelView)
+                    BottomSheetHeader(bottomSheetView: bottomSheetModelView, modelView: modelView)
                 }) {
                     Text("Hello").padding()
                 }

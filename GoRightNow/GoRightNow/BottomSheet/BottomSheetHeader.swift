@@ -7,18 +7,11 @@ import BottomSheetSwiftUI
 
 struct BottomSheetHeader: View {
     @State private var searchText: String = ""
-    @ObservedObject var bottomSheetView: BottomSheetModelView;
+    @ObservedObject var bottomSheetView: BottomSheetModelView
+    @ObservedObject var modelView: GoRightNowModelView
 
     var body: some View {
-        HStack {
-            Image(systemName: "magnifyingglass")
-            TextField("Search", text: self.$searchText)
-        }
-                .foregroundColor(Color(UIColor.secondaryLabel))
-                .padding(.vertical, 8)
-                .padding(.horizontal, 5)
-                .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.quaternaryLabel)))
-                .padding(.bottom)
+        SearchBar(text: $modelView.model.textInput)
                 .onTapGesture {
                     bottomSheetView.position = .middle
                 }

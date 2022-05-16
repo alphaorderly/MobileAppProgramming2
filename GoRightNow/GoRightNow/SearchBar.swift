@@ -13,7 +13,7 @@ import SwiftUI
  
  - textInput : @Binding을 통해 여기서 값 바꿀시 View에서도 값이 바뀜
  - editText  : 현재 사용 여부
- 
+
   사용법 : SearchBar(textInput: ${state변수명}) -> 여기에 입력시 위 변수값이 바뀌게 됨.
  
     padding() 과 함께 사용해야 좀 이쁨.
@@ -63,9 +63,9 @@ struct SearchBar: View {
                         }
                     }
                 )
-                .onTapGesture {
-                    self.editText = true
-                }
+                //.onTapGesture {
+                //    self.editText = true
+                //}
         }
         .background(Color(.systemGray6))
         .cornerRadius(15)
