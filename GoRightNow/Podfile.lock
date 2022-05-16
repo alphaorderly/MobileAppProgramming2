@@ -1,16 +1,20 @@
 PODS:
   - Alamofire (5.5.0)
+  - BottomSheetSwiftUI (2.7.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.5)
+  - BottomSheetSwiftUI
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - BottomSheetSwiftUI
 
 SPEC CHECKSUMS:
   Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
+  BottomSheetSwiftUI: 57c6e635baeeae878508883b6985051556172515
 
-PODFILE CHECKSUM: 9bd417ad16ef827fe23b91106bd02d95793d2306
+PODFILE CHECKSUM: 0c899b92932a0efffd78318867f6f0a158e2301e
 
 COCOAPODS: 1.11.3

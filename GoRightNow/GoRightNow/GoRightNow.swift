@@ -7,14 +7,7 @@
 
 import SwiftUI
 import Alamofire
-import MapKit
-import PartialSheet
-
-struct Location {
-    var title: String
-    var latitude: Double
-    var longitude: Double
-}
+import BottomSheetSwiftUI
 
 // 모든 모델뷰는 여기서 관리함.
 struct GoRightNow: View {
@@ -28,95 +21,39 @@ struct GoRightNow: View {
 
     @State var locations = [
         Location(title: "San Francisco", latitude: 37.7749, longitude: -122.4194),
-        Location(title: "New York", latitude: 40.7128, longitude: -74.0060)
+        Location(title: "New York", latitude: 40.7128, longitude: -74.0060),
+        Location(title: "KNU", latitude: 35.8882118, longitude: 128.6109155)
     ]
 
+    let backgroundColors: [Color] = [Color(red: 0.28, green: 0.28, blue: 0.53), Color(red: 1, green: 0.69, blue: 0.26)]
+    let words: [String] = ["Hello", "World", "Swift", "UI", "Fuck", "Appcode", "Xcode", "iPhone", "MacOs", "iPad", "Macbook", "AppleWatch", "ios", "watchOs", "ipadOs"]
+
+//    var filteredWords: [String] {
+//        self.words.filter({ $0.contains(self.searchText.lowercased()) || self.searchText.isEmpty })
+//    }
+
     var body: some View {
-        HStack() {
+        VStack{
             MapView(locations: locations)
-            Spacer()
-            PSButton(
-                    isPresenting: $isSheetPresented,
-                    label: {
-                        Text("Display the Partial Sheet")
-                    })
-                    .padding()
-            Spacer()
+
         }
-                .partialSheet(isPresented: $isSheetPresented, content: SheetView.init)
-                .navigationViewStyle(StackNavigationViewStyle())
-                .attachPartialSheetToRoot()
-    }
-}
-
-struct SheetView: View {
-    @State private var longer: Bool = false
-    @State private var text: String = "some text"
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            Group {
-                HStack {
-                    Spacer()
-                    Text("Settings Panel")
-                            .font(.headline)
-                    Spacer()
+                .bottomSheet(bottomSheetPosition: $bottomSheetPosition, options: [.appleScrollBehavior], headerContent: {
+                    HStack {
+                        Image(systemName: "magnifyingglass")
+                        TextField("Search", text: self.$searchText)
+                    }
+                            .foregroundColor(Color(UIColor.secondaryLabel))
+                            .padding(.vertical, 8)
+                            .padding(.horizontal, 5)
+                            .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.quaternaryLabel)))
+                            .padding(.bottom)
+                            // 검색 시 sheet가 중앙까지 올라옴
+                            .onTapGesture {
+                                bottomSheetPosition = .middle
+                            }
+                }) {
+                    Text("Hello").padding()
                 }
-
-                Text("Vestibulum iaculis sagittis sem, vel hendrerit ex. ")
-                        .font(.body)
-                        .lineLimit(2)
-
-                Toggle(isOn: self.$longer) {
-                    Text("Advanced")
-                }
-            }
-                    .padding(0)
-                    .frame(height: 50)
-            if self.longer {
-                VStack {
-                    Divider()
-                    Spacer()
-                    Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vestibulum porttitor ligula quis faucibus. Maecenas auctor tincidunt maximus. Donec lectus dui, fermentum sed orci gravida, porttitor porta dui. ")
-                    Spacer()
-                }
-                        .frame(height: 200)
-            }
-        }
-                .padding(.horizontal, 10)
-    }
-}
-
-struct MapView: UIViewRepresentable {
-    @State var locations: [Location]
-
-    func makeUIView(context: Context) -> MKMapView {
-        let mapView = MKMapView(frame: .zero)
-        // change the map type here
-        mapView.mapType = .hybridFlyover
-
-        return mapView
-    }
-
-    func updateUIView(_ view: MKMapView, context: Context) {
-        for location in locations {
-            // make a pins
-            let pin = MKPointAnnotation()
-
-            // set the coordinates
-            pin.coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
-
-            // set the title
-            pin.title = location.title
-
-            // add to map
-            view.addAnnotation(pin)
-        //switch selectView.selectedView {
-        //case .mainList:
-        //    MainApp()
-        //case .planner:
-        //    PlannerView()
-        }
     }
 }
 

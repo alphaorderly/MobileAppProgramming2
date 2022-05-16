@@ -7,7 +7,7 @@ target 'GoRightNow' do
 
   # Pods for GoRightNow
   pod 'Alamofire', '~> 5.5'
-
+  pod 'BottomSheetSwiftUI'
 
   target 'GoRightNowTests' do
     inherit! :search_paths

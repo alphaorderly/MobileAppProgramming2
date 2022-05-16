@@ -328,7 +328,7 @@
 			);
 			mainGroup = EFE7713D28043628005CCE52;
 			packageReferences = (
-				25914FD7282EA6AD00FD103B /* XCRemoteSwiftPackageReference "PartialSheet" */,
+				25914FD7282EA6AD00FD103B /* XCRemoteSwiftPackageReference "PartialSheet.git" */,
 			);
 			productRefGroup = EFE7714728043628005CCE52 /* Products */;
 			projectDirPath = "";
@@ -827,7 +827,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		25914FD7282EA6AD00FD103B /* XCRemoteSwiftPackageReference "PartialSheet" */ = {
+		25914FD7282EA6AD00FD103B /* XCRemoteSwiftPackageReference "PartialSheet.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AndreaMiotto/PartialSheet.git";
 			requirement = {
@@ -840,7 +840,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		25914FD8282EA6AD00FD103B /* PartialSheet */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 25914FD7282EA6AD00FD103B /* XCRemoteSwiftPackageReference "PartialSheet" */;
+			package = 25914FD7282EA6AD00FD103B /* XCRemoteSwiftPackageReference "PartialSheet.git" */;
 			productName = PartialSheet;
 		};
 /* End XCSwiftPackageProductDependency section */
