@@ -7,4 +7,15 @@ import BottomSheetSwiftUI
 
 class BottomSheetModelView: ObservableObject {
     @Published var model: BottomSheetModel = BottomSheetModel()
+
+    var position: BottomSheetPosition {
+        get {
+            model.bottomSheetPosition
+        }
+
+        set {
+            model.bottomSheetPosition = newValue
+        }
+    }
+
 }

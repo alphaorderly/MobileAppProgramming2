@@ -12,6 +12,8 @@ struct GoRightNowApp: App {
     @StateObject var modelView = GoRightNowModelView()
     @StateObject var selectView = ViewSelect()
     @StateObject var plannerView = PlannerModelView()
+	@StateObject var bottomSheetModelView = BottomSheetModelView()
+
     
     
     var body: some Scene {
@@ -20,6 +22,7 @@ struct GoRightNowApp: App {
                 .environmentObject(modelView)
                 .environmentObject(selectView)
                 .environmentObject(plannerView)
+                .environmentObject(bottomSheetModelView)
         }
     }
 }

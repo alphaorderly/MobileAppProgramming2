@@ -28,29 +28,12 @@ struct GoRightNow: View {
     let backgroundColors: [Color] = [Color(red: 0.28, green: 0.28, blue: 0.53), Color(red: 1, green: 0.69, blue: 0.26)]
     let words: [String] = ["Hello", "World", "Swift", "UI", "Fuck", "Appcode", "Xcode", "iPhone", "MacOs", "iPad", "Macbook", "AppleWatch", "ios", "watchOs", "ipadOs"]
 
-//    var filteredWords: [String] {
-//        self.words.filter({ $0.contains(self.searchText.lowercased()) || self.searchText.isEmpty })
-//    }
-
     var body: some View {
         VStack{
             MapView(locations: locations)
-
         }
-                .bottomSheet(bottomSheetPosition: $bottomSheetPosition, options: [.appleScrollBehavior], headerContent: {
-                    HStack {
-                        Image(systemName: "magnifyingglass")
-                        TextField("Search", text: self.$searchText)
-                    }
-                            .foregroundColor(Color(UIColor.secondaryLabel))
-                            .padding(.vertical, 8)
-                            .padding(.horizontal, 5)
-                            .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.quaternaryLabel)))
-                            .padding(.bottom)
-                            // 검색 시 sheet가 중앙까지 올라옴
-                            .onTapGesture {
-                                bottomSheetPosition = .middle
-                            }
+                .bottomSheet(bottomSheetPosition: $bottomSheetModelView.model.bottomSheetPosition, options: [.appleScrollBehavior], headerContent: {
+                    BottomSheetHeader(bottomSheetView: bottomSheetModelView)
                 }) {
                     Text("Hello").padding()
                 }
