@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct PlannerView: View {
-    @ObservedObject var mainModelView: GoRightNowModelView;
-    @ObservedObject var selectView: ViewSelect
-    @ObservedObject var plannerModelView: PlannerModelView
+    @EnvironmentObject var modelView: GoRightNowModelView;
+    @EnvironmentObject var selectView: ViewSelect;
+    @EnvironmentObject var plannerModelView: PlannerModelView;
 
     var body: some View {
         NavigationView {
@@ -21,7 +21,7 @@ struct PlannerView: View {
                     HStack {
                         Button {
                             withAnimation {
-                                mainModelView.model.sideMenu = !mainModelView.model.sideMenu
+                                modelView.model.sideMenu = !modelView.model.sideMenu
                             }
                         } label: {
                             Image(systemName: "line.3.horizontal")
@@ -48,20 +48,20 @@ struct PlannerView: View {
                     Spacer()
                 }
                 .onAppear {
-                    mainModelView.model.sideMenu = false
+                    modelView.model.sideMenu = false
                 }
                 
-                if mainModelView.model.sideMenu {
+                if modelView.model.sideMenu {
                     GeometryReader { geometry in
                         HStack (spacing: 0){
-                            SideMenu(menu: $mainModelView.model.sideMenu, select: $selectView.selectedView, version: mainModelView.model.version, geometry: geometry)
+                            SideMenu(menu: $modelView.model.sideMenu, select: $selectView.selectedView, version: modelView.model.version, geometry: geometry)
                             Color.init(red: 0, green: 0, blue: 0, opacity: 0)
                                 .contentShape(Rectangle())
                                 .onTapGesture {
                                     // 사이드바 다시 집어 넣기 위한 코드
                                     withAnimation {
-                                        mainModelView.model.sideMenu = false
-                                        print(mainModelView.model.sideMenu)
+                                        modelView.model.sideMenu = false
+                                        print(modelView.model.sideMenu)
                                 }
                             }
                         }

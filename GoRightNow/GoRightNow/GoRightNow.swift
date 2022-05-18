@@ -10,9 +10,9 @@ import Alamofire
 
 // 모든 모델뷰는 여기서 관리함.
 struct GoRightNow: View {
-    @ObservedObject var modelView: GoRightNowModelView;
-    @ObservedObject var selectView: ViewSelect;
-    @ObservedObject var plannerModelView: PlannerModelView;
+    @EnvironmentObject var modelView: GoRightNowModelView;
+    @EnvironmentObject var selectView: ViewSelect;
+    @EnvironmentObject var plannerModelView: PlannerModelView;
     
     /*
      ObservedObject는 $를 붙혀 State와 같이 사용가능 -> @Binding을 통해 call by reference와 같은 효과 누릴수 있음.
@@ -21,16 +21,17 @@ struct GoRightNow: View {
     var body: some View {
         switch selectView.selectedView {
         case .mainList:
-            MainApp(modelView: modelView, selectView: selectView)
+            MainApp()
         case .planner:
-            PlannerView(mainModelView: modelView, selectView: selectView, plannerModelView: plannerModelView)
+            PlannerView()
         }
     }
 }
 
 struct MainApp: View {
-    @ObservedObject var modelView: GoRightNowModelView;
-    @ObservedObject var selectView: ViewSelect
+    @EnvironmentObject var modelView: GoRightNowModelView;
+    @EnvironmentObject var selectView: ViewSelect;
+    @EnvironmentObject var plannerModelView: PlannerModelView;
     
     var body: some View {
         // 이 화면에서 다른 화면으로 넘어갈수 있게 설정해두는것.

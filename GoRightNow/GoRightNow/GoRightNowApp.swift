@@ -9,12 +9,17 @@ import SwiftUI
 
 @main
 struct GoRightNowApp: App {
+    @StateObject var modelView = GoRightNowModelView()
+    @StateObject var selectView = ViewSelect()
+    @StateObject var plannerView = PlannerModelView()
+    
+    
     var body: some Scene {
         WindowGroup {
-            let modelView = GoRightNowModelView()
-            let selectView = ViewSelect()
-            let plannerView = PlannerModelView()
-            GoRightNow(modelView: modelView, selectView: selectView, plannerModelView: plannerView)
+            GoRightNow()
+                .environmentObject(modelView)
+                .environmentObject(selectView)
+                .environmentObject(plannerView)
         }
     }
 }
