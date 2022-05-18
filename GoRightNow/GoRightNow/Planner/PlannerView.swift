@@ -39,7 +39,7 @@ struct PlannerView: View {
                                 .padding()
                         }
                     }
-                    ScrollView {
+                    VStack {
                         ForEach(plannerModelView.model.plans) { data in
                             PlanCard(plan: data)
                                 .padding(EdgeInsets(top: 5, leading: 10, bottom: 10, trailing: 5))
@@ -95,10 +95,6 @@ private struct PlanCard: View {
             Divider()
             Text("\(plan.departDate) ~ \(plan.returnDate)")
         }
-        .background(Color(.systemGray6))
-        .cornerRadius(5)
-        .shadow(radius: 5)
-        .opacity(0.8)
         .frame(height: 100)
     }
 }

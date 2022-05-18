@@ -11,7 +11,7 @@ struct PlannerModel {
     static var idValue = 0
     
     // 각각의 여행계획에 대한 배열
-    var plans: [Plan] = [Plan(countryName: "South Korea", planName: "종강 여행", departDate: Date(), returnDate: Date(), places: [])]
+    var plans: [Plan] = [Plan(countryName: "한국", planName: "종강 여행", departDate: Date(), returnDate: Date(), places: [])]
     
     struct Plan : Identifiable {
         var countryName: String             // 나라 이름
