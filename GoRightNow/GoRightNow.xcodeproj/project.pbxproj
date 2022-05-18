@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0CCB69EA471B4475ED5C917F /* Pods_GoRightNow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0A8AE6DEBE0C3E3FC408209 /* Pods_GoRightNow.framework */; };
 		6CB917F6C4A952D57A606F15 /* Pods_GoRightNowTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C985404305B2B7A556D18070 /* Pods_GoRightNowTests.framework */; };
+		7862904DEF2D9F6FF3382BF5 /* MainApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78629D9BD52AC1C85ABFCE93 /* MainApp.swift */; };
 		B2A1710949B910136133626B /* Pods_GoRightNow_GoRightNowUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 011AC6619F9509ACF0AE79AB /* Pods_GoRightNow_GoRightNowUITests.framework */; };
 		EF11F217282DF2D600E3761A /* Jamo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF11F216282DF2D600E3761A /* Jamo.swift */; };
 		EF11F21A2831FBEE00E3761A /* PlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF11F2192831FBEE00E3761A /* PlannerView.swift */; };
@@ -60,6 +61,7 @@
 		07D54BAD4C9DDE959F9AC2A2 /* Pods-GoRightNow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoRightNow.debug.xcconfig"; path = "Target Support Files/Pods-GoRightNow/Pods-GoRightNow.debug.xcconfig"; sourceTree = "<group>"; };
 		32657803EBC28989B1C2549D /* Pods-GoRightNowTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoRightNowTests.release.xcconfig"; path = "Target Support Files/Pods-GoRightNowTests/Pods-GoRightNowTests.release.xcconfig"; sourceTree = "<group>"; };
 		4AA915F01BBED547113F6785 /* Pods-GoRightNow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoRightNow.release.xcconfig"; path = "Target Support Files/Pods-GoRightNow/Pods-GoRightNow.release.xcconfig"; sourceTree = "<group>"; };
+		78629D9BD52AC1C85ABFCE93 /* MainApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainApp.swift; sourceTree = "<group>"; };
 		AB72B380C8DCE060B49416FE /* Pods-GoRightNow-GoRightNowUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoRightNow-GoRightNowUITests.release.xcconfig"; path = "Target Support Files/Pods-GoRightNow-GoRightNowUITests/Pods-GoRightNow-GoRightNowUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B0A8AE6DEBE0C3E3FC408209 /* Pods_GoRightNow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoRightNow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3BDDC80D9247F7DD9BF02BF /* Pods-GoRightNow-GoRightNowUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoRightNow-GoRightNowUITests.debug.xcconfig"; path = "Target Support Files/Pods-GoRightNow-GoRightNowUITests/Pods-GoRightNow-GoRightNowUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				EFE7714D28043629005CCE52 /* Assets.xcassets */,
 				EFE7714F28043629005CCE52 /* Preview Content */,
 				EF11F21B283208D900E3761A /* ViewSelect.swift */,
+				78629D9BD52AC1C85ABFCE93 /* MainApp.swift */,
 			);
 			path = GoRightNow;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				EF5419622804582000C4CAFA /* SideMenu.swift in Sources */,
 				EF11F2202832270A00E3761A /* PlannerModel.swift in Sources */,
 				EF682A53281D7AC800F08CF4 /* SettingView.swift in Sources */,
+				7862904DEF2D9F6FF3382BF5 /* MainApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
