@@ -14,6 +14,7 @@ struct GoRightNow: View {
     @EnvironmentObject var modelView: GoRightNowModelView;
     @EnvironmentObject var selectView: ViewSelect;
     @EnvironmentObject var plannerModelView: PlannerModelView;
+    @EnvironmentObject var bottomSheetModelView: BottomSheetModelView;
     @State private var isSheetPresented = true
     /*
      ObservedObject는 $를 붙혀 State와 같이 사용가능 -> @Binding을 통해 call by reference와 같은 효과 누릴수 있음.

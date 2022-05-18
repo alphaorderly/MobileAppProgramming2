@@ -6,12 +6,11 @@ import SwiftUI
 import BottomSheetSwiftUI
 
 struct BottomSheetHeader: View {
-    @State private var searchText: String = ""
     @ObservedObject var bottomSheetView: BottomSheetModelView
     @ObservedObject var modelView: GoRightNowModelView
 
     var body: some View {
-        SearchBar(text: $modelView.model.textInput)
+        SearchBar(text: $modelView.model.textInput, menu:$modelView.model.sideMenu)
                 .onTapGesture {
                     bottomSheetView.position = .middle
                 }
