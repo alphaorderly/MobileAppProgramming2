@@ -11,14 +11,14 @@ struct CountryList: View {
     var countries: [GoRightNowModel.Country]
     
     var body: some View {
-        ScrollView {
-            VStack {
+//        ScrollView {
+//            VStack {
                 ForEach(countries, id:\.self) { data in
                     ListTile(name: data.name, immg: data.immigInfo, imgurl: data.flagImageURL, isocode: data.iso_alp2, alarm: data.alarmLevel)
                         .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
                     }
-            }
-        }
+//            }
+//        }
     }
 }
 

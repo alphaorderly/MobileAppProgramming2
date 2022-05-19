@@ -5,6 +5,9 @@
 //  Created by WOO on 2022/04/11.∫
 //
 
+
+//TODO Map의 상단 NavigationBar 영역 제거하기
+
 import SwiftUI
 import Alamofire
 import BottomSheetSwiftUI
@@ -29,17 +32,57 @@ struct GoRightNow: View {
     let backgroundColors: [Color] = [Color(red: 0.28, green: 0.28, blue: 0.53), Color(red: 1, green: 0.69, blue: 0.26)]
     let words: [String] = ["Hello", "World", "Swift", "UI", "Fuck", "Appcode", "Xcode", "iPhone", "MacOs", "iPad", "Macbook", "AppleWatch", "ios", "watchOs", "ipadOs"]
 
-    var body: some View {
-        VStack{
-            MapView(locations: locations)
-        }
-                .bottomSheet(bottomSheetPosition: $bottomSheetModelView.model.bottomSheetPosition, options: [.appleScrollBehavior], headerContent: {
-                    BottomSheetHeader(bottomSheetView: bottomSheetModelView, modelView: modelView)
-                }) {
-                    Text("Hello").padding()
-                }
-    }
-}
 
+    var body: some View {
+        NavigationView{
+            if (modelView.model.gotData == 0) {
+                VStack {
+                    Text("입국정보 가져오는 중")
+                    ProgressView()
+                }
+            } else{
+                VStack{
+                    MapView(locations: locations)
+                }
+                        .bottomSheet(bottomSheetPosition: $bottomSheetModelView.model.bottomSheetPosition, options: [.appleScrollBehavior], headerContent: {
+                            BottomSheetHeader(bottomSheetView: bottomSheetModelView, modelView: modelView)
+                        }) {
+                            CountryList(countries: modelView.model.countryList)
+                        }
+
+                if modelView.model.sideMenu {
+                    GeometryReader { geometry in
+                        HStack (spacing: 0){
+                            SideMenu(menu: $modelView.model.sideMenu, select: $selectView.selectedView, version: modelView.model.version, geometry: geometry)
+                            Color.init(red: 0, green: 0, blue: 0, opacity: 0)
+                                    .contentShape(Rectangle())
+                                    .onTapGesture {
+                                        // 사이드바 다시 집어 넣기 위한 코드
+                                        withAnimation {
+                                            if modelView.model.sideMenu  {
+                                                modelView.model.sideMenu = !modelView.model.sideMenu
+                                            }
+                                        }
+                                    }
+                        }
+                    }
+                            .transition(.asymmetric(insertion: .move(edge: .leading), removal: .move(edge: .leading)).animation(.linear(duration: 0.2)))
+                            .zIndex(100)
+                    // Animation 구현 및 Sidebar가 절대로 뒤에 가지 않도록 설정
+                }
+            }
+        }
+                .onAppear() { modelView.model.sideMenu = false }
+                // 뷰 이동시마다 값을 받아오지 않도록 설정
+                .task { if modelView.model.gotData == 0 {
+                    await modelView.getCountryData()
+                    modelView.model.gotData = 1
+                }
+                }
+                .navigationBarTitle("", displayMode: .inline)
+                .navigationBarHidden(true).navigationBarTitle("", displayMode: .inline)
+                .navigationBarHidden(true)
+                }
+        }
 
 

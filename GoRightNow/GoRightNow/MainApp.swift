@@ -15,7 +15,7 @@ struct MainApp: View {
         NavigationView {
             ZStack {
                 // 배경색
-                ThemeData.background
+//                ThemeData.background
 
                 if(modelView.model.gotData == 0) {
                     VStack {
@@ -24,8 +24,9 @@ struct MainApp: View {
                     }
                 } else {
                     VStack {
-                        SearchBar(text: $modelView.model.textInput, menu: $modelView.model.sideMenu)                        // 국가 검색창
-                                .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
+//                        SearchBar(text: $modelView.model.textInput, menu: $modelView.model.sideMenu)                        // 국가 검색창
+//                                .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
+                    //TODO CellView Section
                         CountryList(countries: modelView.model.countryList)
                         Spacer()
                     }

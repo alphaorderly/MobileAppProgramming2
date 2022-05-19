@@ -178,6 +178,13 @@
 			path = BottomSheet;
 			sourceTree = "<group>";
 		};
+		786298F744AF1CE8FDDF602A /* UI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		EF11F2182831FAF300E3761A /* Planner */ = {
 			isa = PBXGroup;
 			children = (
@@ -234,6 +241,7 @@
 				78629D9BD52AC1C85ABFCE93 /* MainApp.swift */,
 				786296DCD99AD7E651131197 /* BottomSheet */,
 				7862964E1DDBA1999EF27D7D /* Map */,
+				786298F744AF1CE8FDDF602A /* UI */,
 			);
 			path = GoRightNow;
 			sourceTree = "<group>";
