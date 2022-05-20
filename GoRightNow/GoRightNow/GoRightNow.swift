@@ -5,8 +5,6 @@
 //  Created by WOO on 2022/04/11.∫
 //
 
-//TODO DetailView 구현 오류
-
 import SwiftUI
 import Alamofire
 import BottomSheetSwiftUI

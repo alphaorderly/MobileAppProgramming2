@@ -4,19 +4,21 @@ import MapKit
 
 
 struct MapView: UIViewRepresentable {
-    @State var locations: [Location]
+//    @State var locations: [Location]
+    @EnvironmentObject var mapModelView: MapModelView
+
 
     func makeUIView(context: Context) -> MKMapView {
-        let mapView = MKMapView(frame: .zero)
+//        let mapView = MKMapView(frame: .zero)
         // change the map type here
+        let mapView = mapModelView.model.mapView
         mapView.mapType = .hybridFlyover
 //        mapView.setCameraZoomRange(CameraZoomRange(), animated: true)
-
         return mapView
     }
 
     func updateUIView(_ view: MKMapView, context: Context) {
-        for location in locations {
+        for location in mapModelView.model.locations {
             // make a pins
             let pin = MKPointAnnotation()
 

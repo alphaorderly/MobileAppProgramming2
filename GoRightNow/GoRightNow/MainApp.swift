@@ -3,24 +3,37 @@
 //
 
 import SwiftUI
-
+import MapKit
 
 struct MainApp: View {
     @EnvironmentObject var modelView: GoRightNowModelView;
     @EnvironmentObject var selectView: ViewSelect;
     @EnvironmentObject var plannerModelView: PlannerModelView;
     @EnvironmentObject var bottomSheetModelView: BottomSheetModelView;
+    @EnvironmentObject var mapModelView: MapModelView
     @State private var isSheetPresented = true
 
-    @State var locations = [
-        Location(title: "San Francisco", latitude: 37.7749, longitude: -122.4194),
-        Location(title: "New York", latitude: 40.7128, longitude: -74.0060),
-        Location(title: "KNU", latitude: 35.8882118, longitude: 128.6109155)
-    ]
+//    @State var locations = [
+//        Location(title: "San Francisco", latitude: 37.7749, longitude: -122.4194),
+//        Location(title: "New York", latitude: 40.7128, longitude: -74.0060),
+//        Location(title: "KNU", latitude: 35.8882118, longitude: 128.6109155)
+//    ]
 
     var body: some View {
+        Button(action: {
+//            let lo = Location(title: "KNU", latitude: 35.8882118, longitude: 128.6109155)
+//            mapModelView.model.mapView.setCenter(CLLocationCoordinate2D(latitude: locations[1].latitude, longitude: locations[1].longitude), animated: true)
+//            mapModelView.model.locations.append(lo)
+            let pin = MKPointAnnotation()
+            pin.coordinate = CLLocationCoordinate2D(latitude: 35.8882118, longitude: 128.6109155)
+            pin.title = "KNU"
+            mapModelView.model.mapView.addAnnotation(pin)
+            print("Annotations")
+        }){
+            Text("Button")
+        }
         ZStack {
-            MapView(locations: locations)
+            MapView()
                     .bottomSheet(bottomSheetPosition: $bottomSheetModelView.model.bottomSheetPosition,
                             options: [.appleScrollBehavior],
                             headerContent: {
