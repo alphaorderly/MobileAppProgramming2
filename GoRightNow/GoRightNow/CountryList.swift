@@ -9,16 +9,29 @@ import SwiftUI
 
 struct CountryList: View {
     var countries: [GoRightNowModel.Country]
+    //Tap한 값을 Modal에 넘겨주기 위한 Property
     @State private var showModal: Bool = false
+    @State private var name: String = " "
+    @State private var immg: String = " "
+    @State private var imgurl: String  = " "
+    @State private var isocode: String = " "
+    @State private var alarm: Int = 0
+
 
     var body: some View {
         ForEach(countries, id: \.self) { data in
             ListTile(name: data.name, immg: data.immigInfo, imgurl: data.flagImageURL, isocode: data.iso_alp2, alarm: data.alarmLevel)
                     .onTapGesture {
                         self.showModal = true
+                        self.name = data.name
+                        self.immg = data.immigInfo
+                        self.imgurl = data.flagImageURL
+                        self.isocode = data.iso_alp2
+                        self.alarm = data.alarmLevel
+                        print("Log: Touched Country Name is \(data.name)")
                     }
                     .sheet(isPresented: $showModal) {
-                        CountryDetailView(countryName: data.name, immigInfo: data.immigInfo, isoCode: data.iso_alp2, imgurl: data.flagImageURL, alarmLevel: data.alarmLevel)
+                        CountryDetailView(countryName: self.name, immigInfo: self.immg, isoCode: self.isocode, imgurl: self.imgurl, alarmLevel: self.alarm)
                     }
                     .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
         }
