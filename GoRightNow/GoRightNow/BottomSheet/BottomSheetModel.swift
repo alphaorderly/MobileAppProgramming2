@@ -6,6 +6,6 @@ import SwiftUI
 import BottomSheetSwiftUI
 
 struct BottomSheetModel {
-    var bottomSheetPosition: BottomSheetPosition = .bottom
+    var bottomSheetPosition: BottomSheetPosition = .middle
 
 }
