@@ -40,9 +40,12 @@ struct PlannerView: View {
                         }
                     }
                     VStack {
+                        PlanAttr()
+                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
                         ForEach(plannerModelView.model.plans) { data in
                             PlanCard(plan: data)
-                                .padding(EdgeInsets(top: 5, leading: 10, bottom: 10, trailing: 5))
+                                // .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+                                .frame(alignment: .center)
                         }
                     }
                     Spacer()
@@ -82,19 +85,54 @@ private struct PlanCard: View {
     var plan: PlannerModel.Plan
     
     var body: some View {
-        HStack {
-            VStack {
-                Text("목적지")
-                Text("\(plan.countryName)")
+       
+        RoundedRectangle(cornerRadius: 10)
+            .fill(Color.white)
+            .frame(width: UIScreen.main.bounds.width * 0.9, height: 70)
+            .overlay(HStack {
+                VStack {
+                    Text("\(plan.countryName)")
+                }
+                .padding(EdgeInsets(top: 2, leading: 5, bottom: 2, trailing: 15)) // 비율 수동 조정됨. 건들지 마시오.
+                VStack {
+                    Text("\(plan.planName)")
+                }
+                .padding(EdgeInsets(top: 2, leading: 15, bottom: 2, trailing: 15)) // 비율 수동 조정됨. 건들지 마시오.
+                VStack {
+                    Text("\(convertDate(from: plan.departDate))")
+                    Text(" ~ \(convertDate(from: plan.returnDate))")
+                }
+                .padding(EdgeInsets(top: 2, leading: 15, bottom: 2, trailing: 5)) // 비율 수동 조정됨. 건들지 마시오.
             }
-            Divider()
-            VStack {
-                Text("여행 이름")
-                Text("\(plan.planName)")
+            .frame(height: 70)
+                     )
+    }
+    
+    func convertDate(from curDate : Date) -> String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko")
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter.string(from: curDate)
+    }
+}
+
+private struct PlanAttr: View {
+    var body: some View {
+        RoundedRectangle(cornerRadius: 10)
+            .fill(Color.white)
+            .frame(width: UIScreen.main.bounds.width * 0.9, height: 30)
+            .overlay(HStack {
+                    Text("목적지")
+                        .bold()
+                        .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 11)) // 비율 수동 조정됨. 건들지 마시오.
+                    Text("여행 목적")
+                        .bold()
+                        .padding(EdgeInsets(top: 5, leading: 11, bottom: 5, trailing: 27)) // 비율 수동 조정됨. 건들지 마시오.
+                    Text("여행 기간")
+                        .bold()
+                        .padding(EdgeInsets(top: 5, leading: 27, bottom: 5, trailing: 44)) // 비율 수동 조정됨. 건들지 마시오.
             }
-            Divider()
-            Text("\(plan.departDate) ~ \(plan.returnDate)")
-        }
-        .frame(height: 100)
+                        .frame(height: 30, alignment: .leading)
+                     )
     }
 }
