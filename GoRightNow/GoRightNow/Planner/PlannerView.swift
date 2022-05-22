@@ -41,12 +41,12 @@ struct PlannerView: View {
                     }
                     VStack {
                         PlanAttr()
-                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
                         ForEach(plannerModelView.model.plans) { data in
                             PlanCard(plan: data)
-                                // .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+                                .padding(EdgeInsets(top: 1, leading: 0, bottom: 1, trailing: 0))
                                 .frame(alignment: .center)
                         }
+                        // testPlanList() // 디자인 테스트용 코드
                     }
                     Spacer()
                 }
@@ -86,23 +86,27 @@ private struct PlanCard: View {
     
     var body: some View {
        
-        RoundedRectangle(cornerRadius: 10)
-            .fill(Color.white)
+        RoundedRectangle(cornerRadius: 5)
+            .fill(.white.opacity(0.5))
             .frame(width: UIScreen.main.bounds.width * 0.9, height: 70)
             .overlay(HStack {
                 VStack {
                     Text("\(plan.countryName)")
+                        .lineLimit(2)
+                        .multilineTextAlignment(.center)
                 }
-                .padding(EdgeInsets(top: 2, leading: 5, bottom: 2, trailing: 15)) // 비율 수동 조정됨. 건들지 마시오.
+                .frame(width: UIScreen.main.bounds.width * 0.9 * 0.2, height: 70)
                 VStack {
                     Text("\(plan.planName)")
+                        .lineLimit(2)
+                        .multilineTextAlignment(.center)
                 }
-                .padding(EdgeInsets(top: 2, leading: 15, bottom: 2, trailing: 15)) // 비율 수동 조정됨. 건들지 마시오.
+                .frame(width: UIScreen.main.bounds.width * 0.9 * 0.2, height: 70)
                 VStack {
                     Text("\(convertDate(from: plan.departDate))")
                     Text(" ~ \(convertDate(from: plan.returnDate))")
                 }
-                .padding(EdgeInsets(top: 2, leading: 15, bottom: 2, trailing: 5)) // 비율 수동 조정됨. 건들지 마시오.
+                .frame(width: UIScreen.main.bounds.width * 0.9 * 0.5, height: 70)
             }
             .frame(height: 70)
                      )
@@ -118,21 +122,37 @@ private struct PlanCard: View {
 
 private struct PlanAttr: View {
     var body: some View {
-        RoundedRectangle(cornerRadius: 10)
-            .fill(Color.white)
+        RoundedRectangle(cornerRadius: 5)
+            .fill(.white.opacity(0.5))
             .frame(width: UIScreen.main.bounds.width * 0.9, height: 30)
             .overlay(HStack {
                     Text("목적지")
                         .bold()
-                        .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 11)) // 비율 수동 조정됨. 건들지 마시오.
+                        .frame(width: UIScreen.main.bounds.width * 0.9 * 0.2, height: 30)
                     Text("여행 목적")
                         .bold()
-                        .padding(EdgeInsets(top: 5, leading: 11, bottom: 5, trailing: 27)) // 비율 수동 조정됨. 건들지 마시오.
+                        .frame(width: UIScreen.main.bounds.width * 0.9 * 0.2, height: 30)
                     Text("여행 기간")
                         .bold()
-                        .padding(EdgeInsets(top: 5, leading: 27, bottom: 5, trailing: 44)) // 비율 수동 조정됨. 건들지 마시오.
+                        .frame(width: UIScreen.main.bounds.width * 0.9 * 0.5, height: 30)
             }
                         .frame(height: 30, alignment: .leading)
                      )
+    }
+}
+
+private struct testPlanList: View { // 디자인 테스트용 리스트 View
+    var body: some View {
+        VStack {
+            PlanCard(plan: PlannerModel.Plan(countryName: "미국", planName: "대충여행", departDate: Date(), returnDate: Date(), places: []))
+                .padding(EdgeInsets(top: 1, leading: 0, bottom: 1, trailing: 0))
+                .frame(alignment: .center)
+            PlanCard(plan: PlannerModel.Plan(countryName: "리히텐슈타인", planName: "테스트 여행", departDate: Date(), returnDate: Date(), places: []))
+                .padding(EdgeInsets(top: 1, leading: 0, bottom: 1, trailing: 0))
+                .frame(alignment: .center)
+            PlanCard(plan: PlannerModel.Plan(countryName: "Testing", planName: "TESTING TRAVEL", departDate: Date(), returnDate: Date(), places: []))
+                .padding(EdgeInsets(top: 1, leading: 0, bottom: 1, trailing: 0))
+                .frame(alignment: .center)
+        }
     }
 }
