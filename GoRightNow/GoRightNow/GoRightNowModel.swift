@@ -39,6 +39,8 @@ struct GoRightNowModel {
         var iso_alp2 : String               // ISO 국가 코드명
         var immigInfo : String              // 입국정보, immigration Info
         var flagImageURL : String           // 국기 이미지 URL
-        var alarmLevel : Int                // 여행경보 정보, 바티칸 등 일부 국가는 nil이면 0
+        var alarmLevel : Int
+        // 여행경보 정보, 바티칸 등 일부 국가는 nil이면 0
+        var location: Location?
     }
 }

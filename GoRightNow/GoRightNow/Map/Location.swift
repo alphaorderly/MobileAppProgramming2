@@ -3,9 +3,20 @@
 //
 
 import Foundation
+import MapKit
 
-struct Location {
+struct Location: Hashable {
     var title: String
-    var latitude: Double
-    var longitude: Double
+    var latitude: CLLocationDegrees
+    var longitude: CLLocationDegrees
+    var center: CLLocationCoordinate2D {
+        CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    }
+    var span: MKCoordinateSpan {
+        MKCoordinateSpan(latitudeDelta: 50, longitudeDelta: 50)
+    }
+
+    var region: MKCoordinateRegion {
+        MKCoordinateRegion(center: center, span: span)
+    }
 }

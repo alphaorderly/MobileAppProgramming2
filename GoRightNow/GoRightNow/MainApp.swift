@@ -13,23 +13,35 @@ struct MainApp: View {
     @EnvironmentObject var mapModelView: MapModelView
     @State private var isSheetPresented = true
 
-//    @State var locations = [
-//        Location(title: "San Francisco", latitude: 37.7749, longitude: -122.4194),
-//        Location(title: "New York", latitude: 40.7128, longitude: -74.0060),
-//        Location(title: "KNU", latitude: 35.8882118, longitude: 128.6109155)
-//    ]
-
     var body: some View {
         Button(action: {
 //            let lo = Location(title: "KNU", latitude: 35.8882118, longitude: 128.6109155)
 //            mapModelView.model.mapView.setCenter(CLLocationCoordinate2D(latitude: locations[1].latitude, longitude: locations[1].longitude), animated: true)
 //            mapModelView.model.locations.append(lo)
-            let pin = MKPointAnnotation()
-            pin.coordinate = CLLocationCoordinate2D(latitude: 35.8882118, longitude: 128.6109155)
-            pin.title = "KNU"
-            mapModelView.model.mapView.addAnnotation(pin)
-            print("Annotations")
-        }){
+//            let pin = MKPointAnnotation()
+//            pin.coordinate = CLLocationCoordinate2D(latitude: 35.8882118, longitude: 128.6109155)
+//            pin.title = "KNU"
+//            mapModelView.model.mapView.addAnnotation(pin)
+//            print("Annotations")
+//            mapModelView.model.mapView.setRegion(MKCoordinateRegion(center: 7.3726861, latitudinalMeters: <#T##CLLocationDistance##CoreLocation.CLLocationDistance#>, longitudinalMeters: <#T##CLLocationDistance##CoreLocation.CLLocationDistance#>), animated: <#T##Bool##Swift.Bool#>)
+
+//            let searchRequest = MKLocalSearch.Request()
+//            searchRequest.naturalLanguageQuery = "경북대학교"
+//            let search = MKLocalSearch(request: searchRequest)
+//            search.start { response, error in
+//                guard let response = response else {
+//                    print("ERROR")
+//                    return
+//                }
+//
+//                mapModelView.model.mapView.setRegion(response.boundingRegion, animated: true)
+//                return
+//            }
+
+//            mapModelView.model.mapView.setRegion(
+//                    modelView.model.countries.first!.location!.region, animated: true)
+//                    bottomSheetModelView.position = .bottom
+        }) {
             Text("Button")
         }
         ZStack {
@@ -69,6 +81,7 @@ struct MainApp: View {
                 .task {
                     if modelView.model.gotData == 0 {
                         await modelView.getCountryData()
+                        await modelView.getCountryLocation()
                         modelView.model.gotData = 1
                     }
                 }

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CountryList: View {
+    @EnvironmentObject var mapModelView: MapModelView
+    @EnvironmentObject var bottomSheetModelView: BottomSheetModelView;
     var countries: [GoRightNowModel.Country]
     //Tap한 값을 Modal에 넘겨주기 위한 Property
     @State private var showModal: Bool = false
@@ -22,17 +24,24 @@ struct CountryList: View {
         ForEach(countries, id: \.self) { data in
             ListTile(name: data.name, immg: data.immigInfo, imgurl: data.flagImageURL, isocode: data.iso_alp2, alarm: data.alarmLevel)
                     .onTapGesture {
-                        self.showModal = true
-                        self.name = data.name
-                        self.immg = data.immigInfo
-                        self.imgurl = data.flagImageURL
-                        self.isocode = data.iso_alp2
-                        self.alarm = data.alarmLevel
+//                        self.showModal = true
+//                        self.name = data.name
+//                        self.immg = data.immigInfo
+//                        self.imgurl = data.flagImageURL
+//                        self.isocode = data.iso_alp2
+//                        self.alarm = data.alarmLevel
                         print("Log: Touched Country Name is \(data.name)")
+                        print("Log: Touched Country Name is \(data.location)")
+                        //TODO nill 처리 필요
+                        mapModelView.model.mapView.setRegion(data.location!.region, animated: true)
+//                        mapModelView.clearAnnotations()
+                        mapModelView.makePin(location: data.location!)
+//                        mapModelView.setAnnotations()
+                        bottomSheetModelView.position = .bottom
                     }
-                    .sheet(isPresented: $showModal) {
-                        CountryDetailView(countryName: self.name, immigInfo: self.immg, isoCode: self.isocode, imgurl: self.imgurl, alarmLevel: self.alarm)
-                    }
+//                    .sheet(isPresented: $showModal) {
+//                        CountryDetailView(countryName: self.name, immigInfo: self.immg, isoCode: self.isocode, imgurl: self.imgurl, alarmLevel: self.alarm)
+//                    }
                     .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
         }
     }

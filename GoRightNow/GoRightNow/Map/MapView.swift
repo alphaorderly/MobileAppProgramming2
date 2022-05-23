@@ -18,19 +18,19 @@ struct MapView: UIViewRepresentable {
     }
 
     func updateUIView(_ view: MKMapView, context: Context) {
-        for location in mapModelView.model.locations {
-            // make a pins
-            let pin = MKPointAnnotation()
-
-            // set the coordinates
-            pin.coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
-
-            // set the title
-            pin.title = location.title
-
-            // add to map
-            view.addAnnotation(pin)
-        }
+//        for location in mapModelView.model.locations {
+//            // make a pins
+//            let pin = MKPointAnnotation()
+//
+//            // set the coordinates
+//            pin.coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+//
+//            // set the title
+//            pin.title = location.title
+//
+//            // add to map
+//            view.addAnnotation(pin)
+//        }
 
         // set coordinates (lat lon)
         let coords = CLLocationCoordinate2D(latitude: 53.062640, longitude: -2.968900)
