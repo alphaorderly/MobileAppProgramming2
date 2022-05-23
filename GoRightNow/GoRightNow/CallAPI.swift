@@ -29,6 +29,7 @@ struct searchedAlarm: Codable {
     let alarm_lvl: Int?
 }
 
+
 func getCountryInfo(countries: inout [GoRightNowModel.Country]) {
     
     // 새로운 값을 받아오기 위한 곳.

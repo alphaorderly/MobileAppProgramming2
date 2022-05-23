@@ -7,7 +7,17 @@
 
 import Foundation
 
+
+
 struct PlannerModel {
+    
+    enum Place{
+        case Landmark
+        case Food
+        case Cafe
+        // etc
+    }
+    
     static var idValue = 0
     
     // 각각의 여행계획에 대한 배열
@@ -29,7 +39,7 @@ struct PlannerModel {
     
     struct Landmarks {
         var url: String                     // 인터넷 주소
-        
         var title: String                   // 표시할 이름
+        var place: Place                    // 장소에 대한 간단한 설명
     }
 }
