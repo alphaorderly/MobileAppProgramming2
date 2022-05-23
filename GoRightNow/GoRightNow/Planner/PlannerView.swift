@@ -40,10 +40,13 @@ struct PlannerView: View {
                         }
                     }
                     VStack {
+                        PlanAttr()
                         ForEach(plannerModelView.model.plans) { data in
                             PlanCard(plan: data)
-                                .padding(EdgeInsets(top: 5, leading: 10, bottom: 10, trailing: 5))
+                                .padding(EdgeInsets(top: 1, leading: 0, bottom: 1, trailing: 0))
+                                .frame(alignment: .center)
                         }
+                        // testPlanList() // 디자인 테스트용 코드
                     }
                     Spacer()
                 }
@@ -82,19 +85,74 @@ private struct PlanCard: View {
     var plan: PlannerModel.Plan
     
     var body: some View {
-        HStack {
-            VStack {
-                Text("목적지")
-                Text("\(plan.countryName)")
+       
+        RoundedRectangle(cornerRadius: 5)
+            .fill(.white.opacity(0.5))
+            .frame(width: UIScreen.main.bounds.width * 0.9, height: 70)
+            .overlay(HStack {
+                VStack {
+                    Text("\(plan.countryName)")
+                        .lineLimit(2)
+                        .multilineTextAlignment(.center)
+                }
+                .frame(width: UIScreen.main.bounds.width * 0.9 * 0.2, height: 70)
+                VStack {
+                    Text("\(plan.planName)")
+                        .lineLimit(2)
+                        .multilineTextAlignment(.center)
+                }
+                .frame(width: UIScreen.main.bounds.width * 0.9 * 0.2, height: 70)
+                VStack {
+                    Text("\(convertDate(from: plan.departDate))")
+                    Text(" ~ \(convertDate(from: plan.returnDate))")
+                }
+                .frame(width: UIScreen.main.bounds.width * 0.9 * 0.5, height: 70)
             }
-            Divider()
-            VStack {
-                Text("여행 이름")
-                Text("\(plan.planName)")
+            .frame(height: 70)
+                     )
+    }
+    
+    func convertDate(from curDate : Date) -> String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko")
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter.string(from: curDate)
+    }
+}
+
+private struct PlanAttr: View {
+    var body: some View {
+        RoundedRectangle(cornerRadius: 5)
+            .fill(.white.opacity(0.5))
+            .frame(width: UIScreen.main.bounds.width * 0.9, height: 30)
+            .overlay(HStack {
+                    Text("목적지")
+                        .bold()
+                        .frame(width: UIScreen.main.bounds.width * 0.9 * 0.2, height: 30)
+                    Text("여행 목적")
+                        .bold()
+                        .frame(width: UIScreen.main.bounds.width * 0.9 * 0.2, height: 30)
+                    Text("여행 기간")
+                        .bold()
+                        .frame(width: UIScreen.main.bounds.width * 0.9 * 0.5, height: 30)
             }
-            Divider()
-            Text("\(plan.departDate) ~ \(plan.returnDate)")
+                        .frame(height: 30, alignment: .leading)
+                     )
+    }
+}
+
+private struct testPlanList: View { // 디자인 테스트용 리스트 View
+    var body: some View {
+        VStack {
+            PlanCard(plan: PlannerModel.Plan(countryName: "미국", planName: "대충여행", departDate: Date(), returnDate: Date(), places: []))
+                .padding(EdgeInsets(top: 1, leading: 0, bottom: 1, trailing: 0))
+                .frame(alignment: .center)
+            PlanCard(plan: PlannerModel.Plan(countryName: "리히텐슈타인", planName: "테스트 여행", departDate: Date(), returnDate: Date(), places: []))
+                .padding(EdgeInsets(top: 1, leading: 0, bottom: 1, trailing: 0))
+                .frame(alignment: .center)
+            PlanCard(plan: PlannerModel.Plan(countryName: "Testing", planName: "TESTING TRAVEL", departDate: Date(), returnDate: Date(), places: []))
+                .padding(EdgeInsets(top: 1, leading: 0, bottom: 1, trailing: 0))
+                .frame(alignment: .center)
         }
-        .frame(height: 100)
     }
 }
