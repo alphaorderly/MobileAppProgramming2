@@ -13,9 +13,11 @@
 		786290FFE6C6165A2988EFFB /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78629269D6624C2C6F7D4D77 /* Location.swift */; };
 		78629162D10613F6A7E56D43 /* BottomSheetHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786295BE524877A8D2596FE2 /* BottomSheetHeader.swift */; };
 		786293699A23656DCDCBC2C4 /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7862979BFEC17477F0CD5B56 /* MapModel.swift */; };
+		7862938EC31D8F688A4F1758 /* LocationAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7862932541D1FD38D285CF34 /* LocationAnnotationView.swift */; };
 		786293BAB58458FF9F041B39 /* BottomSheetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786292440456377ABCBC7F07 /* BottomSheetModel.swift */; };
 		786293F622690D1D43765414 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78629B7E2D8D56A18977DEFD /* MapView.swift */; };
 		78629423C1C267090EBFF258 /* MapModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78629DBDB18753FFCB3ACF1A /* MapModelView.swift */; };
+		78629621BD45221497271C4F /* CustomAnnotationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78629E1CF2017B97B0DE6BBC /* CustomAnnotationModel.swift */; };
 		786298DDE83EA19277102D44 /* MapSearchCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78629BA0BE4A705DA8D2C3A4 /* MapSearchCall.swift */; };
 		7862992F32B9C58BC6883455 /* BottomSheetModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78629FBEB42E36E890B57291 /* BottomSheetModelView.swift */; };
 		B2A1710949B910136133626B /* Pods_GoRightNow_GoRightNowUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 011AC6619F9509ACF0AE79AB /* Pods_GoRightNow_GoRightNowUITests.framework */; };
@@ -71,12 +73,14 @@
 		4AA915F01BBED547113F6785 /* Pods-GoRightNow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoRightNow.release.xcconfig"; path = "Target Support Files/Pods-GoRightNow/Pods-GoRightNow.release.xcconfig"; sourceTree = "<group>"; };
 		786292440456377ABCBC7F07 /* BottomSheetModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheetModel.swift; sourceTree = "<group>"; };
 		78629269D6624C2C6F7D4D77 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		7862932541D1FD38D285CF34 /* LocationAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationAnnotationView.swift; sourceTree = "<group>"; };
 		786295BE524877A8D2596FE2 /* BottomSheetHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheetHeader.swift; sourceTree = "<group>"; };
 		7862979BFEC17477F0CD5B56 /* MapModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
 		78629B7E2D8D56A18977DEFD /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		78629BA0BE4A705DA8D2C3A4 /* MapSearchCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapSearchCall.swift; sourceTree = "<group>"; };
 		78629D9BD52AC1C85ABFCE93 /* MainApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainApp.swift; sourceTree = "<group>"; };
 		78629DBDB18753FFCB3ACF1A /* MapModelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapModelView.swift; sourceTree = "<group>"; };
+		78629E1CF2017B97B0DE6BBC /* CustomAnnotationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotationModel.swift; sourceTree = "<group>"; };
 		78629FBEB42E36E890B57291 /* BottomSheetModelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheetModelView.swift; sourceTree = "<group>"; };
 		AB72B380C8DCE060B49416FE /* Pods-GoRightNow-GoRightNowUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoRightNow-GoRightNowUITests.release.xcconfig"; path = "Target Support Files/Pods-GoRightNow-GoRightNowUITests/Pods-GoRightNow-GoRightNowUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B0A8AE6DEBE0C3E3FC408209 /* Pods_GoRightNow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoRightNow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -170,6 +174,8 @@
 				7862979BFEC17477F0CD5B56 /* MapModel.swift */,
 				78629DBDB18753FFCB3ACF1A /* MapModelView.swift */,
 				78629BA0BE4A705DA8D2C3A4 /* MapSearchCall.swift */,
+				7862932541D1FD38D285CF34 /* LocationAnnotationView.swift */,
+				78629E1CF2017B97B0DE6BBC /* CustomAnnotationModel.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -547,6 +553,8 @@
 				786293699A23656DCDCBC2C4 /* MapModel.swift in Sources */,
 				78629423C1C267090EBFF258 /* MapModelView.swift in Sources */,
 				786298DDE83EA19277102D44 /* MapSearchCall.swift in Sources */,
+				7862938EC31D8F688A4F1758 /* LocationAnnotationView.swift in Sources */,
+				78629621BD45221497271C4F /* CustomAnnotationModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

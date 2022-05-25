@@ -35,7 +35,7 @@ struct CountryList: View {
                         //TODO nill 처리 필요
                         mapModelView.model.mapView.setRegion(data.location!.region, animated: true)
 //                        mapModelView.clearAnnotations()
-                        mapModelView.makePin(location: data.location!)
+                        mapModelView.makePin(location: data.location!, countryInfo: data as GoRightNowModel.Country)
 //                        mapModelView.setAnnotations()
                         bottomSheetModelView.position = .bottom
                     }

@@ -12,37 +12,14 @@ struct MainApp: View {
     @EnvironmentObject var bottomSheetModelView: BottomSheetModelView;
     @EnvironmentObject var mapModelView: MapModelView
     @State private var isSheetPresented = true
+//    @State private var isDetailSheet = true     //값 변경하기
 
     var body: some View {
         Button(action: {
-//            let lo = Location(title: "KNU", latitude: 35.8882118, longitude: 128.6109155)
-//            mapModelView.model.mapView.setCenter(CLLocationCoordinate2D(latitude: locations[1].latitude, longitude: locations[1].longitude), animated: true)
-//            mapModelView.model.locations.append(lo)
-//            let pin = MKPointAnnotation()
-//            pin.coordinate = CLLocationCoordinate2D(latitude: 35.8882118, longitude: 128.6109155)
-//            pin.title = "KNU"
-//            mapModelView.model.mapView.addAnnotation(pin)
-//            print("Annotations")
-//            mapModelView.model.mapView.setRegion(MKCoordinateRegion(center: 7.3726861, latitudinalMeters: <#T##CLLocationDistance##CoreLocation.CLLocationDistance#>, longitudinalMeters: <#T##CLLocationDistance##CoreLocation.CLLocationDistance#>), animated: <#T##Bool##Swift.Bool#>)
+            print(mapModelView.model.isDetailSheet)
 
-//            let searchRequest = MKLocalSearch.Request()
-//            searchRequest.naturalLanguageQuery = "경북대학교"
-//            let search = MKLocalSearch(request: searchRequest)
-//            search.start { response, error in
-//                guard let response = response else {
-//                    print("ERROR")
-//                    return
-//                }
-//
-//                mapModelView.model.mapView.setRegion(response.boundingRegion, animated: true)
-//                return
-//            }
-
-//            mapModelView.model.mapView.setRegion(
-//                    modelView.model.countries.first!.location!.region, animated: true)
-//                    bottomSheetModelView.position = .bottom
         }) {
-            Text("Button")
+            Text("BTN")
         }
         ZStack {
             MapView()
@@ -52,6 +29,17 @@ struct MainApp: View {
                                 BottomSheetHeader(bottomSheetView: bottomSheetModelView, modelView: modelView)
                             }) {
                         CountryList(countries: modelView.model.countryList)
+                    }
+                    .sheet(isPresented: $mapModelView.model.isDetailSheet) {
+                        //TODO Nill 처리
+                        let countryInfo = mapModelView.model.selectedCountry!
+                        CountryDetailView(
+                                countryName: countryInfo.name,
+                                immigInfo: countryInfo.immigInfo,
+                                isoCode: countryInfo.iso_alp2,
+                                imgurl: countryInfo.flagImageURL,
+                                alarmLevel: countryInfo.alarmLevel
+                        )
                     }
             if modelView.model.sideMenu {
                 GeometryReader { geometry in

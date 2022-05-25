@@ -41,6 +41,6 @@ struct GoRightNowModel {
         var flagImageURL : String           // 국기 이미지 URL
         var alarmLevel : Int
         // 여행경보 정보, 바티칸 등 일부 국가는 nil이면 0
-        var location: Location?
+        var location: Location?             // 국가 위치 정보
     }
 }
