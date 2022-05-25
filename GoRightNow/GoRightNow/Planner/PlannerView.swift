@@ -21,6 +21,7 @@ struct PlannerView: View {
     
     @State fileprivate var mode: Mode = .list
     @State private var addSheet: Bool = false
+    @State private var addAlert: Bool = false
 
     var body: some View {
         NavigationView {
@@ -44,7 +45,7 @@ struct PlannerView: View {
                         Spacer()
                         if mode == .list {
                             Button {
-                                // Action
+                                addSheet = true
                             } label: {
                                 Image(systemName: "plus")
                                     .foregroundColor(.black)
@@ -93,7 +94,7 @@ struct PlannerView: View {
             .navigationBarHidden(true).navigationBarTitle("", displayMode: .automatic)
             .navigationBarHidden(true)
             .sheet(isPresented: $addSheet) {
-                
+                AddSheet(dismiss: $addSheet, alert: $addAlert)
             }
         }
     }
@@ -131,6 +132,54 @@ private struct EditButton: View {
                     .foregroundColor(.black)
                     .font(.system(size: 20, weight: .bold))
                     .padding()
+            }
+        }
+    }
+}
+
+private struct AddSheet: View {
+    @Binding var dismiss: Bool
+    @Binding var alert: Bool
+    @EnvironmentObject var plannerModelView: PlannerModelView;
+    
+    @State var countryName: String = ""
+    @State var planName: String = ""
+    @State var departDate: Date = Date()
+    @State var returnDate: Date = Date()
+
+    
+    var body: some View {
+        NavigationView {
+            VStack {
+                Text("")
+                    .navigationBarTitle(Text("추가하기"), displayMode: .inline)
+                    .navigationBarItems(trailing: Button(action: {
+                        plannerModelView.addModel(countryName: countryName, planName: planName, departDate: departDate, returnDate: returnDate)
+                        dismiss = false
+                    }) {
+                        Text("추가").bold()
+                    })
+                    .navigationBarItems(leading: Button(action: {
+                        dismiss = false
+                    }) {
+                        Text("취소").bold()
+                    })
+                Form {
+                    Section(header: Text("목적지")) {
+                        TextField("\(countryName)", text: $countryName)
+                    }
+                    Section(header: Text("이름")) {
+                        TextField("\(planName)", text: $planName)
+                    }
+                    Section(header: Text("출발일")) {
+                        DatePicker(selection: $departDate, label: {})
+                            .labelsHidden()
+                    }
+                    Section(header: Text("도착일")) {
+                        DatePicker(selection: $returnDate, label: {})
+                            .labelsHidden()
+                    }
+                }
             }
         }
     }
@@ -247,7 +296,7 @@ private struct EditSheet: View {
                 Text("")
                     .navigationBarTitle(Text("수정하기"), displayMode: .inline)
                     .navigationBarItems(trailing: Button(action: {
-                        plannerModelView.editMode(countryName: countryName, planName: planName, departDate: departDate, returnDate: returnDate, id: currentPlan.id)
+                        plannerModelView.editModel(countryName: countryName, planName: planName, departDate: departDate, returnDate: returnDate, id: currentPlan.id)
                         dismiss = false
                     }) {
                         Text("수정").bold()
@@ -301,6 +350,6 @@ private struct PlanAttr: View {
                         .frame(width: UIScreen.main.bounds.width * 0.9 * 0.5, height: 30)
             }
                         .frame(height: 30, alignment: .leading)
-                     )
+        )
     }
 }

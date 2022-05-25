@@ -16,7 +16,11 @@ class PlannerModelView: ObservableObject {
         }
     }
     
-    func editMode(countryName: String, planName: String, departDate: Date, returnDate: Date, id: String) {
+    func editModel(countryName: String, planName: String, departDate: Date, returnDate: Date, id: String) {
         model.edit(countryName: countryName, planName: planName, departDate: departDate, returnDate: returnDate, id: id)
+    }
+    
+    func addModel(countryName: String, planName: String, departDate: Date, returnDate: Date) {
+        model.add(countryName: countryName, planName: planName, departDate: departDate, returnDate: returnDate)
     }
 }

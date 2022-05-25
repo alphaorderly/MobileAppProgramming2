@@ -50,4 +50,11 @@ struct PlannerModel {
             }
         }
     }
+    
+    mutating func add(countryName: String, planName: String, departDate: Date, returnDate: Date) {
+        let plan = Plan(countryName: countryName, planName: planName, departDate: departDate, returnDate: returnDate, places: [])
+        if plans.filter({ $0.id == plan.id }).count == 0 {
+            plans.append(plan)
+        }
+    }
 }
