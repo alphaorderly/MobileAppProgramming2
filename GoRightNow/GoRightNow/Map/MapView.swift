@@ -8,19 +8,12 @@ struct MapView: UIViewRepresentable {
 
     func makeUIView(context: Context) -> MKMapView {
         let mapView = mapModelView.model.mapView
-        mapView.mapType = .hybridFlyover
-        // set coordinates (lat lon)
         let coords = CLLocationCoordinate2D(latitude: 53.062640, longitude: -2.968900)
-
-        // set span (radius of points)
         let span = MKCoordinateSpan(latitudeDelta: 180, longitudeDelta: 180)
-
-        // set region
         let region = MKCoordinateRegion(center: coords, span: span)
 
-        // set the view
+        mapView.mapType = .hybridFlyover
         mapView.setRegion(region, animated: true)
-
         return mapView
     }
 
@@ -49,8 +42,6 @@ struct MapView: UIViewRepresentable {
         //Pin이 선택되었을 때 선택된 country를 model에 넘김
         public func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
             let model = view.annotation as? CustomAnnotationModel
-//            mapView.setCenter(model.coordinate, animated: true)
-            print("\(model?.countryInfo?.name) injected")
             mapModelView.model.selectedCountry = model?.countryInfo
         }
 
@@ -64,14 +55,47 @@ struct MapView: UIViewRepresentable {
         //MKAnnotation Pin 설정
         public func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
             let annotationView = MKPinAnnotationView(annotation:annotation, reuseIdentifier:"")
+            let model = annotation as? CustomAnnotationModel
             annotationView.isEnabled = true
             annotationView.canShowCallout = true
 
+            //Pin 양 버튼 이미지 설정
             let btn = UIButton(type: .detailDisclosure)
+            let image = UIButton(type: .custom)
+            if UIImage(named: (model?.countryInfo!.iso_alp2)!) != nil {
+                image.setImage(UIImage(named: (model?.countryInfo!.iso_alp2)!), for: UIControl.State.disabled)
+            } else {
+                let data = urlToImage(strUrl: model!.countryInfo!.flagImageURL)
+                image.setImage(data, for: UIControl.State.normal)
+
+            }
+            image.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
+            image.isEnabled = false
+
             annotationView.rightCalloutAccessoryView = btn
+            annotationView.leftCalloutAccessoryView = image
+
+
             return annotationView
         }
 
+        //URL을 ImageData로 변경하는 function
+        func urlToImage(strUrl: String) -> UIImage? {
+            if strUrl.isEmpty || strUrl.count == 0{
+                return nil
+            }
+            do {
+                let url = URL(string: strUrl)
 
+                if url != nil {
+                    let data = try Data(contentsOf: url!)
+                    return UIImage(data: data)
+                }
+            } catch(let error) {
+                print(error)
+            }
+            return nil
+        }
     }
+
 }

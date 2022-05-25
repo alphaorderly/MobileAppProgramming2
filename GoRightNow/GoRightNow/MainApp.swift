@@ -15,12 +15,6 @@ struct MainApp: View {
 //    @State private var isDetailSheet = true     //값 변경하기
 
     var body: some View {
-        Button(action: {
-            print(mapModelView.model.isDetailSheet)
-
-        }) {
-            Text("BTN")
-        }
         ZStack {
             MapView()
                     .bottomSheet(bottomSheetPosition: $bottomSheetModelView.model.bottomSheetPosition,
