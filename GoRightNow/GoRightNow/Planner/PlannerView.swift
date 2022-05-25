@@ -8,11 +8,19 @@
 import SwiftUI
 
 struct PlannerView: View {
+    
+    fileprivate enum Mode {
+        case list                       // 일반 모드
+        case edit                       // 수정 모드
+        case delete                     // 삭제 모드
+    }
+    
     @EnvironmentObject var modelView: GoRightNowModelView;
     @EnvironmentObject var selectView: ViewSelect;
     @EnvironmentObject var plannerModelView: PlannerModelView;
     
-    @State var addSheet: Bool = false
+    @State fileprivate var mode: Mode = .list
+    @State private var addSheet: Bool = false
 
     var body: some View {
         NavigationView {
@@ -32,23 +40,28 @@ struct PlannerView: View {
                                 .padding()
                         }
                         Spacer()
-                        Button {
-                            // Action
-                        } label: {
-                            Image(systemName: "plus")
-                                .foregroundColor(.black)
-                                .font(.system(size: 20, weight: .bold))
-                                .padding()
+                        EditButton(mode: $mode)
+                        Spacer()
+                        if mode == .list {
+                            Button {
+                                // Action
+                            } label: {
+                                Image(systemName: "plus")
+                                    .foregroundColor(.black)
+                                    .font(.system(size: 20, weight: .bold))
+                                    .padding()
+                            }
                         }
                     }
                     VStack {
+                        // 상단바
                         PlanAttr()
+                        // 리스트
                         ForEach(plannerModelView.model.plans) { data in
-                            PlanCard(plan: data)
+                            PlanCard(plan: data, mode: $mode)
                                 .padding(EdgeInsets(top: 1, leading: 0, bottom: 1, trailing: 0))
                                 .frame(alignment: .center)
                         }
-                        // testPlanList() // 디자인 테스트용 코드
                     }
                     Spacer()
                 }
@@ -86,13 +99,88 @@ struct PlannerView: View {
     }
 }
 
+private struct EditButton: View {
+    @Binding var mode : PlannerView.Mode
+    
+    var body: some View {
+        if mode == .list {
+            Menu {
+                Button {
+                    mode = .delete
+                } label: {
+                    Image(systemName: "minus.circle")
+                    Text("삭제하기")
+                }
+                Button {
+                    mode = .edit
+                } label: {
+                    Image(systemName: "pencil")
+                    Text("수정하기")
+                }
+            } label: {
+                Image(systemName: "gearshape.fill")
+                    .foregroundColor(.black)
+                    .font(.system(size: 20, weight: .bold))
+                    .padding()
+            }
+        } else {
+            Button {
+                mode = .list
+            } label: {
+                Image(systemName: "return")
+                    .foregroundColor(.black)
+                    .font(.system(size: 20, weight: .bold))
+                    .padding()
+            }
+        }
+    }
+}
+
 private struct PlanCard: View {
     var plan: PlannerModel.Plan
+    @Binding var mode: PlannerView.Mode
+    @EnvironmentObject var plannerModelView: PlannerModelView;
+    
+    @State var deleteAlert = false
+    @State var editSheet = false
+    
+    // 모드별 색상
+    var fillColor : Color {
+            switch(mode) {
+            case .delete:
+                return Color.red
+            case .edit:
+                return Color.blue
+            default:
+                return Color.white.opacity(0.5)
+        }
+    }
+    
+    // 메뉴 클릭시 작동
+    var tapGesture: some Gesture {
+        switch(mode) {
+        case .delete:
+            return TapGesture(count: 1)
+                .onEnded {
+                    deleteAlert = true
+                }
+        case .edit:
+            return TapGesture(count: 1)
+                .onEnded {
+                    editSheet = true
+                }
+        default:
+            return TapGesture(count: 1)
+                .onEnded {
+                    
+                }
+        }
+    }
     
     var body: some View {
        
         RoundedRectangle(cornerRadius: 5)
-            .fill(.white.opacity(0.5))
+            .fill(fillColor)
             .frame(width: UIScreen.main.bounds.width * 0.9, height: 70)
             .overlay(HStack {
                 VStack {
@@ -114,7 +202,24 @@ private struct PlanCard: View {
                 .frame(width: UIScreen.main.bounds.width * 0.9 * 0.5, height: 70)
             }
             .frame(height: 70)
-                     )
+            )
+            .gesture(tapGesture)
+            .transition(.asymmetric(insertion: .identity, removal: .move(edge: .leading)))
+            .alert(isPresented: $deleteAlert) {
+                Alert(
+                    title: Text("삭제 하시겠습니까?"),
+                    message: Text("되돌릴수 없습니다"),
+                    primaryButton: .destructive(Text("삭제하기")) {
+                        withAnimation {
+                            plannerModelView.deleteModel(id: plan.id)
+                        }
+                    },
+                    secondaryButton: .cancel(Text("취소"))
+                )
+            }
+            .sheet(isPresented: $editSheet) {
+                EditSheet(dismiss: $editSheet, currentPlan: plan)
+            }
     }
     
     func convertDate(from curDate : Date) -> String {
@@ -122,6 +227,60 @@ private struct PlanCard: View {
         formatter.locale = Locale(identifier: "ko")
         formatter.dateFormat = "yyyy-MM-dd"
         return formatter.string(from: curDate)
+    }
+}
+
+private struct EditSheet: View {
+    @Binding var dismiss: Bool
+    @EnvironmentObject var plannerModelView: PlannerModelView;
+    var currentPlan: PlannerModel.Plan
+    
+    @State var countryName: String = ""
+    @State var planName: String = ""
+    @State var departDate: Date = Date()
+    @State var returnDate: Date = Date()
+
+    
+    var body: some View {
+        NavigationView {
+            VStack {
+                Text("")
+                    .navigationBarTitle(Text("수정하기"), displayMode: .inline)
+                    .navigationBarItems(trailing: Button(action: {
+                        plannerModelView.editMode(countryName: countryName, planName: planName, departDate: departDate, returnDate: returnDate, id: currentPlan.id)
+                        dismiss = false
+                    }) {
+                        Text("수정").bold()
+                    })
+                    .navigationBarItems(leading: Button(action: {
+                        dismiss = false
+                    }) {
+                        Text("취소").bold()
+                    })
+                Form {
+                    Section(header: Text("목적지")) {
+                        TextField("\(countryName)", text: $countryName)
+                    }
+                    Section(header: Text("이름")) {
+                        TextField("\(planName)", text: $planName)
+                    }
+                    Section(header: Text("출발일")) {
+                        DatePicker(selection: $departDate, label: {})
+                            .labelsHidden()
+                    }
+                    Section(header: Text("도착일")) {
+                        DatePicker(selection: $returnDate, label: {})
+                            .labelsHidden()
+                    }
+                }
+                .onAppear() {
+                    countryName = currentPlan.countryName
+                    planName = currentPlan.planName
+                    departDate = currentPlan.departDate
+                    returnDate = currentPlan.returnDate
+                }
+            }
+        }
     }
 }
 
@@ -143,21 +302,5 @@ private struct PlanAttr: View {
             }
                         .frame(height: 30, alignment: .leading)
                      )
-    }
-}
-
-private struct testPlanList: View { // 디자인 테스트용 리스트 View
-    var body: some View {
-        VStack {
-            PlanCard(plan: PlannerModel.Plan(countryName: "미국", planName: "대충여행", departDate: Date(), returnDate: Date(), places: []))
-                .padding(EdgeInsets(top: 1, leading: 0, bottom: 1, trailing: 0))
-                .frame(alignment: .center)
-            PlanCard(plan: PlannerModel.Plan(countryName: "리히텐슈타인", planName: "테스트 여행", departDate: Date(), returnDate: Date(), places: []))
-                .padding(EdgeInsets(top: 1, leading: 0, bottom: 1, trailing: 0))
-                .frame(alignment: .center)
-            PlanCard(plan: PlannerModel.Plan(countryName: "Testing", planName: "TESTING TRAVEL", departDate: Date(), returnDate: Date(), places: []))
-                .padding(EdgeInsets(top: 1, leading: 0, bottom: 1, trailing: 0))
-                .frame(alignment: .center)
-        }
     }
 }

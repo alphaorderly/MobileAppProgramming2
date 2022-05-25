@@ -17,9 +17,7 @@ struct PlannerModel {
         case Cafe
         // etc
     }
-    
-    static var idValue = 0
-    
+        
     // 각각의 여행계획에 대한 배열
     var plans: [Plan] = [Plan(countryName: "한국", planName: "종강 여행", departDate: Date(), returnDate: Date(), places: [])]
     
@@ -29,9 +27,8 @@ struct PlannerModel {
         var departDate: Date                // 출발 일자
         var returnDate: Date                // 도착 일자
         
-        var id: Int {
-            idValue += 1
-            return idValue
+        var id: String {
+            countryName + planName + departDate.description + returnDate.description
         }
         
         var places: [Landmarks]             // 가볼곳들
@@ -41,5 +38,16 @@ struct PlannerModel {
         var url: String                     // 인터넷 주소
         var title: String                   // 표시할 이름
         var place: Place                    // 장소에 대한 간단한 설명
+    }
+    
+    mutating func edit(countryName: String, planName: String, departDate: Date, returnDate: Date, id: String) {
+        for index in plans.indices {
+            if plans[index].id == id {
+                plans[index].countryName = countryName
+                plans[index].planName = planName
+                plans[index].departDate = departDate
+                plans[index].returnDate = returnDate
+            }
+        }
     }
 }
