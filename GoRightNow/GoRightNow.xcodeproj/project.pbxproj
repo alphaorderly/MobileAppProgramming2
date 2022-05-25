@@ -17,6 +17,7 @@
 		EF11F21E2832270000E3761A /* PlannerModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF11F21D2832270000E3761A /* PlannerModelView.swift */; };
 		EF11F2202832270A00E3761A /* PlannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF11F21F2832270A00E3761A /* PlannerModel.swift */; };
 		EF252A9A282DECB900B2A14C /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF252A99282DECB900B2A14C /* Theme.swift */; };
+		EF3482C8283DF51600B4F2C1 /* PlannerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3482C7283DF51600B4F2C1 /* PlannerDetailView.swift */; };
 		EF54196028044BDF00C4CAFA /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF54195F28044BDF00C4CAFA /* SearchBar.swift */; };
 		EF5419622804582000C4CAFA /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5419612804582000C4CAFA /* SideMenu.swift */; };
 		EF682A53281D7AC800F08CF4 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF682A52281D7AC800F08CF4 /* SettingView.swift */; };
@@ -73,6 +74,7 @@
 		EF11F21D2832270000E3761A /* PlannerModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerModelView.swift; sourceTree = "<group>"; };
 		EF11F21F2832270A00E3761A /* PlannerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerModel.swift; sourceTree = "<group>"; };
 		EF252A99282DECB900B2A14C /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		EF3482C7283DF51600B4F2C1 /* PlannerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerDetailView.swift; sourceTree = "<group>"; };
 		EF54195F28044BDF00C4CAFA /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		EF5419612804582000C4CAFA /* SideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
 		EF682A52281D7AC800F08CF4 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				EF11F2192831FBEE00E3761A /* PlannerView.swift */,
 				EF11F21D2832270000E3761A /* PlannerModelView.swift */,
 				EF11F21F2832270A00E3761A /* PlannerModel.swift */,
+				EF3482C7283DF51600B4F2C1 /* PlannerDetailView.swift */,
 			);
 			path = Planner;
 			sourceTree = "<group>";
@@ -482,6 +485,7 @@
 				EFEEF90028223EB9008FD759 /* CountryDetailView.swift in Sources */,
 				EFE7714A28043628005CCE52 /* GoRightNowApp.swift in Sources */,
 				EF8116E2281F6C9D0005B178 /* CountryList.swift in Sources */,
+				EF3482C8283DF51600B4F2C1 /* PlannerDetailView.swift in Sources */,
 				EF54196028044BDF00C4CAFA /* SearchBar.swift in Sources */,
 				EF5419622804582000C4CAFA /* SideMenu.swift in Sources */,
 				EF11F2202832270A00E3761A /* PlannerModel.swift in Sources */,
