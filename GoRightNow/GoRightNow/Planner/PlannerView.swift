@@ -11,6 +11,8 @@ struct PlannerView: View {
     @EnvironmentObject var modelView: GoRightNowModelView;
     @EnvironmentObject var selectView: ViewSelect;
     @EnvironmentObject var plannerModelView: PlannerModelView;
+    
+    @State var addSheet: Bool = false
 
     var body: some View {
         NavigationView {
@@ -77,6 +79,9 @@ struct PlannerView: View {
             .navigationBarTitle("", displayMode: .automatic)
             .navigationBarHidden(true).navigationBarTitle("", displayMode: .automatic)
             .navigationBarHidden(true)
+            .sheet(isPresented: $addSheet) {
+                
+            }
         }
     }
 }
