@@ -22,7 +22,6 @@ struct MapView: UIViewRepresentable {
     }
 
     func updateUIView(_ view: MKMapView, context: Context) {
-
         view.delegate = context.coordinator
     }
 
@@ -72,10 +71,12 @@ struct MapView: UIViewRepresentable {
             image.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
             image.isEnabled = false
 
+
+            //Pin 색 변경하기
+            annotationView.pinTintColor = getColorInfoFromAlarm(model?.countryInfo?.alarmLevel)
+
             annotationView.rightCalloutAccessoryView = btn
             annotationView.leftCalloutAccessoryView = image
-
-
             return annotationView
         }
 
@@ -95,6 +96,24 @@ struct MapView: UIViewRepresentable {
                 print(error)
             }
             return nil
+        }
+
+        //alram을 이용해 해당되는 색을 얻을 수 있음
+        func getColorInfoFromAlarm(_ type: Int?) -> UIColor {
+            switch type {
+            case 0:
+                return UIColor(red: 53 / 255, green: 80 / 255, blue: 121 / 255, alpha: 1.0)
+            case 1:
+                return UIColor(red: 244 / 255, green: 196 / 255, blue: 88 / 255, alpha: 1.0)
+            case 2:
+                return UIColor(red: 184 / 255, green: 54 / 255, blue: 36 / 255, alpha: 1.0)
+            case 3:
+                return UIColor(red: 41 / 255, green: 41 / 255, blue: 41 / 255, alpha: 1.0)
+            case 4:
+                return UIColor(red: 184 / 255, green: 54 / 255, blue: 36 / 255, alpha: 1.0)
+            default:
+                return UIColor.black
+            }
         }
     }
 

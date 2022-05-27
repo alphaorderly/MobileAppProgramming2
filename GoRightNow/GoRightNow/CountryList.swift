@@ -20,8 +20,11 @@ struct CountryList: View {
             ListTile(name: data.name, immg: data.immigInfo, imgurl: data.flagImageURL, isocode: data.iso_alp2, alarm: data.alarmLevel)
                     .onTapGesture {
                         //TODO nill 처리 필요
-                        mapModelView.model.mapView.setRegion(data.location!.region, animated: true)
-                        mapModelView.makePin(location: data.location!, countryInfo: data as GoRightNowModel.Country)
+                        mapModelView.goToRegion(data)
+                        mapModelView.selectPinToCountry(country: data)
+//                        mapModelView.model.mapView.setRegion(data.location!.region, animated: true)
+//                        mapModelView.makePin(location: data.location!, countryInfo: data as GoRightNowModel.Country)
+//                        mapModelView.makePin(country: data)
                         bottomSheetModelView.position = .bottom
                     }
                     .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))

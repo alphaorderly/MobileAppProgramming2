@@ -64,6 +64,7 @@ struct MainApp: View {
                     if modelView.model.gotData == 0 {
                         await modelView.getCountryData()
                         await modelView.getCountryLocation()
+                        mapModelView.makePin(countries: modelView.model.countries)
                         modelView.model.gotData = 1
                     }
                 }
