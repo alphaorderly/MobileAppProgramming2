@@ -98,12 +98,12 @@ private struct AlarmCardView : View {
                     Text("여행 유의 국가")
                 case 2:
                     Text("여행 자제 국가")
-                        .foregroundColor(.init(uiColor: UIColor(red: 184/255, green: 54/255, blue: 36/255, alpha: 1.0)))
+                        //.foregroundColor(.init(uiColor: UIColor(red: 184/255, green: 54/255, blue: 36/255, alpha: 1.0)))
                 case 3:
                     Text("출국 권고 국가")
                 case 4:
                     Text("여행 금지 국가")
-                        .foregroundColor(.init(uiColor: UIColor(red: 184/255, green: 54/255, blue: 36/255, alpha: 1.0)))
+                        //.foregroundColor(.init(uiColor: UIColor(red: 184/255, green: 54/255, blue: 36/255, alpha: 1.0)))
                 default:
                     Text("특별 여행 주의보 국가")
                 }
@@ -112,9 +112,30 @@ private struct AlarmCardView : View {
             .font(.system(size: 30).bold())
             Spacer()
         }
-        .background(.white.opacity(0.5))
+        .background(color().opacity(0.3))
         .cornerRadius(5)
         .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
+    }
+    
+    private func color() -> Color { // 여행경보 배경 사각형 테두리 색상 변경
+        var result = Color.white
+        
+        switch alarm {
+        case 0:
+            result = Color(red: 53 / 255, green: 80 / 255, blue: 121 / 255)
+        case 1:
+            result = Color(red: 244 / 255, green: 196 / 255, blue: 88 / 255)
+        case 2:
+            result = Color(red: 184 / 255, green: 54 / 255, blue: 36 / 255)
+        case 3:
+            result = Color(red: 41 / 255, green: 41 / 255, blue: 41 / 255)
+        case 4:
+            result = Color(red: 184 / 255, green: 54 / 255, blue: 36 / 255)
+        default:
+            result = Color.white
+        }
+        
+        return result
     }
 }
 
@@ -143,5 +164,15 @@ private struct AppCardView : View {
                 UIApplication.shared.open(url, options: [:])
             }
         }
+    }
+}
+
+struct CountryDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        CountryDetailView(countryName: "TEST", immigInfo: "TEST", isoCode: "TEST", imgurl: "", alarmLevel: 1)
+        CountryDetailView(countryName: "TEST", immigInfo: "TEST", isoCode: "TEST", imgurl: "", alarmLevel: 2)
+        CountryDetailView(countryName: "TEST", immigInfo: "TEST", isoCode: "TEST", imgurl: "", alarmLevel: 3)
+        CountryDetailView(countryName: "TEST", immigInfo: "TEST", isoCode: "TEST", imgurl: "", alarmLevel: 4)
+        CountryDetailView(countryName: "TEST", immigInfo: "TEST", isoCode: "TEST", imgurl: "", alarmLevel: 0)
     }
 }

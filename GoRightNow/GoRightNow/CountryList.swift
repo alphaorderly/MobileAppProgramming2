@@ -55,19 +55,19 @@ private struct ListTile: View {
                         switch alarm {
                         case 0:
                             Circle()
-                                    .foregroundColor(.init(uiColor: UIColor(red: 53 / 255, green: 80 / 255, blue: 121 / 255, alpha: 1.0)))
+                                .foregroundColor(.init(uiColor: UIColor(red: 53 / 255, green: 80 / 255, blue: 121 / 255, alpha: 0.7)))
                         case 1:
                             Circle()
-                                    .foregroundColor(.init(uiColor: UIColor(red: 244 / 255, green: 196 / 255, blue: 88 / 255, alpha: 1.0)))
+                                .foregroundColor(.init(uiColor: UIColor(red: 244 / 255, green: 196 / 255, blue: 88 / 255, alpha: 0.7)))
                         case 2:
                             Circle()
-                                    .foregroundColor(.init(uiColor: UIColor(red: 184 / 255, green: 54 / 255, blue: 36 / 255, alpha: 1.0)))
+                                .foregroundColor(.init(uiColor: UIColor(red: 184 / 255, green: 54 / 255, blue: 36 / 255, alpha: 0.7)))
                         case 3:
                             Circle()
-                                    .foregroundColor(.init(uiColor: UIColor(red: 41 / 255, green: 41 / 255, blue: 41 / 255, alpha: 1.0)))
+                                .foregroundColor(.init(uiColor: UIColor(red: 41 / 255, green: 41 / 255, blue: 41 / 255, alpha: 0.7)))
                         case 4:
                             Circle()
-                                    .foregroundColor(.init(uiColor: UIColor(red: 184 / 255, green: 54 / 255, blue: 36 / 255, alpha: 1.0)))
+                                .foregroundColor(.init(uiColor: UIColor(red: 184 / 255, green: 54 / 255, blue: 36 / 255, alpha: 0.7)))
                         default:
                             Circle()
                         }
