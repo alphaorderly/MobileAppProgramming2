@@ -23,4 +23,8 @@ class PlannerModelView: ObservableObject {
     func addModel(countryName: String, planName: String, departDate: Date, returnDate: Date) {
         model.add(countryName: countryName, planName: planName, departDate: departDate, returnDate: returnDate)
     }
+    
+    func addPlace(id: String, url: URL, title: String, place: PlannerModel.Place) {
+        model.addPlace(id: id, url: url, title: title, place: place)
+    }
 }

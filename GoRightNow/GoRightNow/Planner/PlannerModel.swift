@@ -34,8 +34,8 @@ struct PlannerModel {
         var places: [Landmarks]             // 가볼곳들
     }
     
-    struct Landmarks {
-        var url: String                     // 인터넷 주소
+    struct Landmarks: Hashable {
+        var url: URL                     // 인터넷 주소
         var title: String                   // 표시할 이름
         var place: Place                    // 장소에 대한 간단한 설명
     }
@@ -55,6 +55,15 @@ struct PlannerModel {
         let plan = Plan(countryName: countryName, planName: planName, departDate: departDate, returnDate: returnDate, places: [])
         if plans.filter({ $0.id == plan.id }).count == 0 {
             plans.append(plan)
+        }
+    }
+    
+    mutating func addPlace(id: String, url: URL, title: String, place: PlannerModel.Place) {
+        for p in plans.indices {
+            if plans[p].id == id {
+                plans[p].places.append(Landmarks(url: url, title: title, place: place))
+                break
+            }
         }
     }
 }

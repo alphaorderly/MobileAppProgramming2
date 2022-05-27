@@ -93,9 +93,9 @@ struct PlannerView: View {
             .navigationBarTitle("", displayMode: .automatic)
             .navigationBarHidden(true).navigationBarTitle("", displayMode: .automatic)
             .navigationBarHidden(true)
-            .sheet(isPresented: $addSheet) {
-                AddSheet(dismiss: $addSheet, alert: $addAlert)
-            }
+        }
+        .sheet(isPresented: $addSheet) {
+            AddSheet(dismiss: $addSheet, alert: $addAlert)
         }
     }
 }
@@ -149,21 +149,26 @@ private struct AddSheet: View {
 
     
     var body: some View {
-        NavigationView {
             VStack {
-                Text("")
-                    .navigationBarTitle(Text("추가하기"), displayMode: .inline)
-                    .navigationBarItems(trailing: Button(action: {
+                HStack {
+                    Button(action: {
                         plannerModelView.addModel(countryName: countryName, planName: planName, departDate: departDate, returnDate: returnDate)
                         dismiss = false
                     }) {
                         Text("추가").bold()
-                    })
-                    .navigationBarItems(leading: Button(action: {
+                    }
+                    .padding(EdgeInsets(top: 15, leading: 10, bottom: 5, trailing: 10))
+                    Spacer()
+                    Text("추가하기")
+                        .padding(EdgeInsets(top: 15, leading: 10, bottom: 5, trailing: 10))
+                    Spacer()
+                    Button(action: {
                         dismiss = false
                     }) {
                         Text("취소").bold()
-                    })
+                    }
+                    .padding(EdgeInsets(top: 15, leading: 10, bottom: 5, trailing: 10))
+                }
                 Form {
                     Section(header: Text("목적지")) {
                         TextField("\(countryName)", text: $countryName)
@@ -182,7 +187,6 @@ private struct AddSheet: View {
                 }
             }
         }
-    }
 }
 
 private struct PlanCard: View {
@@ -227,49 +231,82 @@ private struct PlanCard: View {
     }
     
     var body: some View {
-       
-        RoundedRectangle(cornerRadius: 5)
-            .fill(fillColor)
-            .frame(width: UIScreen.main.bounds.width * 0.9, height: 70)
-            .overlay(HStack {
-                VStack {
-                    Text("\(plan.countryName)")
-                        .lineLimit(2)
-                        .multilineTextAlignment(.center)
+        if mode != .list {
+            RoundedRectangle(cornerRadius: 5)
+                .fill(fillColor)
+                .frame(width: UIScreen.main.bounds.width * 0.9, height: 70)
+                .overlay(HStack {
+                    VStack {
+                        Text("\(plan.countryName)")
+                            .lineLimit(2)
+                            .multilineTextAlignment(.center)
+                    }
+                    .frame(width: UIScreen.main.bounds.width * 0.9 * 0.2, height: 70)
+                    VStack {
+                        Text("\(plan.planName)")
+                            .lineLimit(2)
+                            .multilineTextAlignment(.center)
+                    }
+                    .frame(width: UIScreen.main.bounds.width * 0.9 * 0.2, height: 70)
+                    VStack {
+                        Text("\(convertDate(from: plan.departDate))")
+                        Text(" ~ \(convertDate(from: plan.returnDate))")
+                    }
+                    .frame(width: UIScreen.main.bounds.width * 0.9 * 0.5, height: 70)
                 }
-                .frame(width: UIScreen.main.bounds.width * 0.9 * 0.2, height: 70)
-                VStack {
-                    Text("\(plan.planName)")
-                        .lineLimit(2)
-                        .multilineTextAlignment(.center)
-                }
-                .frame(width: UIScreen.main.bounds.width * 0.9 * 0.2, height: 70)
-                VStack {
-                    Text("\(convertDate(from: plan.departDate))")
-                    Text(" ~ \(convertDate(from: plan.returnDate))")
-                }
-                .frame(width: UIScreen.main.bounds.width * 0.9 * 0.5, height: 70)
-            }
-            .frame(height: 70)
-            )
-            .gesture(tapGesture)
-            .transition(.asymmetric(insertion: .identity, removal: .move(edge: .leading)))
-            .alert(isPresented: $deleteAlert) {
-                Alert(
-                    title: Text("삭제 하시겠습니까?"),
-                    message: Text("되돌릴수 없습니다"),
-                    primaryButton: .destructive(Text("삭제하기")) {
-                        withAnimation {
-                            plannerModelView.deleteModel(id: plan.id)
-                        }
-                    },
-                    secondaryButton: .cancel(Text("취소"))
+                .frame(height: 70)
                 )
+                .gesture(tapGesture)
+                .transition(.asymmetric(insertion: .identity, removal: .move(edge: .leading)))
+                .alert(isPresented: $deleteAlert) {
+                    Alert(
+                        title: Text("삭제 하시겠습니까?"),
+                        message: Text("되돌릴수 없습니다"),
+                        primaryButton: .destructive(Text("삭제하기")) {
+                            withAnimation {
+                                plannerModelView.deleteModel(id: plan.id)
+                            }
+                        },
+                        secondaryButton: .cancel(Text("취소"))
+                    )
+                }
+                .sheet(isPresented: $editSheet) {
+                    EditSheet(dismiss: $editSheet, currentPlan: plan)
+                }
+        } else {
+            NavigationLink (
+                destination: PlannerDetailView(currentPlan: plan)
+            ) {
+                RoundedRectangle(cornerRadius: 5)
+                    .fill(fillColor)
+                    .frame(width: UIScreen.main.bounds.width * 0.9, height: 70)
+                    .overlay(HStack {
+                        VStack {
+                            Text("\(plan.countryName)")
+                                .lineLimit(2)
+                                .multilineTextAlignment(.center)
+                        }
+                        .frame(width: UIScreen.main.bounds.width * 0.9 * 0.2, height: 70)
+                        VStack {
+                            Text("\(plan.planName)")
+                                .lineLimit(2)
+                                .multilineTextAlignment(.center)
+                        }
+                        .frame(width: UIScreen.main.bounds.width * 0.9 * 0.2, height: 70)
+                        VStack {
+                            Text("\(convertDate(from: plan.departDate))")
+                            Text(" ~ \(convertDate(from: plan.returnDate))")
+                        }
+                        .frame(width: UIScreen.main.bounds.width * 0.9 * 0.5, height: 70)
+                    }
+                    .frame(height: 70)
+                    )
+                    .transition(.asymmetric(insertion: .identity, removal: .move(edge: .leading)))
+                    .foregroundColor(.black)
+                }
             }
-            .sheet(isPresented: $editSheet) {
-                EditSheet(dismiss: $editSheet, currentPlan: plan)
-            }
-    }
+        }
+    
     
     func convertDate(from curDate : Date) -> String {
         let formatter = DateFormatter()
@@ -291,21 +328,26 @@ private struct EditSheet: View {
 
     
     var body: some View {
-        NavigationView {
             VStack {
-                Text("")
-                    .navigationBarTitle(Text("수정하기"), displayMode: .inline)
-                    .navigationBarItems(trailing: Button(action: {
+                HStack {
+                    Button(action: {
                         plannerModelView.editModel(countryName: countryName, planName: planName, departDate: departDate, returnDate: returnDate, id: currentPlan.id)
                         dismiss = false
                     }) {
                         Text("수정").bold()
-                    })
-                    .navigationBarItems(leading: Button(action: {
+                    }
+                    .padding(EdgeInsets(top: 15, leading: 10, bottom: 5, trailing: 10))
+                    Spacer()
+                    Text("수정하기")
+                        .padding(EdgeInsets(top: 15, leading: 10, bottom: 5, trailing: 10))
+                    Spacer()
+                    Button(action: {
                         dismiss = false
                     }) {
                         Text("취소").bold()
-                    })
+                    }
+                    .padding(EdgeInsets(top: 15, leading: 10, bottom: 5, trailing: 10))
+                }
                 Form {
                     Section(header: Text("목적지")) {
                         TextField("\(countryName)", text: $countryName)
@@ -328,7 +370,6 @@ private struct EditSheet: View {
                     departDate = currentPlan.departDate
                     returnDate = currentPlan.returnDate
                 }
-            }
         }
     }
 }

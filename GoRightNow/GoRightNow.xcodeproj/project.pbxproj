@@ -22,6 +22,7 @@
 		EF5419622804582000C4CAFA /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5419612804582000C4CAFA /* SideMenu.swift */; };
 		EF682A53281D7AC800F08CF4 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF682A52281D7AC800F08CF4 /* SettingView.swift */; };
 		EF8116E2281F6C9D0005B178 /* CountryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8116E1281F6C9D0005B178 /* CountryList.swift */; };
+		EFC96EF9284062DE0052FF6C /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC96EF8284062DE0052FF6C /* WebView.swift */; };
 		EFD03D8B2827FCEF007C88EE /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = EFD03D822827FCEF007C88EE /* Preview Content */; };
 		EFDAC75B280548330091C11F /* GoRightNowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDAC75A280548330091C11F /* GoRightNowModel.swift */; };
 		EFDAC75D280548410091C11F /* GoRightNowModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDAC75C280548410091C11F /* GoRightNowModelView.swift */; };
@@ -79,6 +80,7 @@
 		EF5419612804582000C4CAFA /* SideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
 		EF682A52281D7AC800F08CF4 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		EF8116E1281F6C9D0005B178 /* CountryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryList.swift; sourceTree = "<group>"; };
+		EFC96EF8284062DE0052FF6C /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		EFD03D822827FCEF007C88EE /* Preview Content */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Preview Content"; sourceTree = "<group>"; };
 		EFDAC75A280548330091C11F /* GoRightNowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoRightNowModel.swift; sourceTree = "<group>"; };
 		EFDAC75C280548410091C11F /* GoRightNowModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoRightNowModelView.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				EFE7714928043628005CCE52 /* GoRightNowApp.swift */,
 				EFE7714B28043628005CCE52 /* GoRightNow.swift */,
 				EF252A99282DECB900B2A14C /* Theme.swift */,
+				EFC96EF8284062DE0052FF6C /* WebView.swift */,
 				FE09558E2827B60000834325 /* CallAPI.swift */,
 				FE09558D2827B60000834325 /* Info.plist */,
 				EFDAC75A280548330091C11F /* GoRightNowModel.swift */,
@@ -486,6 +489,7 @@
 				EFE7714A28043628005CCE52 /* GoRightNowApp.swift in Sources */,
 				EF8116E2281F6C9D0005B178 /* CountryList.swift in Sources */,
 				EF3482C8283DF51600B4F2C1 /* PlannerDetailView.swift in Sources */,
+				EFC96EF9284062DE0052FF6C /* WebView.swift in Sources */,
 				EF54196028044BDF00C4CAFA /* SearchBar.swift in Sources */,
 				EF5419622804582000C4CAFA /* SideMenu.swift in Sources */,
 				EF11F2202832270A00E3761A /* PlannerModel.swift in Sources */,
