@@ -32,7 +32,7 @@ struct PlannerDetailView: View {
                 ScrollView {
                     VStack {
                         ForEach(currentPlan.places, id: \.self) { place in
-                            ListItem(currentPlace: place)
+                            ListItem(currentPlace: place, currentPlan: currentPlan, mode: $mode)
                         }
                     }
                 }
@@ -194,45 +194,61 @@ private struct ListItem: View {
     @StateObject var webViewStore = WebViewStore()
     
     var currentPlace: PlannerModel.Landmarks
+    var currentPlan: PlannerModel.Plan
+    
+    @Binding var mode: PlannerDetailView.Mode
+    
+    @EnvironmentObject var plannerModelView: PlannerModelView;
     
     @State var web = false
     
     var body: some View {
-        HStack {
-            Text("\(currentPlace.title)")
-        }
-        .onTapGesture {
-            web = true
-        }
-        .sheet(isPresented: $web) {
-            NavigationView {
-                WebView(webView: webViewStore.webView)
-                  .navigationBarItems(trailing: HStack {
-                      Button{
-                          web = false
-                      } label: {
-                          Text("닫기")
+        if mode == .list {
+            HStack {
+                Text("\(currentPlace.title)")
+            }
+            .onTapGesture {
+                web = true
+            }
+            .sheet(isPresented: $web) {
+                NavigationView {
+                    WebView(webView: webViewStore.webView)
+                      .navigationBarItems(trailing: HStack {
+                          Button{
+                              web = false
+                          } label: {
+                              Text("닫기")
+                                .imageScale(.large)
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 32, height: 32)
+                          }
+                        Button(action: goBack) {
+                          Image(systemName: "chevron.left")
                             .imageScale(.large)
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 32, height: 32)
-                      }
-                    Button(action: goBack) {
-                      Image(systemName: "chevron.left")
-                        .imageScale(.large)
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 32, height: 32)
-                    }.disabled(!webViewStore.canGoBack)
-                    Button(action: goForward) {
-                      Image(systemName: "chevron.right")
-                        .imageScale(.large)
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 32, height: 32)
-                    }.disabled(!webViewStore.canGoForward)
-                  })
+                        }.disabled(!webViewStore.canGoBack)
+                        Button(action: goForward) {
+                          Image(systemName: "chevron.right")
+                            .imageScale(.large)
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 32, height: 32)
+                        }.disabled(!webViewStore.canGoForward)
+                      })
+                }
+              }.onAppear {
+                  self.webViewStore.webView.load(URLRequest(url: URL(string: "\(currentPlace.url)")!))
+              }
+        } else {
+            HStack {
+                Text("\(currentPlace.title)")
+                    .foregroundColor(.red)
             }
-          }.onAppear {
-              self.webViewStore.webView.load(URLRequest(url: URL(string: "\(currentPlace.url)")!))
-          }
+            .onTapGesture {
+                plannerModelView.deletePlace(id: currentPlan.id, place: currentPlace)
+            }
+        }
+        
         }
 
     func goBack() {

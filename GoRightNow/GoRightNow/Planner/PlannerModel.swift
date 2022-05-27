@@ -34,7 +34,7 @@ struct PlannerModel {
         var places: [Landmarks]             // 가볼곳들
     }
     
-    struct Landmarks: Hashable {
+    struct Landmarks: Hashable, Equatable {
         var url: URL                     // 인터넷 주소
         var title: String                   // 표시할 이름
         var place: Place                    // 장소에 대한 간단한 설명
@@ -63,6 +63,18 @@ struct PlannerModel {
             if plans[p].id == id {
                 plans[p].places.append(Landmarks(url: url, title: title, place: place))
                 break
+            }
+        }
+    }
+    
+    mutating func deletePlace(id: String, place: PlannerModel.Landmarks) {
+        for p in plans.indices {
+            if plans[p].id == id {
+                for pl in plans[p].places.indices {
+                    if plans[p].places[pl] == place {
+                        plans[p].places.remove(at: pl)
+                    }
+                }
             }
         }
     }

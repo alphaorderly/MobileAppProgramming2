@@ -27,4 +27,8 @@ class PlannerModelView: ObservableObject {
     func addPlace(id: String, url: URL, title: String, place: PlannerModel.Place) {
         model.addPlace(id: id, url: url, title: title, place: place)
     }
+    
+    func deletePlace(id: String, place: PlannerModel.Landmarks) {
+        model.deletePlace(id: id, place: place)
+    }
 }
