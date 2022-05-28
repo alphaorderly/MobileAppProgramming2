@@ -9,9 +9,9 @@ import Foundation
 
 
 
-struct PlannerModel {
+struct PlannerModel: Codable {
     
-    enum Place{
+    enum Place: Codable {
         case Landmark
         case Food
         case Cafe
@@ -21,7 +21,7 @@ struct PlannerModel {
     // 각각의 여행계획에 대한 배열
     var plans: [Plan] = [Plan(countryName: "한국", planName: "종강 여행", departDate: Date(), returnDate: Date(), places: [])]
     
-    struct Plan : Identifiable {
+    struct Plan : Identifiable, Codable {
         var countryName: String             // 나라 이름
         var planName: String                // 계획 이름
         var departDate: Date                // 출발 일자
@@ -34,7 +34,7 @@ struct PlannerModel {
         var places: [Landmarks]             // 가볼곳들
     }
     
-    struct Landmarks: Hashable, Equatable {
+    struct Landmarks: Hashable, Equatable, Codable {
         var url: URL                     // 인터넷 주소
         var title: String                   // 표시할 이름
         var place: Place                    // 장소에 대한 간단한 설명
@@ -78,4 +78,19 @@ struct PlannerModel {
             }
         }
     }
+    
+    func json() throws -> Data {
+        try JSONEncoder().encode(self)
+    }
+    
+    init(json: Data) throws {
+        self = try JSONDecoder().decode(PlannerModel.self, from: json)
+    }
+    
+    init(url: URL) throws {
+        let data = try Data(contentsOf: url)
+        self = try PlannerModel(json: data)
+    }
+    
+    init() { }
 }
