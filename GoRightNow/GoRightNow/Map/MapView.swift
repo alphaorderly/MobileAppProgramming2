@@ -1,4 +1,3 @@
-
 import SwiftUI
 import MapKit
 
@@ -24,8 +23,6 @@ struct MapView: UIViewRepresentable {
     func updateUIView(_ view: MKMapView, context: Context) {
         view.delegate = context.coordinator
     }
-
-
 
     public class MapViewCoordinator: NSObject, MKMapViewDelegate {
         var parentMapView: MapView
@@ -53,7 +50,7 @@ struct MapView: UIViewRepresentable {
 
         //MKAnnotation Pin 설정
         public func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-            let annotationView = MKPinAnnotationView(annotation:annotation, reuseIdentifier:"")
+            let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "")
             let model = annotation as? CustomAnnotationModel
             annotationView.isEnabled = true
             annotationView.canShowCallout = true
@@ -82,7 +79,7 @@ struct MapView: UIViewRepresentable {
 
         //URL을 ImageData로 변경하는 function
         func urlToImage(strUrl: String) -> UIImage? {
-            if strUrl.isEmpty || strUrl.count == 0{
+            if strUrl.isEmpty || strUrl.count == 0 {
                 return nil
             }
             do {
@@ -92,7 +89,7 @@ struct MapView: UIViewRepresentable {
                     let data = try Data(contentsOf: url!)
                     return UIImage(data: data)
                 }
-            } catch(let error) {
+            } catch (let error) {
                 print(error)
             }
             return nil

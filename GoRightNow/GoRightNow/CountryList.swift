@@ -22,9 +22,7 @@ struct CountryList: View {
                         //TODO nill 처리 필요
                         mapModelView.goToRegion(data)
                         mapModelView.selectPinToCountry(country: data)
-//                        mapModelView.model.mapView.setRegion(data.location!.region, animated: true)
-//                        mapModelView.makePin(location: data.location!, countryInfo: data as GoRightNowModel.Country)
-//                        mapModelView.makePin(country: data)
+                        print("\(data.name)  \(data.iso_alp2): location \(data.location?.center)")
                         bottomSheetModelView.position = .bottom
                     }
                     .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))

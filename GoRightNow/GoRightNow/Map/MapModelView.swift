@@ -31,7 +31,6 @@ class MapModelView: ObservableObject {
         model.mapView.addAnnotations(annotationList)
     }
 
-
     // 나라들을 받아서 핀을 생성함
     func makePin(countries: [GoRightNowModel.Country]) {
         for item in countries {
@@ -52,19 +51,6 @@ class MapModelView: ObservableObject {
         }
         print("Found \(first?.title)")
         return first!
-    }
-
-    func makePin(location: Location, countryInfo: GoRightNowModel.Country) {
-        let pin = CustomAnnotationModel()
-        pin.coordinate = location.center
-        pin.title = location.title
-        pin.countryInfo = countryInfo
-        pin.subtitle = getStringInfoFromAlarm(countryInfo.alarmLevel)
-
-
-        model.mapView.removeAnnotations(model.mapView.annotations)
-        model.mapView.addAnnotation(pin)
-        model.mapView.selectAnnotation(pin, animated: true)
     }
 
     func getStringInfoFromAlarm(_ type: Int?) -> String {

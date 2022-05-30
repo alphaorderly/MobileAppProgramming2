@@ -8,6 +8,7 @@ target 'GoRightNow' do
   # Pods for GoRightNow
   pod 'Alamofire', '~> 5.5'
   pod 'BottomSheetSwiftUI'
+  pod 'MapboxGeocoder.swift', '~> 0.14'
 
   target 'GoRightNowTests' do
     inherit! :search_paths

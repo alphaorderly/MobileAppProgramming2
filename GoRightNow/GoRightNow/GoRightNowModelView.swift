@@ -16,6 +16,7 @@ class GoRightNowModelView: ObservableObject {
         
     }
 
+    @MainActor
     func getCountryLocation() async  {
          await self.model.countries = getCountryLocationInfo(countries: self.model.countries)
     }
