@@ -31,6 +31,7 @@ struct PlannerDetailView: View {
             VStack {
                 ScrollView {
                     VStack {
+                        DetailAttr()
                         ForEach(currentPlan.places, id: \.self) { place in
                             ListItem(currentPlace: place, currentPlan: currentPlan, mode: $mode)
                         }
@@ -205,43 +206,101 @@ private struct ListItem: View {
     var body: some View {
         if mode == .list {
             HStack {
-                Text("\(currentPlace.title)")
-            }
-            .onTapGesture {
-                web = true
-            }
-            .sheet(isPresented: $web) {
-                NavigationView {
-                    WebView(webView: webViewStore.webView)
-                      .navigationBarItems(trailing: HStack {
-                          Button{
-                              web = false
-                          } label: {
-                              Text("닫기")
-                                .imageScale(.large)
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 32, height: 32)
-                          }
-                        Button(action: goBack) {
-                          Image(systemName: "chevron.left")
-                            .imageScale(.large)
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 32, height: 32)
-                        }.disabled(!webViewStore.canGoBack)
-                        Button(action: goForward) {
-                          Image(systemName: "chevron.right")
-                            .imageScale(.large)
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 32, height: 32)
-                        }.disabled(!webViewStore.canGoForward)
-                      })
+                RoundedRectangle(cornerRadius: 5)
+                    .fill(Color.white.opacity(0.5))
+                    .frame(width: UIScreen.main.bounds.width * 0.9, height: 50)
+                    .overlay(HStack {
+                        VStack {
+                            Text("\(currentPlace.title)")
+                                .lineLimit(2)
+                                .multilineTextAlignment(.center)
+                        }
+                        .frame(width: UIScreen.main.bounds.width * 0.9 * 0.6, height: 50)
+                        VStack {
+                            switch currentPlace.place {
+                            case PlannerModel.Place.Landmark:
+                                Text("명소")
+                                    .lineLimit(2)
+                                    .multilineTextAlignment(.center)
+                            case PlannerModel.Place.Food:
+                                Text("음식점")
+                                    .lineLimit(2)
+                                    .multilineTextAlignment(.center)
+                            case PlannerModel.Place.Cafe:
+                                Text("카페")
+                                    .lineLimit(2)
+                                    .multilineTextAlignment(.center)
+                            }
+                        }
+                        .frame(width: UIScreen.main.bounds.width * 0.9 * 0.4, height: 50)
+                    }
+                    .frame(height: 70)
+                    )
+                    .foregroundColor(.black)
+                } .onTapGesture {
+                    web = true
                 }
-              }.onAppear {
-                  self.webViewStore.webView.load(URLRequest(url: URL(string: "\(currentPlace.url)")!))
-              }
+                .sheet(isPresented: $web) {
+                    NavigationView {
+                        WebView(webView: webViewStore.webView)
+                            .navigationBarItems(trailing: HStack {
+                                Button{
+                                    web = false
+                                } label: {
+                                    Text("닫기")
+                                        .imageScale(.large)
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 32, height: 32)
+                                }
+                                Button(action: goBack) {
+                                    Image(systemName: "chevron.left")
+                                        .imageScale(.large)
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 32, height: 32)
+                                }.disabled(!webViewStore.canGoBack)
+                                Button(action: goForward) {
+                                    Image(systemName: "chevron.right")
+                                        .imageScale(.large)
+                                        .aspectRatio(contentMode: .fit)
+                                .frame(width: 32, height: 32)
+                                }.disabled(!webViewStore.canGoForward)
+                            })
+                    }
+                }.onAppear {
+                    self.webViewStore.webView.load(URLRequest(url: URL(string: "\(currentPlace.url)")!))
+                }
         } else {
             HStack {
-                Text("\(currentPlace.title)")
+                RoundedRectangle(cornerRadius: 5)
+                    .fill(Color.white.opacity(0.5))
+                    .frame(width: UIScreen.main.bounds.width * 0.9, height: 50)
+                    .overlay(HStack {
+                        VStack {
+                            Text("\(currentPlace.title)")
+                                .lineLimit(2)
+                                .multilineTextAlignment(.center)
+                        }
+                        .frame(width: UIScreen.main.bounds.width * 0.9 * 0.6, height: 50)
+                        VStack {
+                            switch currentPlace.place {
+                            case PlannerModel.Place.Landmark:
+                                Text("명소")
+                                    .lineLimit(2)
+                                    .multilineTextAlignment(.center)
+                            case PlannerModel.Place.Food:
+                                Text("음식점")
+                                    .lineLimit(2)
+                                    .multilineTextAlignment(.center)
+                            case PlannerModel.Place.Cafe:
+                                Text("카페")
+                                    .lineLimit(2)
+                                    .multilineTextAlignment(.center)
+                            }
+                        }
+                        .frame(width: UIScreen.main.bounds.width * 0.9 * 0.4, height: 50)
+                    }
+                    .frame(height: 70)
+                    )
                     .foregroundColor(.red)
             }
             .onTapGesture {
@@ -249,7 +308,7 @@ private struct ListItem: View {
             }
         }
         
-        }
+    }
 
     func goBack() {
       webViewStore.webView.goBack()
@@ -257,5 +316,23 @@ private struct ListItem: View {
 
     func goForward() {
       webViewStore.webView.goForward()
+    }
+}
+
+private struct DetailAttr: View {
+    var body: some View {
+        RoundedRectangle(cornerRadius: 5)
+            .fill(.white.opacity(0.5))
+            .frame(width: UIScreen.main.bounds.width * 0.9, height: 30)
+            .overlay(HStack {
+                    Text("목적지")
+                        .bold()
+                        .frame(width: UIScreen.main.bounds.width * 0.9 * 0.6, height: 30)
+                    Text("종류")
+                        .bold()
+                        .frame(width: UIScreen.main.bounds.width * 0.9 * 0.4, height: 30)
+            }
+                        .frame(height: 30, alignment: .leading)
+        )
     }
 }

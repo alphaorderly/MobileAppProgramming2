@@ -40,9 +40,9 @@ func getCountryInfo(countries: inout [GoRightNowModel.Country]) {
     let queue     = DispatchQueue.global(qos: .utility)
     
     // 값을 받아올 URL.
-    let countryOverseasArrivalsServiceURL = "https://apis.data.go.kr/1262000/CountryOverseasArrivalsService/getCountryOverseasArrivalsList?serviceKey=%2BnLU6YmF24aLEOo7V0yqqvuPb6a4jaNXPVyGqFmMbJhKzpzTaGIQZXTI35srP9jSb%2BD15D%2Fhf9CD85%2BT%2FdAwOw%3D%3D&returnType=JSON&perPage=200"
+    let countryOverseasArrivalsServiceURL = "https://apis.data.go.kr/1262000/CountryOverseasArrivalsService/getCountryOverseasArrivalsList?serviceKey=%2BnLU6YmF24aLEOo7V0yqqvuPb6a4jaNXPVyGqFmMbJhKzpzTaGIQZXTI35srP9jSb%2BD15D%2Fhf9CD85%2BT%2FdAwOw%3D%3D&returnType=JSON&numOfRows=200"
     
-    let TravelAlarmService2URL = "https://apis.data.go.kr/1262000/TravelAlarmService2/getTravelAlarmList2?serviceKey=%2BnLU6YmF24aLEOo7V0yqqvuPb6a4jaNXPVyGqFmMbJhKzpzTaGIQZXTI35srP9jSb%2BD15D%2Fhf9CD85%2BT%2FdAwOw%3D%3D&returnType=JSON&pageNo=1&perPage=200"
+    let TravelAlarmService2URL = "https://apis.data.go.kr/1262000/TravelAlarmService2/getTravelAlarmList2?serviceKey=%2BnLU6YmF24aLEOo7V0yqqvuPb6a4jaNXPVyGqFmMbJhKzpzTaGIQZXTI35srP9jSb%2BD15D%2Fhf9CD85%2BT%2FdAwOw%3D%3D&returnType=JSON&pageNo=1&numOfRows=200"
     
     // 데이터 받아오기 (여러개의 데이터를 받아오기 때문에 for문 사용)
     // 순서 : 여행경보 API 호출 -> 코로나 입국정보 API 호출
