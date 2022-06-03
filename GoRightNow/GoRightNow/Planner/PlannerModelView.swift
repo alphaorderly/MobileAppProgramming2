@@ -10,7 +10,7 @@ import Foundation
 class PlannerModelView: ObservableObject {
     @Published var model: PlannerModel {
         didSet {
-            save()
+            save() //여기서 데이터 저장
         }
     }
     
@@ -35,7 +35,7 @@ class PlannerModelView: ObservableObject {
     func deletePlace(id: String, place: PlannerModel.Landmarks) {
         model.deletePlace(id: id, place: place)
     }
-    
+    // 사용자 Document 경로
     private struct PlannerChanged {
         static let filename = "Saved.planner"
         static var url: URL? {
@@ -43,7 +43,7 @@ class PlannerModelView: ObservableObject {
             return docDirectory?.appendingPathComponent(filename)
         }
     }
-    
+    // 플래너 데이터를 저장하기 위한 메서드
     private func save() {
         let thisFunction = "\(String(describing: self)).\(#function)"
         if let url = PlannerChanged.url {
@@ -59,7 +59,7 @@ class PlannerModelView: ObservableObject {
             }
         }
     }
-    
+    // 플래너 modelView 초기 생성 시 사용자 Document의 데이터로 생성
     init() {
         if let url = PlannerChanged.url, let savedModel = try? PlannerModel(url: url) {
             model = savedModel
