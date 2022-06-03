@@ -78,7 +78,7 @@ struct PlannerModel: Codable {
             }
         }
     }
-    // Document에 데이터 저장하기 위한 메서드 & initializer
+    
     func json() throws -> Data {
         try JSONEncoder().encode(self)
     }
