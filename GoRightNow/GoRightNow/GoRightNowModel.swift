@@ -12,6 +12,8 @@ import SwiftUI
 struct GoRightNowModel {
     var textInput: String = ""
 
+    var infoFontSize: CGFloat = 17
+    
     var isEditMode: Bool {                               // 작성중인 Text가 있는지 확인
         if (textInput.count > 0) {
             return true

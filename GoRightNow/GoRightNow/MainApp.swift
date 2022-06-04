@@ -17,10 +17,7 @@ struct MainApp: View {
     var body: some View {
         ZStack {
             if (modelView.isNotGotData()) {
-                VStack {
-                    Text("입국정보 가져오는 중")
-                    ProgressView()
-                }
+                LoadingView()
             } else {
                 ZStack {
                     MapView()
