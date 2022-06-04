@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct SettingView: View {
+    @EnvironmentObject var modelView: GoRightNowModelView;
+    @EnvironmentObject var selectView: ViewSelect;
     var version: String
     
     var body: some View {

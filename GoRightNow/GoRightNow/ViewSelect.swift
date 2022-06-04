@@ -10,6 +10,7 @@ import Foundation
 enum ViewList {
     case mainList
     case planner
+    case setting
 }
 
 class ViewSelect: ObservableObject {

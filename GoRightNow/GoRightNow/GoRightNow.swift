@@ -24,6 +24,8 @@ struct GoRightNow: View {
             MainApp()
         case .planner:
             PlannerView()
+        case .setting:
+            SettingView(version: modelView.model.version)
         }
     }
 }

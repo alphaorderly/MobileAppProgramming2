@@ -150,11 +150,9 @@ private struct AddWebView: View{
             .sheet(isPresented: $placeSheet) {
                 HStack {
                     Button(action: {
-                        print(planId)
-                        plannerModelView.addPlace(id: planId, url: url!, title: title, place: placeSelection)
                         placeSheet = false
                     }) {
-                        Text("추가").bold()
+                        Text("취소").bold()
                     }
                     .padding(EdgeInsets(top: 15, leading: 10, bottom: 5, trailing: 10))
                     Spacer()
@@ -162,9 +160,11 @@ private struct AddWebView: View{
                         .padding(EdgeInsets(top: 15, leading: 10, bottom: 5, trailing: 10))
                     Spacer()
                     Button(action: {
+                        print(planId)
+                        plannerModelView.addPlace(id: planId, url: url!, title: title, place: placeSelection)
                         placeSheet = false
                     }) {
-                        Text("취소").bold()
+                        Text("추가").bold()
                     }
                     .padding(EdgeInsets(top: 15, leading: 10, bottom: 5, trailing: 10))
                 }

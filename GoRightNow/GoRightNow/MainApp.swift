@@ -70,6 +70,7 @@ struct MainApp: View {
 
             }
         }
+
                 .onAppear() {
                     modelView.model.sideMenu = false
                 }
