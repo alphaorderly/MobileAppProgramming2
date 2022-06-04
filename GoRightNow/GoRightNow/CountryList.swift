@@ -19,10 +19,8 @@ struct CountryList: View {
         ForEach(countries, id: \.self) { data in
             ListTile(name: data.name, immg: data.immigInfo, imgurl: data.flagImageURL, isocode: data.iso_alp2, alarm: data.alarmLevel)
                     .onTapGesture {
-                        //TODO nill 처리 필요
                         mapModelView.goToRegion(data)
                         mapModelView.selectPinToCountry(country: data)
-                        print("\(data.name)  \(data.iso_alp2): location \(data.location?.center)")
                         bottomSheetModelView.position = .bottom
                     }
                     .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))

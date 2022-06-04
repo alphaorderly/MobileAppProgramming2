@@ -10,7 +10,7 @@ struct BottomSheetHeader: View {
     @ObservedObject var modelView: GoRightNowModelView
 
     var body: some View {
-        SearchBar(text: $modelView.model.textInput, menu:$modelView.model.sideMenu)
+        SearchBar(text: $modelView.model.textInput, menu:$modelView.model.sideMenu, isEditText: modelView.model.isEditMode)
                 .onTapGesture {
                     bottomSheetView.position = .middle
                 }

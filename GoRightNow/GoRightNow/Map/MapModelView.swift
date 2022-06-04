@@ -14,15 +14,20 @@ class MapModelView: ObservableObject {
     private func appendCountryPin(country: GoRightNowModel.Country) {
         let pin = CustomAnnotationModel()
 
-        pin.coordinate = country.location!.center //TODO nil
-        pin.title = country.location?.title
+        guard let countryLocation = country.location else{
+            return
+        }
+        pin.coordinate = countryLocation.center
+        pin.title = countryLocation.title
         pin.countryInfo = country
         pin.subtitle = getStringInfoFromAlarm(country.alarmLevel)
         annotationList.append(pin)
     }
 
     func selectPinToCountry(country: GoRightNowModel.Country){
-        let anno = self.findPinFrom(name: country.name)
+        guard let anno = self.findPinFrom(name: country.name) else {
+            return
+        }
         model.mapView.selectAnnotation(anno, animated: true)
     }
 
@@ -44,13 +49,11 @@ class MapModelView: ObservableObject {
         model.mapView.setRegion(country.location!.region, animated: true)
     }
 
-    //TODO Nil
-    func findPinFrom(name: String) -> CustomAnnotationModel {
+    func findPinFrom(name: String) -> CustomAnnotationModel? {
         let first = annotationList.first { annotation in
             annotation.title == name
         }
-        print("Found \(first?.title)")
-        return first!
+        return first
     }
 
     func getStringInfoFromAlarm(_ type: Int?) -> String {

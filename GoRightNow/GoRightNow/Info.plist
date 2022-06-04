@@ -11,5 +11,7 @@
 	<string>App needs location servers for stuff. </string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>App needs location servers for stuff. </string>
+	<key>MGLMapboxAccessToken</key>
+	<string>pk.eyJ1IjoiYWJjZG9ncyIsImEiOiJjbDNvbmNsMHUwcTB0M2VwN2kxeGhxenN6In0.5eJc0CDhFS8_p9hFEOwm5w</string>
 </dict>
 </plist>

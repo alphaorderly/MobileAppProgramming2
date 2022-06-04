@@ -16,13 +16,13 @@ struct MainApp: View {
 
     var body: some View {
         ZStack {
-            if (modelView.model.gotData == 0) {
+            if (modelView.isNotGotData()) {
                 VStack {
                     Text("입국정보 가져오는 중")
                     ProgressView()
                 }
             } else {
-                VStack {
+                ZStack {
                     MapView()
                             .bottomSheet(bottomSheetPosition: $bottomSheetModelView.model.bottomSheetPosition,
                                     options: [.appleScrollBehavior],
@@ -32,15 +32,19 @@ struct MainApp: View {
                                 CountryList(countries: modelView.model.countryList)
                             }
                             .sheet(isPresented: $mapModelView.model.isDetailSheet) {
-                                //TODO Nill 처리
-                                let countryInfo = mapModelView.model.selectedCountry!
-                                CountryDetailView(
-                                        countryName: countryInfo.name,
-                                        immigInfo: countryInfo.immigInfo,
-                                        isoCode: countryInfo.iso_alp2,
-                                        imgurl: countryInfo.flagImageURL,
-                                        alarmLevel: countryInfo.alarmLevel
-                                )
+
+                                if let countryInfo = mapModelView.model.selectedCountry {
+                                    CountryDetailView(
+                                            countryName: countryInfo.name,
+                                            immigInfo: countryInfo.immigInfo,
+                                            isoCode: countryInfo.iso_alp2,
+                                            imgurl: countryInfo.flagImageURL,
+                                            alarmLevel: countryInfo.alarmLevel
+                                    )
+                                } else {
+                                    Text("[Error] No Data")
+                                }
+
                             }
                     if modelView.model.sideMenu {
                         GeometryReader { geometry in
@@ -71,15 +75,11 @@ struct MainApp: View {
                 }
                 // 뷰 이동시마다 값을 받아오지 않도록 설정
                 .task {
-                    if modelView.model.gotData == 0 {
-                        await modelView.getCountryData()
-                        helloFunction3(modelView: modelView, mapModelView: mapModelView)
-//                        helloFunction2("GY")
-//                        await helloFunction("GY")
-//                        await modelView.getCountryLocation()
-//                        mapModelView.makePin(countries: modelView.model.countries)
-
-//                        modelView.model.gotData = 1
+                    if modelView.isNotGotData() {
+                        await modelView.getCountryData()        // 국가 list를 받아옴
+                        getLocationInfoAndMakeLocationPin(modelView: modelView, mapModelView: mapModelView) { // 국가 위치 정보를 가져와서 Pin를 생성
+                            modelView.isGotData(true)
+                        }
                     }
                 }
     }

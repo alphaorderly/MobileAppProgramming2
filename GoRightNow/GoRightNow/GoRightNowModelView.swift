@@ -16,9 +16,16 @@ class GoRightNowModelView: ObservableObject {
         
     }
 
-    @MainActor
-    func getCountryLocation() async  {
-         await self.model.countries = getCountryLocationInfo(countries: self.model.countries)
+    func isGotData(_ bool:Bool){
+        model.gotData = bool ? 1 : 0
+    }
+
+    func isNotGotData() -> Bool {
+        if model.gotData == 1 {
+            return false
+        } else {
+            return true
+        }
     }
 
 }

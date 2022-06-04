@@ -12,7 +12,7 @@ import SwiftUI
  검색창
  
  - textInput : @Binding을 통해 여기서 값 바꿀시 View에서도 값이 바뀜
- - editText  : 현재 사용 여부
+ - isEditText  : 검색창에 Text가 있는지 확인한는 변수
 
   사용법 : SearchBar(textInput: ${state변수명}) -> 여기에 입력시 위 변수값이 바뀌게 됨.
  
@@ -23,8 +23,7 @@ import SwiftUI
 struct SearchBar: View {
     @Binding var text: String
     @Binding var menu: Bool
-
-        @State var editText = false
+    var isEditText: Bool
 
     var body: some View {
             HStack {
@@ -43,11 +42,9 @@ struct SearchBar: View {
                     .overlay(
                         HStack {
                             Spacer()
-                            if self.editText {
+                            if isEditText {
                                 Button(action: {
-                                    self.editText = false
                                     self.text = ""
-    
                                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     
                         })
@@ -63,9 +60,6 @@ struct SearchBar: View {
                         }
                     }
                 )
-                //.onTapGesture {
-                //    self.editText = true
-                //}
         }
         .background(Color(.systemGray6))
         .cornerRadius(15)
