@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CountryDetailView: View {
+    @EnvironmentObject var modelView: GoRightNowModelView
     var countryName: String
     var immigInfo: String
     var isoCode: String
@@ -25,7 +26,7 @@ struct CountryDetailView: View {
                         .cornerRadius(5)
                         .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
                     AlarmCardView(alarm: alarmLevel)
-                    if immigInfo != "" { TextCardView("입국 정보", immigInfo) }
+                    if immigInfo != "" { TextCardView("입국 정보", immigInfo, modelView.model.infoFontSize) }
                 }
                 AppCardView(image: "airplane.departure", url: "https://www.skyscanner.co.kr/transport/flights/kr/\(isoCode)", description: "항공기, 호텔, 렌터카 예약하기")
                     .frame(height: 75)
@@ -60,10 +61,12 @@ private struct FlagImage: View {
 private struct TextCardView: View {
     var title: String
     var content: String
+    var contentFontSize: CGFloat
     
-    init(_ title: String, _ content: String) {
+    init(_ title: String, _ content: String, _ contentFontSize: CGFloat) {
         self.title = title
         self.content = content
+        self.contentFontSize = contentFontSize
     }
     
     var body: some View {
@@ -75,6 +78,7 @@ private struct TextCardView: View {
                 Divider()
                 let contentForView = content.replacingOccurrences(of: "\n", with: "\n\n") //immginfo 줄바꿈시 한칸 더 띄움
                 Text(contentForView)
+                    .font(.system(size: contentFontSize))
             }
             .padding()
         }

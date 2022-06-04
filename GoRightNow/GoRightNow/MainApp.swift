@@ -70,6 +70,7 @@ struct MainApp: View {
 
                 .onAppear() {
                     modelView.model.sideMenu = false
+                    bottomSheetModelView.replacePosDat()
                 }
                 // 뷰 이동시마다 값을 받아오지 않도록 설정
                 .task {

@@ -49,18 +49,19 @@ struct SideMenu: View {
                 }
                 Divider()
                 Button {
-                    self.isShow = true
+                    select = .setting
+                    //self.isShow = true
                 } label: {
                     HStack(alignment: .center) {
                         Image(systemName: "gear")
                         Spacer()
                         Text("Setting")
                     }
-                            .alert("Version", isPresented: $isShow){
-                                Button("Ok"){}
-                            } message: {
-                                SettingView(version: version)
-                            }
+//                            .alert("Version", isPresented: $isShow){
+//                                Button("Ok"){}
+//                            } message: {
+//                                SettingView(version: version)
+//                            }
                             .foregroundColor(.black)
                             .font(.system(size: 20))
                 }
