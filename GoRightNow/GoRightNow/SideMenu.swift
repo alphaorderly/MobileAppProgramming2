@@ -56,21 +56,14 @@ struct SideMenu: View {
                         Spacer()
                         Text("Setting")
                     }
+                            .alert("Version", isPresented: $isShow){
+                                Button("Ok"){}
+                            } message: {
+                                SettingView(version: version)
+                            }
                             .foregroundColor(.black)
                             .font(.system(size: 20))
                 }
-//                        NavigationLink(
-//                            destination: SettingView(version: version),
-//                            label: {
-//                                HStack(alignment: .center) {
-//                                    Image(systemName: "gear")
-//                                    Spacer()
-//                                    Text("Setting")
-//                                }
-//                                .foregroundColor(.black)
-//                                .font(.system(size: 20))
-//                            }
-//                        )
                 Divider()
                 Spacer()
             }
@@ -81,9 +74,6 @@ struct SideMenu: View {
                     .shadow(radius: 0)
             Spacer()
         }
-                .sheet(isPresented: $isShow) {
-                    SettingView(version: version)
-                }
                 .frame(width: geometry.size.width / 2, height: geometry.size.height)
                 .shadow(radius: 5)
 
