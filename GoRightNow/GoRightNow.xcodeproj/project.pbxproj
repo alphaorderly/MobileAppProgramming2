@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0CCB69EA471B4475ED5C917F /* Pods_GoRightNow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0A8AE6DEBE0C3E3FC408209 /* Pods_GoRightNow.framework */; };
-		159E658F284B67A80087A9B8 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159E658E284B67A80087A9B8 /* LoadingView.swift */; };
+		15C5CCC8284CBF920074A600 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C5CCC7284CBF920074A600 /* LoadingView.swift */; };
 		6CB917F6C4A952D57A606F15 /* Pods_GoRightNowTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C985404305B2B7A556D18070 /* Pods_GoRightNowTests.framework */; };
 		7862904DEF2D9F6FF3382BF5 /* MainApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78629D9BD52AC1C85ABFCE93 /* MainApp.swift */; };
 		786290FFE6C6165A2988EFFB /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78629269D6624C2C6F7D4D77 /* Location.swift */; };
@@ -71,7 +71,7 @@
 /* Begin PBXFileReference section */
 		011AC6619F9509ACF0AE79AB /* Pods_GoRightNow_GoRightNowUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoRightNow_GoRightNowUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		07D54BAD4C9DDE959F9AC2A2 /* Pods-GoRightNow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoRightNow.debug.xcconfig"; path = "Target Support Files/Pods-GoRightNow/Pods-GoRightNow.debug.xcconfig"; sourceTree = "<group>"; };
-		159E658E284B67A80087A9B8 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingView.swift; path = ../../../Desktop/LoadingView.swift; sourceTree = "<group>"; };
+		15C5CCC7284CBF920074A600 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		32657803EBC28989B1C2549D /* Pods-GoRightNowTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoRightNowTests.release.xcconfig"; path = "Target Support Files/Pods-GoRightNowTests/Pods-GoRightNowTests.release.xcconfig"; sourceTree = "<group>"; };
 		4AA915F01BBED547113F6785 /* Pods-GoRightNow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoRightNow.release.xcconfig"; path = "Target Support Files/Pods-GoRightNow/Pods-GoRightNow.release.xcconfig"; sourceTree = "<group>"; };
 		786292440456377ABCBC7F07 /* BottomSheetModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheetModel.swift; sourceTree = "<group>"; };
@@ -255,7 +255,7 @@
 				EFE7714D28043629005CCE52 /* Assets.xcassets */,
 				EFE7714F28043629005CCE52 /* Preview Content */,
 				EF11F21B283208D900E3761A /* ViewSelect.swift */,
-				159E658E284B67A80087A9B8 /* LoadingView.swift */,
+				15C5CCC7284CBF920074A600 /* LoadingView.swift */,
 				78629D9BD52AC1C85ABFCE93 /* MainApp.swift */,
 				786296DCD99AD7E651131197 /* BottomSheet */,
 				7862964E1DDBA1999EF27D7D /* Map */,
@@ -559,7 +559,7 @@
 				786293F622690D1D43765414 /* MapView.swift in Sources */,
 				786290FFE6C6165A2988EFFB /* Location.swift in Sources */,
 				786293699A23656DCDCBC2C4 /* MapModel.swift in Sources */,
-				159E658F284B67A80087A9B8 /* LoadingView.swift in Sources */,
+				15C5CCC8284CBF920074A600 /* LoadingView.swift in Sources */,
 				78629423C1C267090EBFF258 /* MapModelView.swift in Sources */,
 				786298DDE83EA19277102D44 /* MapSearchCall.swift in Sources */,
 				78629621BD45221497271C4F /* CustomAnnotationModel.swift in Sources */,
