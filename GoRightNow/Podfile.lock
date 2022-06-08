@@ -1,0 +1,24 @@
+PODS:
+  - Alamofire (5.5.0)
+  - BottomSheetSwiftUI (2.7.0)
+  - MapboxGeocoder.swift (0.14.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 5.5)
+  - BottomSheetSwiftUI
+  - MapboxGeocoder.swift (~> 0.14)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - BottomSheetSwiftUI
+    - MapboxGeocoder.swift
+
+SPEC CHECKSUMS:
+  Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
+  BottomSheetSwiftUI: 57c6e635baeeae878508883b6985051556172515
+  MapboxGeocoder.swift: a288e92ec13fbd65bbdfd7c54c61b0e80d19e734
+
+PODFILE CHECKSUM: 691c94b8fa096ec3a2052de915d2e87a584ebda1
+
+COCOAPODS: 1.11.2
