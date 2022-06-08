@@ -17,6 +17,18 @@ struct SettingView: View {
     
     var version: String
     
+    func sidebarDrag() -> some Gesture {
+        DragGesture()
+            .onChanged({gesture in
+                if gesture.startLocation.x < CGFloat(100.0){
+                    withAnimation {
+                        modelView.model.sideMenu = true
+                    }
+                }
+             }
+        )
+    }
+    
     var body: some View {
         ZStack {
             ThemeData.background
@@ -87,6 +99,7 @@ struct SettingView: View {
                 btmshtModelView.toggleSettingMode()
             }
             
+            
             if modelView.model.sideMenu {
                 GeometryReader { geometry in
                     HStack (spacing: 0){
@@ -107,6 +120,7 @@ struct SettingView: View {
                 // Animation 구현 및 Sidebar가 절대로 뒤에 가지 않도록 설정
             }
         }
+        .gesture(sidebarDrag())
     }
 }
 

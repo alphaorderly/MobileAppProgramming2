@@ -23,7 +23,20 @@ struct PlannerView: View {
     @State private var addSheet: Bool = false
     @State private var addAlert: Bool = false
 
+    func sidebarDrag() -> some Gesture {
+        DragGesture()
+            .onChanged({gesture in
+                if gesture.startLocation.x < CGFloat(100.0){
+                    withAnimation {
+                        modelView.model.sideMenu = true
+                    }
+                }
+             }
+        )
+    }
+    
     var body: some View {
+        
         NavigationView {
             ZStack {
                 ThemeData.background
@@ -70,6 +83,7 @@ struct PlannerView: View {
                     modelView.model.sideMenu = false
                 }
                 
+                
                 if modelView.model.sideMenu {
                     GeometryReader { geometry in
                         HStack (spacing: 0){
@@ -97,6 +111,7 @@ struct PlannerView: View {
         .sheet(isPresented: $addSheet) {
             AddSheet(dismiss: $addSheet, alert: $addAlert)
         }
+        .gesture(sidebarDrag())
     }
 }
 

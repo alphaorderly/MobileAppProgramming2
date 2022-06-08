@@ -81,5 +81,18 @@ struct MainApp: View {
                         }
                     }
                 }
+                .gesture(sidebarDrag())
+    }
+    
+    func sidebarDrag() -> some Gesture {
+        DragGesture()
+            .onChanged({gesture in
+                if gesture.startLocation.x < CGFloat(100.0){
+                    withAnimation {
+                        modelView.model.sideMenu = true
+                    }
+                }
+             }
+        )
     }
 }
